@@ -160,27 +160,28 @@ proxy-groups:
 
   # === 🤖 AI工具专用分组 ===
 
-  # ChatGPT & OpenAI 全家桶
+  # ChatGPT & OpenAI 全家桶 - 优化节点优先级
   - name: "🧠 ChatGPT"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/OpenAI.png
     proxies:
-      - "🇺🇸 美国节点"
-      - "🇯🇵 日本节点"
-      - "🇸🇬 新加坡节点"
-      - "🇬🇧 英国节点"
+      - "🇺🇸 美国节点"      # 首选：OpenAI服务器位于美国，延迟最低
+      - "🇬🇧 英国节点"      # 备选：欧洲访问速度好
+      - "🇨🇦 加拿大节点"    # 备选：北美地区，稳定性好
+      - "🇯🇵 日本节点"      # 备选：亚洲地区
+      - "🇸🇬 新加坡节点"    # 备选：亚洲地区备用
       - "♻️ 自动选择"
 
-  # Google统一服务 - AI、搜索、云服务等 (智能路由：AI优先美国)
+  # Google统一服务 - AI、搜索、云服务等 (优化版)
   - name: "🌟 Google服务"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Google.png
     proxies:
       - "🇺🇸 美国节点"      # 首选：AI服务、Flow工具需要美国IP
-      - "🇨🇦 加拿大节点"    # 备选：北美地区
-      - "🇭🇰 香港节点"      # 备选：亚洲地区（搜索、邮箱等）
+      - "🇭🇰 香港节点"      # 备选：亚洲地区低延迟（搜索、邮箱等）
+      - "🇸🇬 新加坡节点"    # 备选：亚洲地区稳定
       - "🇯🇵 日本节点"      # 备选：亚洲地区
-      - "🇸🇬 新加坡节点"    # 备选：亚洲地区
+      - "🇨🇦 加拿大节点"    # 备选：北美地区
       - "♻️ 自动选择"       # 自动测速选择
 
   # Grok (xAI) - 保留兼容
@@ -194,111 +195,112 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "♻️ 自动选择"
 
-  # Claude AI - 自动测速
+  # Claude AI - 优化自动测速（限制高质量节点）
   - name: "💭 Claude"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/ChatGPT.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|英|英国|UK|United Kingdom|加|加拿大|CA|Canada)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|英|英国|UK|United Kingdom|加|加拿大|CA|Canada|新|新加坡|SG|Singapore)"
     url: 'http://www.gstatic.com/generate_204'
     interval: 200
     tolerance: 30
 
-  # AI综合平台 (包含Perplexity, Hugging Face等)
+  # AI综合平台 (优化节点选择)
   - name: "🔬 AI平台"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Bot.png
     proxies:
-      - "🇺🇸 美国节点"
-      - "🇬🇧 英国节点"
-      - "🇯🇵 日本节点"
+      - "🇺🇸 美国节点"      # 首选：大部分AI平台服务器在美国
+      - "🇬🇧 英国节点"      # 备选：欧洲地区访问
+      - "🇸🇬 新加坡节点"    # 备选：亚洲地区
+      - "🇯🇵 日本节点"      # 备选：亚洲地区
       - "♻️ 自动选择"
 
-  # 开发AI工具 - 自动测速
+  # 开发AI工具 - 优化自动测速
   - name: "🧰 开发AI"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Lab.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|英|英国|UK|United Kingdom|日|日本|JP|Japan)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|英|英国|UK|United Kingdom|日|日本|JP|Japan|新|新加坡|SG|Singapore|港|香港|HK|Hong Kong)"
     url: 'http://www.gstatic.com/generate_204'
     interval: 200
     tolerance: 30
 
   # === 📱 热门流媒体应用 ===
 
-  # YouTube视频服务 - 自动测速
+  # YouTube视频服务 - 优化自动测速（增加更多地区）
   - name: "📺 YouTube"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/YouTube.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|韩|韩国|KR|Korea|台|台湾|TW|Taiwan)"
     url: 'http://www.gstatic.com/generate_204'
     interval: 200
-    tolerance: 20
+    tolerance: 15  # 降低容错时间，更敏感切换
 
-  # Netflix影视 - 手动选择
+  # Netflix影视 - 优化地区选择（内容库优先级）
   - name: "🎬 Netflix"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Netflix.png
     proxies:
-      - "🇺🇸 美国节点"      # 内容最全
-      - "🇯🇵 日本节点"      # 亚洲内容
-      - "🇭🇰 香港节点"      # 亚洲延迟低
-      - "🇬🇧 英国节点"      # 欧洲内容
-      - "🇸🇬 新加坡节点"    # 东南亚
+      - "🇺🇸 美国节点"      # 首选：内容最全，4K资源最多
+      - "🇯🇵 日本节点"      # 备选：亚洲内容丰富，动漫资源
+      - "🇰🇷 韩国节点"      # 备选：韩剧内容，亚洲热门
+      - "🇬🇧 英国节点"      # 备选：欧洲内容，BBC合作内容
+      - "🇭🇰 香港节点"      # 备选：亚洲延迟低，中文内容
+      - "🇸🇬 新加坡节点"    # 备选：东南亚地区
       - "♻️ 自动选择"
 
-  # Disney+影视 - 手动选择
+  # Disney+影视 - 优化地区选择
   - name: "🏰 Disney+"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/DisneyPlus.png
     proxies:
-      - "🇺🇸 美国节点"      # 内容最全
-      - "🇯🇵 日本节点"      # 亚洲内容
-      - "🇭🇰 香港节点"      # 亚洲延迟低
-      - "🇬🇧 英国节点"      # 欧洲内容
-      - "🇸🇬 新加坡节点"    # 东南亚
+      - "🇺🇸 美国节点"      # 首选：内容最全，首发内容
+      - "🇯🇵 日本节点"      # 备选：亚洲内容，动画资源
+      - "🇬🇧 英国节点"      # 备选：欧洲内容库
+      - "🇭🇰 香港节点"      # 备选：亚洲延迟低
+      - "🇸🇬 新加坡节点"    # 备选：东南亚
+      - "🇦🇺 澳洲节点"      # 备选：英语地区
       - "♻️ 自动选择"
 
-  # TikTok短视频 - 自动测速
+  # TikTok短视频 - 优化自动测速（更多亚洲节点）
   - name: "📱 TikTok"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/TikTok.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|新|新加坡|SG|Singapore|韩|韩国|KR|Korea|港|香港|HK|Hong Kong|台|台湾|TW|Taiwan)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 200
+    interval: 180
     tolerance: 20
 
-  # Spotify音乐 - 自动测速
+  # Spotify音乐 - 优化自动测速（版权地区优先）
   - name: "🎵 Spotify"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Spotify.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom|澳|澳大利亚|澳洲|AU|Australia)"
     url: 'http://www.gstatic.com/generate_204'
     interval: 180
     tolerance: 25
 
-  # Pandora音乐 - 手动选择版（支持自由切换节点）
+  # Pandora音乐 - 优化选择（北美地区专用）
   - name: "🎶 Pandora"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Pandora.png
     proxies:
-      - "🇺🇸 美国节点"      # 首选：Pandora官方支持
-      - "🇨🇦 加拿大节点"    # 备选：北美地区
-      - "🇬🇧 英国节点"      # 备选：部分内容支持
-      - "🇦🇺 澳洲节点"      # 备选：英语地区
+      - "🇺🇸 美国节点"      # 首选：Pandora官方支持地区
+      - "🇨🇦 加拿大节点"    # 备选：北美地区，部分支持
       - "♻️ 自动选择"       # 自动选择最快节点
 
   # === 💬 社交通讯应用 ===
 
-  # Telegram通讯 - 优化版（根据延迟测试调整优先级）
+  # Telegram通讯 - 根据延迟测试优化（延迟敏感）
   - name: "✈️ Telegram"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Telegram.png
@@ -307,54 +309,55 @@ proxy-groups:
       - "♻️ 自动选择"       # 备选：自动选择58ms
       - "🇸🇬 新加坡节点"    # 备选：108ms
       - "🇯🇵 日本节点"      # 备选：126ms
+      - "🇰🇷 韩国节点"      # 备选：亚洲地区
       - "🇺🇸 美国节点"      # 备选：稳定性好但延迟高292ms
       - "🇩🇪 德国节点"      # 备选：欧洲地区
 
-  # 🎨 Midjourney & Discord
+  # 🎨 Midjourney & Discord - 优化自动测速
   - name: "🎨 Midjourney"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Lab.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom)"
     url: 'http://www.gstatic.com/generate_204'
     interval: 180
     tolerance: 25
 
-  # X (Twitter) & Grok - 自动测速
+  # X (Twitter) & Grok - 优化自动测速
   - name: "🐦 X平台"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Twitter.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|英|英国|UK|United Kingdom)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|英|英国|UK|United Kingdom|港|香港|HK|Hong Kong|新|新加坡|SG|Singapore)"
     url: 'http://www.gstatic.com/generate_204'
     interval: 180
     tolerance: 25
 
-  # Facebook & Meta - 自动测速
+  # Facebook & Meta - 优化自动测速
   - name: "📘 Facebook"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Facebook.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom)"
     url: 'http://www.gstatic.com/generate_204'
     interval: 180
     tolerance: 25
 
-  # Instagram - 自动测速
+  # Instagram - 优化自动测速
   - name: "📷 Instagram"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Instagram.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom)"
     url: 'http://www.gstatic.com/generate_204'
     interval: 180
     tolerance: 25
 
-  # Reddit社区 - 自动测速
+  # Reddit社区 - 优化自动测速
   - name: "🤖 Reddit"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Reddit.png
@@ -367,76 +370,79 @@ proxy-groups:
 
   # === 🍎 主要平台服务 ===
 
-  # Apple服务 - 手动选择
+  # Apple服务 - 优化地区选择
   - name: "🍎 Apple"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Apple.png
     proxies:
-      - "🇺🇸 美国节点"      # 美区App Store
-      - "🇭🇰 香港节点"      # 港区服务
-      - "🇯🇵 日本节点"      # 日区服务
-      - "🇸🇬 新加坡节点"    # 新区服务
-      - "DIRECT"            # 国行设备
+      - "🇺🇸 美国节点"      # 首选：美区App Store，内容最全
+      - "🇭🇰 香港节点"      # 备选：港区服务，延迟低
+      - "🇯🇵 日本节点"      # 备选：日区服务，游戏应用多
+      - "🇸🇬 新加坡节点"    # 备选：新区服务
+      - "DIRECT"            # 备选：国行设备
       - "♻️ 自动选择"
 
-  # Microsoft服务 - 手动选择
+  # Microsoft服务 - 优化选择
   - name: "🪟 Microsoft"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Microsoft.png
     proxies:
-      - "🇺🇸 美国节点"      # 主要服务
-      - "🇭🇰 香港节点"      # 亚洲服务
-      - "🇯🇵 日本节点"      # 亚洲服务
-      - "🇸🇬 新加坡节点"    # 亚洲服务
+      - "🇺🇸 美国节点"      # 首选：主要服务器，Office 365
+      - "🇭🇰 香港节点"      # 备选：亚洲服务，延迟低
+      - "🇸🇬 新加坡节点"    # 备选：亚洲地区
+      - "🇯🇵 日本节点"      # 备选：亚洲服务
       - "♻️ 自动选择"
 
   # === 🔧 专业工具 ===
 
-  # GitHub开发平台
+  # GitHub开发平台 - 优化选择
   - name: "🐙 GitHub"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/GitHub.png
     proxies:
-      - "🇺🇸 美国节点"
-      - "🇯🇵 日本节点"
-      - "🇸🇬 新加坡节点"
+      - "🇺🇸 美国节点"      # 首选：GitHub总部，访问速度最快
+      - "🇸🇬 新加坡节点"    # 备选：亚洲CDN节点
+      - "🇯🇵 日本节点"      # 备选：亚洲地区
+      - "🇭🇰 香港节点"      # 备选：低延迟
       - "♻️ 自动选择"
 
-  # Z-Library数字图书馆
+  # Z-Library数字图书馆 - 优化地区覆盖
   - name: "📚 Z-Library"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Lab.png
     proxies:
-      - "🇺🇸 美国节点"      # 主要服务器
-      - "🇬🇧 英国节点"      # 欧洲服务器
-      - "🇩🇪 德国节点"      # 欧洲服务器
-      - "🇯🇵 日本节点"      # 亚洲服务器
+      - "🇺🇸 美国节点"      # 首选：主要服务器
+      - "🇬🇧 英国节点"      # 备选：欧洲服务器，版权友好
+      - "🇩🇪 德国节点"      # 备选：欧洲服务器
+      - "🇸🇬 新加坡节点"    # 备选：亚洲服务器
+      - "🇯🇵 日本节点"      # 备选：亚洲服务器
       - "♻️ 自动选择"
 
   # === 🚀 高级功能分组 ===
 
-  # 流媒体解锁（全球）
+  # 流媒体解锁（全球）- 优化地区优先级
   - name: "🌍 流媒体解锁"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Streaming.png
     proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "🇰🇷 韩国节点"
-      - "🇬🇧 英国节点"
+      - "🇺🇸 美国节点"      # 首选：内容最丰富
+      - "🇯🇵 日本节点"      # 备选：亚洲内容
+      - "🇰🇷 韩国节点"      # 备选：韩流内容
+      - "🇬🇧 英国节点"      # 备选：欧洲内容
+      - "🇭🇰 香港节点"      # 备选：亚洲低延迟
+      - "🇸🇬 新加坡节点"    # 备选：东南亚
       - "♻️ 自动选择"
 
-  # 游戏服务（全球游戏加速）
+  # 游戏服务（全球游戏加速）- 优化延迟优先级
   - name: "🎮 游戏服务"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Game.png
     proxies:
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "🇰🇷 韩国节点"
-      - "🇸🇬 新加坡节点"
-      - "🇺🇸 美国节点"
+      - "🇭🇰 香港节点"      # 首选：延迟最低
+      - "🇸🇬 新加坡节点"    # 备选：亚洲枢纽
+      - "🇯🇵 日本节点"      # 备选：游戏服务器多
+      - "🇰🇷 韩国节点"      # 备选：电竞强国
+      - "🇺🇸 美国节点"      # 备选：全球服务器
       - "♻️ 自动选择"
 
   # === 🏠 国内服务分组 ===
@@ -460,7 +466,7 @@ proxy-groups:
 
   # === 🌍 地区节点分组 ===
 
-  # 🇺🇸 美国节点
+  # 🇺🇸 美国节点 - 优化测速参数
   - name: "🇺🇸 美国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/US.png
@@ -468,10 +474,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 250  # 减少测速间隔，提高响应速度
+    tolerance: 40  # 降低容错值，更敏感切换
 
-  # 🇭🇰 香港节点
+  # 🇭🇰 香港节点 - 优化测速参数（延迟敏感）
   - name: "🇭🇰 香港节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/HK.png
@@ -479,10 +485,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(港|香港|HK|Hong Kong)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 200  # 最频繁测速，因为延迟最低
+    tolerance: 30  # 最敏感切换
 
-  # 🇯🇵 日本节点
+  # 🇯🇵 日本节点 - 优化测速参数
   - name: "🇯🇵 日本节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/JP.png
@@ -490,10 +496,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(日|日本|JP|Japan)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 220  # 适中测速频率
+    tolerance: 35  # 适中敏感度
 
-  # 🇰🇷 韩国节点
+  # 🇰🇷 韩国节点 - 优化测速参数
   - name: "🇰🇷 韩国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/KR.png
@@ -501,10 +507,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(韩|韩国|KR|Korea)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 240
+    tolerance: 35
 
-  # 🇸🇬 新加坡节点
+  # 🇸🇬 新加坡节点 - 优化测速参数
   - name: "🇸🇬 新加坡节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/SG.png
@@ -512,10 +518,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(新|新加坡|SG|Singapore)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 220  # 新加坡作为亚洲枢纽，频率较高
+    tolerance: 35
 
-  # 🇦🇺 澳洲节点
+  # 🇦🇺 澳洲节点 - 优化测速参数
   - name: "🇦🇺 澳洲节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/AU.png
@@ -523,10 +529,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(澳|澳大利亚|澳洲|AU|Australia)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 280  # 澳洲距离较远，适度降低频率
+    tolerance: 45
 
-  # 🇬🇧 英国节点
+  # 🇬🇧 英国节点 - 优化测速参数
   - name: "🇬🇧 英国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/UK.png
@@ -534,10 +540,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(英|英国|UK|United Kingdom|Britain)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 260  # 英国作为欧洲重要节点，频率较高
+    tolerance: 40
 
-  # 🇨🇦 加拿大节点
+  # 🇨🇦 加拿大节点 - 优化测速参数
   - name: "🇨🇦 加拿大节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/CA.png
@@ -545,10 +551,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(加|加拿大|CA|Canada)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 270  # 北美地区，与美国搭配使用
+    tolerance: 40
 
-  # 🇩🇪 德国节点
+  # 🇩🇪 德国节点 - 优化测速参数
   - name: "🇩🇪 德国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/DE.png
@@ -556,10 +562,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(德|德国|DE|Germany)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 280  # 欧洲核心国家
+    tolerance: 40
 
-  # 🇪🇺 欧洲节点
+  # 🇪🇺 欧洲节点 - 优化测速参数
   - name: "🇪🇺 欧洲节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/EU.png
@@ -567,8 +573,8 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 50
+    interval: 290  # 其他欧洲国家，频率稍低
+    tolerance: 45
 
   # 🌍 其他地区
   - name: "🌍 其他地区"
@@ -850,181 +856,6 @@ rules:
   - DOMAIN-SUFFIX,bilibili.com,🏠 国内网站
   - DOMAIN-SUFFIX,hdslb.com,🏠 国内网站
   - DOMAIN-SUFFIX,biliapi.net,🏠 国内网站
-
-  # === 国内AI服务规则 ===
-
-  # DeepSeek深度求索
-  - DOMAIN-SUFFIX,deepseek.com,🏠 国内网站
-  - DOMAIN-SUFFIX,deepseek.ai,🏠 国内网站
-
-  # 通义千问
-  - DOMAIN-SUFFIX,tongyi.aliyun.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qianwen.aliyun.com,🏠 国内网站
-
-  # 即梦AI
-  - DOMAIN-SUFFIX,jimeng.jianying.com,🏠 国内网站
-
-  # 海螺AI
-  - DOMAIN-SUFFIX,hailuoai.com,🏠 国内网站
-
-  # 百度网盘
-  - DOMAIN-SUFFIX,pan.baidu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,baidupcs.com,🏠 国内网站
-
-  # === 国内服务规则 ===
-
-  # 电商平台
-  - DOMAIN-SUFFIX,taobao.com,🏠 国内网站
-  - DOMAIN-SUFFIX,tmall.com,🏠 国内网站
-  - DOMAIN-SUFFIX,jd.com,🏠 国内网站
-  - DOMAIN-SUFFIX,jd.hk,🏠 国内网站
-  - DOMAIN-SUFFIX,360buyimg.com,🏠 国内网站
-  - DOMAIN-SUFFIX,pinduoduo.com,🏠 国内网站
-  - DOMAIN-SUFFIX,yangkeduo.com,🏠 国内网站
-  - DOMAIN-SUFFIX,pddpic.com,🏠 国内网站
-
-  # 阿里巴巴生态
-  - DOMAIN-SUFFIX,alibaba.com,🏠 国内网站
-  - DOMAIN-SUFFIX,alibabacloud.com,🏠 国内网站
-  - DOMAIN-SUFFIX,aliyun.com,🏠 国内网站
-  - DOMAIN-SUFFIX,alipay.com,🏠 国内网站
-  - DOMAIN-SUFFIX,alimama.com,🏠 国内网站
-
-  # 腾讯生态
-  - DOMAIN-SUFFIX,qq.com,🏠 国内网站
-  - DOMAIN-SUFFIX,tencent.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qcloud.com,🏠 国内网站
-  - DOMAIN-SUFFIX,gtimg.com,🏠 国内网站
-  - DOMAIN-SUFFIX,wechat.com,🏠 国内网站
-  - DOMAIN-SUFFIX,weixin.qq.com,🏠 国内网站
-
-  # 百度生态
-  - DOMAIN-SUFFIX,baidu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bdstatic.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bcebos.com,🏠 国内网站
-
-  # 新浪微博 - 直连
-  - DOMAIN-SUFFIX,weibo.com,🏠 国内网站
-  - DOMAIN-SUFFIX,weibo.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,weibocdn.com,🏠 国内网站
-
-  # 知乎 - 直连
-  - DOMAIN-SUFFIX,zhihu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,zhimg.com,🏠 国内网站
-
-  # 小红书 - 直连
-  - DOMAIN-SUFFIX,xiaohongshu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,xhscdn.com,🏠 国内网站
-
-  # 抖音系列
-  - DOMAIN-SUFFIX,douyin.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyinpic.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyincdn.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyinstatic.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bytedance.com,🏠 国内网站
-
-  # 头条系
-  - DOMAIN-SUFFIX,toutiao.com,🏠 国内网站
-  - DOMAIN-SUFFIX,ixigua.com,🏠 国内网站
-
-  # 搜索引擎
-  - DOMAIN-SUFFIX,so.com,🏠 国内网站
-  - DOMAIN-SUFFIX,sogou.com,🏠 国内网站
-  - DOMAIN-SUFFIX,soso.com,🏠 国内网站
-
-  # 视频平台
-  - DOMAIN-SUFFIX,iqiyi.com,🏠 国内网站
-  - DOMAIN-SUFFIX,youku.com,🏠 国内网站
-  - DOMAIN-SUFFIX,tudou.com,🏠 国内网站
-  - DOMAIN-SUFFIX,mgtv.com,🏠 国内网站
-
-  # 音乐平台
-  - DOMAIN-SUFFIX,music.163.com,🏠 国内网站
-  - DOMAIN-SUFFIX,kugou.com,🏠 国内网站
-  - DOMAIN-SUFFIX,kuwo.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,qqmusic.qq.com,🏠 国内网站
-
-  # 地图导航
-  - DOMAIN-SUFFIX,amap.com,🏠 国内网站
-  - DOMAIN-SUFFIX,autonavi.com,🏠 国内网站
-  - DOMAIN-SUFFIX,map.baidu.com,🏠 国内网站
-
-  # 出行服务
-  - DOMAIN-SUFFIX,12306.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,12306.com,🏠 国内网站
-  - DOMAIN-SUFFIX,didichuxing.com,🏠 国内网站
-  - DOMAIN-SUFFIX,didiglobal.com,🏠 国内网站
-  - DOMAIN-SUFFIX,xiaojukeji.com,🏠 国内网站
-
-  # 生活服务
-  - DOMAIN-SUFFIX,meituan.com,🏠 国内网站
-  - DOMAIN-SUFFIX,meituan.net,🏠 国内网站
-  - DOMAIN-SUFFIX,sankuai.com,🏠 国内网站
-  - DOMAIN-SUFFIX,dianping.com,🏠 国内网站
-  - DOMAIN-SUFFIX,58.com,🏠 国内网站
-  - DOMAIN-SUFFIX,anjuke.com,🏠 国内网站
-
-  # 新闻资讯
-  - DOMAIN-SUFFIX,sina.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,sohu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,163.com,🏠 国内网站
-
-  # 金融服务
-  - DOMAIN-SUFFIX,bank.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,icbc.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,ccb.com,🏠 国内网站
-  - DOMAIN-SUFFIX,abchina.com,🏠 国内网站
-  - DOMAIN-SUFFIX,boc.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,bankcomm.com,🏠 国内网站
-  - DOMAIN-SUFFIX,cmbchina.com,🏠 国内网站
-  - DOMAIN-SUFFIX,cmbc.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,cib.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,spdb.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,cebbank.com,🏠 国内网站
-  - DOMAIN-SUFFIX,pingan.com,🏠 国内网站
-  - DOMAIN-SUFFIX,hxb.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,cgbchina.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,psbc.com,🏠 国内网站
-
-  # 通信运营商
-  - DOMAIN-SUFFIX,10086.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,chinamobile.com,🏠 国内网站
-  - DOMAIN-SUFFIX,10010.com,🏠 国内网站
-  - DOMAIN-SUFFIX,chinaunicom.com,🏠 国内网站
-  - DOMAIN-SUFFIX,10000.com,🏠 国内网站
-  - DOMAIN-SUFFIX,189.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,chinatelecom.com.cn,🏠 国内网站
-
-  # 社交通讯
-  - DOMAIN-SUFFIX,tieba.baidu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qzone.qq.com,🏠 国内网站
-
-  # 国内CDN和云服务
-  - DOMAIN-SUFFIX,myqcloud.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qpic.cn,🏠 国内网站
-
-  # === 地理位置规则 ===
-
-  # 中国大陆IP直连
-  - GEOIP,CN,🏠 国内网站
-
-  # === 最终规则 ===
-  - MATCH,🐟 Final
-
-  # 钉钉办公
-  - DOMAIN-SUFFIX,dingtalk.com,🔧 工具应用
-  - DOMAIN-SUFFIX,alicdn.com,🔧 工具应用
-
-  # 腾讯会议
-  - DOMAIN-SUFFIX,voovmeeting.com,🔧 工具应用
-  - DOMAIN-SUFFIX,tencent-cloud.net,🔧 工具应用
-
-  # 飞书
-  - DOMAIN-SUFFIX,feishu.cn,🔧 工具应用
-  - DOMAIN-SUFFIX,larksuite.com,🔧 工具应用
-
-  # VR虚拟现实
-  - DOMAIN-SUFFIX,vrhouse.com,🔧 工具应用
 
   # === 国内AI服务规则 ===
 
