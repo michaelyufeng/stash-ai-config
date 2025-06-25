@@ -97,7 +97,7 @@ proxy-groups:
   # 主选择器
   - name: "🚀 节点选择"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Rocket.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Rocket.png
     proxies:
       - "♻️ 自动选择"
       # 🤖 AI工具分类
@@ -147,7 +147,7 @@ proxy-groups:
   # 自动选择 - 优化延迟算法
   - name: "♻️ 自动选择"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Auto.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Auto.png
     use:
       - 机场订阅
     url: 'http://www.gstatic.com/generate_204'
@@ -159,7 +159,7 @@ proxy-groups:
   # ChatGPT & OpenAI 全家桶
   - name: "🧠 ChatGPT"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/OpenAI.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/OpenAI.png
     proxies:
       - "🇺🇸 美国节点"
       - "🇯🇵 日本节点"
@@ -170,7 +170,7 @@ proxy-groups:
   # Google统一服务 - AI、搜索、云服务等 (智能路由：AI优先美国)
   - name: "🌟 Google服务"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Google.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Google.png
     proxies:
       - "🇺🇸 美国节点"      # 首选：AI服务、Flow工具需要美国IP
       - "🇨🇦 加拿大节点"    # 备选：北美地区
@@ -182,7 +182,7 @@ proxy-groups:
   # Grok (xAI) - 保留兼容
   - name: "🐦 Grok"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Bot.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Bot.png
     proxies:
       - "🐦 X平台"
       - "🇺🇸 美国节点"
@@ -193,7 +193,7 @@ proxy-groups:
   # Claude AI - 自动测速
   - name: "💭 Claude"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/ChatGPT.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/ChatGPT.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|英|英国|UK|United Kingdom|加|加拿大|CA|Canada)"
@@ -204,7 +204,7 @@ proxy-groups:
   # AI综合平台 (包含Perplexity, Hugging Face等)
   - name: "🔬 AI平台"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Bot.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Bot.png
     proxies:
       - "🇺🇸 美国节点"
       - "🇬🇧 英国节点"
@@ -214,7 +214,7 @@ proxy-groups:
   # 开发AI工具 - 自动测速
   - name: "🧰 开发AI"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Lab.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Lab.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|英|英国|UK|United Kingdom|日|日本|JP|Japan)"
@@ -227,7 +227,7 @@ proxy-groups:
   # YouTube视频服务 - 自动测速
   - name: "📺 YouTube"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/YouTube.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/YouTube.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
@@ -238,7 +238,7 @@ proxy-groups:
   # Netflix影视 - 手动选择
   - name: "🎬 Netflix"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Netflix.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Netflix.png
     proxies:
       - "🇺🇸 美国节点"      # 内容最全
       - "🇯🇵 日本节点"      # 亚洲内容
@@ -250,7 +250,7 @@ proxy-groups:
   # Disney+影视 - 手动选择
   - name: "🏰 Disney+"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/DisneyPlus.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/DisneyPlus.png
     proxies:
       - "🇺🇸 美国节点"      # 内容最全
       - "🇯🇵 日本节点"      # 亚洲内容
@@ -262,7 +262,7 @@ proxy-groups:
   # TikTok短视频 - 自动测速
   - name: "📱 TikTok"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/TikTok.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/TikTok.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
@@ -273,7 +273,7 @@ proxy-groups:
   # Spotify音乐 - 自动测速
   - name: "🎵 Spotify"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Spotify.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Spotify.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom)"
@@ -284,7 +284,7 @@ proxy-groups:
   # Pandora音乐 - 美国专用
   - name: "🎶 Pandora"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Pandora.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Pandora.png
     proxies:
       - "🇺🇸 美国节点"      # Pandora仅限美国
       - "🇨🇦 加拿大节点"    # 北美地区备用
@@ -295,7 +295,7 @@ proxy-groups:
   # Telegram通讯 - 自动测速
   - name: "✈️ Telegram"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Telegram.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Telegram.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|德|德国|DE|Germany)"
@@ -306,7 +306,7 @@ proxy-groups:
   # 🎨 Midjourney & Discord
   - name: "🎨 Midjourney"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Lab.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Lab.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
@@ -317,7 +317,7 @@ proxy-groups:
   # X (Twitter) & Grok - 自动测速
   - name: "🐦 X平台"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Twitter.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Twitter.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|英|英国|UK|United Kingdom)"
@@ -328,7 +328,7 @@ proxy-groups:
   # Facebook & Meta - 自动测速
   - name: "📘 Facebook"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Facebook.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Facebook.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
@@ -339,7 +339,7 @@ proxy-groups:
   # Instagram - 自动测速
   - name: "📷 Instagram"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Instagram.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Instagram.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
@@ -350,7 +350,7 @@ proxy-groups:
   # Reddit社区 - 自动测速
   - name: "🤖 Reddit"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Reddit.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Reddit.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
@@ -363,7 +363,7 @@ proxy-groups:
   # Apple服务 - 手动选择
   - name: "🍎 Apple"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Apple.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Apple.png
     proxies:
       - "🇺🇸 美国节点"      # 美区App Store
       - "🇭🇰 香港节点"      # 港区服务
@@ -375,7 +375,7 @@ proxy-groups:
   # Microsoft服务 - 手动选择
   - name: "🪟 Microsoft"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Microsoft.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Microsoft.png
     proxies:
       - "🇺🇸 美国节点"      # 主要服务
       - "🇭🇰 香港节点"      # 亚洲服务
@@ -388,7 +388,7 @@ proxy-groups:
   # GitHub开发平台
   - name: "🐙 GitHub"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/GitHub.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/GitHub.png
     proxies:
       - "🇺🇸 美国节点"
       - "🇯🇵 日本节点"
@@ -398,7 +398,7 @@ proxy-groups:
   # Z-Library数字图书馆
   - name: "📚 Z-Library"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Lab.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Lab.png
     proxies:
       - "🇺🇸 美国节点"      # 主要服务器
       - "🇬🇧 英国节点"      # 欧洲服务器
@@ -411,7 +411,7 @@ proxy-groups:
   # 流媒体解锁（全球）
   - name: "🌍 流媒体解锁"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Streaming.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Streaming.png
     proxies:
       - "🇺🇸 美国节点"
       - "🇭🇰 香港节点"
@@ -423,7 +423,7 @@ proxy-groups:
   # 游戏服务（全球游戏加速）
   - name: "🎮 游戏服务"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Game.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Game.png
     proxies:
       - "🇭🇰 香港节点"
       - "🇯🇵 日本节点"
@@ -437,7 +437,7 @@ proxy-groups:
   # 🔧 工具应用（国内工具专用）
   - name: "🔧 工具应用"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Static.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Static.png
     proxies:
       - "DIRECT"
       - "🇭🇰 香港节点"
@@ -447,7 +447,7 @@ proxy-groups:
   # 🏠 国内网站（全部直连）
   - name: "🏠 国内网站"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/CN.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/CN.png
     proxies:
       - "DIRECT"
 
@@ -456,7 +456,7 @@ proxy-groups:
   # 🇺🇸 美国节点
   - name: "🇺🇸 美国节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/US.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/US.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States)"
@@ -467,7 +467,7 @@ proxy-groups:
   # 🇭🇰 香港节点
   - name: "🇭🇰 香港节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/HK.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/HK.png
     use:
       - 机场订阅
     filter: "(?i)(港|香港|HK|Hong Kong)"
@@ -478,7 +478,7 @@ proxy-groups:
   # 🇯🇵 日本节点
   - name: "🇯🇵 日本节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/JP.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/JP.png
     use:
       - 机场订阅
     filter: "(?i)(日|日本|JP|Japan)"
@@ -489,7 +489,7 @@ proxy-groups:
   # 🇰🇷 韩国节点
   - name: "🇰🇷 韩国节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/KR.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/KR.png
     use:
       - 机场订阅
     filter: "(?i)(韩|韩国|KR|Korea)"
@@ -500,7 +500,7 @@ proxy-groups:
   # 🇸🇬 新加坡节点
   - name: "🇸🇬 新加坡节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/SG.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/SG.png
     use:
       - 机场订阅
     filter: "(?i)(新|新加坡|SG|Singapore)"
@@ -511,7 +511,7 @@ proxy-groups:
   # 🇦🇺 澳洲节点
   - name: "🇦🇺 澳洲节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/AU.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/AU.png
     use:
       - 机场订阅
     filter: "(?i)(澳|澳大利亚|澳洲|AU|Australia)"
@@ -522,7 +522,7 @@ proxy-groups:
   # 🇬🇧 英国节点
   - name: "🇬🇧 英国节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/UK.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/UK.png
     use:
       - 机场订阅
     filter: "(?i)(英|英国|UK|United Kingdom|Britain)"
@@ -533,7 +533,7 @@ proxy-groups:
   # 🇨🇦 加拿大节点
   - name: "🇨🇦 加拿大节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/CA.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/CA.png
     use:
       - 机场订阅
     filter: "(?i)(加|加拿大|CA|Canada)"
@@ -544,7 +544,7 @@ proxy-groups:
   # 🇩🇪 德国节点
   - name: "🇩🇪 德国节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/DE.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/DE.png
     use:
       - 机场订阅
     filter: "(?i)(德|德国|DE|Germany)"
@@ -555,7 +555,7 @@ proxy-groups:
   # 🇪🇺 欧洲节点
   - name: "🇪🇺 欧洲节点"
     type: url-test
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/EU.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/EU.png
     use:
       - 机场订阅
     filter: "(?i)(欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary)"
@@ -566,7 +566,7 @@ proxy-groups:
   # 🌍 其他地区
   - name: "🌍 其他地区"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/UN.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/UN.png
     use:
       - 机场订阅
     filter: "^((?!美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|韩|韩国|KR|Korea|新|新加坡|SG|Singapore|澳|澳大利亚|澳洲|AU|Australia|英|英国|UK|United Kingdom|Britain|加|加拿大|CA|Canada|德|德国|DE|Germany|欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary).)*$"
@@ -576,7 +576,7 @@ proxy-groups:
   # Final兜底策略
   - name: "🐟 Final"
     type: select
-    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Final.png
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Final.png
     proxies:
       - "♻️ 自动选择"
       - "🚀 节点选择"
