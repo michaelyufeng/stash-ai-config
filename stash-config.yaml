@@ -298,17 +298,17 @@ proxy-groups:
 
   # === 💬 社交通讯应用 ===
 
-  # Telegram通讯 - 优化版（降低测速频率）
+  # Telegram通讯 - 优化版（根据延迟测试调整优先级）
   - name: "✈️ Telegram"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Telegram.png
     proxies:
-      - "🇸🇬 新加坡节点"    # 首选：亚洲低延迟
-      - "🇭🇰 香港节点"      # 备选：亚洲低延迟
-      - "🇺🇸 美国节点"      # 备选：稳定性好
-      - "🇯🇵 日本节点"      # 备选：亚洲地区
+      - "🇭🇰 香港节点"      # 首选：延迟最低53ms
+      - "♻️ 自动选择"       # 备选：自动选择58ms
+      - "🇸🇬 新加坡节点"    # 备选：108ms
+      - "🇯🇵 日本节点"      # 备选：126ms
+      - "🇺🇸 美国节点"      # 备选：稳定性好但延迟高292ms
       - "🇩🇪 德国节点"      # 备选：欧洲地区
-      - "♻️ 自动选择"
 
   # 🎨 Midjourney & Discord
   - name: "🎨 Midjourney"
