@@ -12,18 +12,18 @@
 # 4. 详细使用说明请查看项目 README.md 文件
 #
 # 🚀 核心功能说明：
-# ✅ B站去广告：自动拦截B站各类广告，包括开屏、推荐、直播间等
 # ✅ YouTube去广告：支持PiP画中画，后台播放，拦截所有广告
 # ✅ Spotify会员：部分解锁Premium功能，建议重新登录
 # ✅ Adobe Lightroom：专业修图软件，解锁Premium滤镜
 # ✅ Peak：脑力训练APP，解锁Pro会员功能
+# ✅ Pandora：美国流媒体音乐服务解锁
 #
 # ⚠️ 重要提醒：
 # - 脚本功能需要开启MITM并安装证书
 # - 首次使用建议清除相关App缓存
 # - 部分功能需要重新登录App才能生效
 # - 海外APP需要使用海外节点（YouTube、Spotify、Adobe等）
-# - 国内APP可直连使用（B站、WPS、网易云音乐等）
+# - 国内APP可直连使用（B站等）
 # - 请勿在App内设置超高音质（Spotify）
 
 # 🚀 基础配置 + 网络性能优化
@@ -110,7 +110,6 @@ proxy-groups:
       - "🧰 开发AI"
       # 主要功能分类
       - "🐙 GitHub"
-
       - "📚 Z-Library"
       # 地区节点
       - "🇺🇸 美国节点"
@@ -203,737 +202,239 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "♻️ 自动选择"
 
-  # === 功能服务分组 ===
+  # === 生产力工具分组 ===
 
-  # Apple服务
-  - name: "🍎 Apple"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Apple.png
-    proxies:
-      - "DIRECT"
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-
-  # 微软服务
-  - name: "Ⓜ️ Microsoft"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Microsoft.png
-    proxies:
-      - "DIRECT"
-      - "🇺🇸 美国节点"
-      - "🇪🇺 欧洲节点"
-
-  # === 社交媒体专业配置 ===
-
-  # TikTok专用
-  - name: "🎵 TikTok"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇯🇵 日本节点"
-      - "🇸🇬 新加坡节点"
-      - "♻️ 自动选择"
-
-  # X (Twitter)
-  - name: "🐦 X (Twitter)"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Twitter.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇯🇵 日本节点"
-      - "🇬🇧 英国节点"
-      - "♻️ 自动选择"
-
-  # Facebook & Meta
-  - name: "📘 Facebook"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Facebook.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "🇸🇬 新加坡节点"
-
-  # Instagram
-  - name: "📷 Instagram"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Instagram.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "🇸🇬 新加坡节点"
-
-  # Discord & Midjourney统一
-  - name: "💬 Discord"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Discord.png
-    proxies:
-      - "🇺🇸 美国节点"      # 首选：Midjourney AI绘图需要美国IP
-      - "🇬🇧 英国节点"      # 备选：欧洲节点
-      - "🇭🇰 香港节点"      # 备选：亚洲节点
-      - "🇯🇵 日本节点"      # 备选：日本节点
-      - "♻️ 自动选择"       # 自动选择
-
-  # Reddit
-  - name: "🟠 Reddit"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Reddit.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "♻️ 自动选择"
-
-  # === 流媒体专业配置 ===
-
-  # 🎬 流媒体解锁专用分组
-  - name: "🌍 流媒体解锁"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Streaming.png
-    proxies:
-      - "🎥 Netflix"
-      - "🏰 Disney+"
-      - "📺 YouTube"
-      - "🎵 Spotify"
-      - "🇺🇸 美国节点"
-      - "🇬🇧 英国节点"
-      - "🇯🇵 日本节点"
-
-  # Netflix专用 (多地区解锁)
-  - name: "🎥 Netflix"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Netflix.png
-    proxies:
-      - "🇺🇸 美国节点"    # 美区 (内容最多)
-      - "🇬🇧 英国节点"    # 英区
-      - "🇯🇵 日本节点"    # 日区 (动漫多)
-      - "🇭🇰 香港节点"    # 港区
-      - "🇸🇬 新加坡节点"  # 新区
-      - "🇨🇦 加拿大节点"  # 加区
-
-  # Disney+专用
-  - name: "🏰 Disney+"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Disney+.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "🇸🇬 新加坡节点"
-
-  # YouTube专用
-  - name: "📺 YouTube"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/YouTube.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "🇸🇬 新加坡节点"
-
-  # Spotify音乐
-  - name: "🎵 Spotify"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Spotify.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-
-  # Adobe系列应用
-  - name: "🎨 Adobe"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Adobe.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "🇸🇬 新加坡节点"
-
-  # 工具类APP
-  - name: "🔧 工具应用"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Apple.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "DIRECT"
-
-  # Telegram (优化节点选择，避免美国节点卡顿)
-  - name: "📲 Telegram"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram.png
-    proxies:
-      - "🇸🇬 新加坡节点"  # 首选：延迟低，稳定性好
-      - "🇭🇰 香港节点"    # 次选：速度快
-      - "🇯🇵 日本节点"    # 备选：连接稳定
-      - "🇰🇷 韩国节点"    # 备选：亚洲节点
-      - "🇪🇺 欧洲节点"    # 备选：欧洲线路
-      - "🇺🇸 美国节点"    # 最后选择
-
-  # GitHub
+  # GitHub开发平台
   - name: "🐙 GitHub"
     type: select
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/GitHub.png
     proxies:
       - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
       - "🇯🇵 日本节点"
       - "🇸🇬 新加坡节点"
-      - "DIRECT"
-
-  # 游戏服务统一 (Steam、加速、优选、其他游戏)
-  - name: "🎮 游戏服务"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Game.png
-    proxies:
-      - "🎯 游戏优选"      # 首选：自动选择最低延迟
-      - "🇯🇵 日本节点"    # 备选：游戏服务器多，延迟低
-      - "🇰🇷 韩国节点"    # 备选：亚洲优化，延迟低
-      - "🇸🇬 新加坡节点"  # 备选：东南亚优选
-      - "🇭🇰 香港节点"    # 备选：延迟低
-      - "🇺🇸 美国节点"    # 备选：部分游戏需要
-      - "♻️ 自动选择"     # 智能选择
-      - "DIRECT"          # 国内游戏直连
-
-  # 游戏延迟优选 (自动选择最低延迟)
-  - name: "🎯 游戏优选"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Speedtest.png
-    use:
-      - 机场订阅
-    filter: "(?i)(游戏|game|hk|jp|sg|kr|tw)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 60
-    tolerance: 20
-
-  # 广告拦截总控
-  - name: "🛡️ 广告拦截"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Reject.png
-    proxies:
-      - "REJECT"
-      - "DIRECT"
-
-  # 国内网站 (简化分组，取消多余子分组)
-  - name: "🏠 国内网站"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China.png
-    proxies:
-      - "DIRECT"
-
-  # 漏网之鱼
-  - name: "🐟 Final"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Final.png
-    proxies:
       - "♻️ 自动选择"
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "DIRECT"
 
-  # === 地区节点分组 ===
-
-  - name: "🇺🇸 美国节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png
-    use:
-      - 机场订阅
-    filter: "(?i)(美|🇺🇸|us|states|america|miami|losangeles|newyork|chicago|dallas|seattle)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇭🇰 香港节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png
-    use:
-      - 机场订阅
-    filter: "(?i)(港|🇭🇰|hk|hong|hongkong)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇯🇵 日本节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png
-    use:
-      - 机场订阅
-    filter: "(?i)(日|🇯🇵|jp|japan|tokyo|osaka)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇰🇷 韩国节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Korea.png
-    use:
-      - 机场订阅
-    filter: "(?i)(韩|🇰🇷|kr|korea|seoul)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇸🇬 新加坡节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png
-    use:
-      - 机场订阅
-    filter: "(?i)(新加坡|坡|🇸🇬|sg|singapore)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇦🇺 澳洲节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Australia.png
-    use:
-      - 机场订阅
-    filter: "(?i)(澳|🇦🇺|au|australia|sydney|melbourne)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇬🇧 英国节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_Kingdom.png
-    use:
-      - 机场订阅
-    filter: "(?i)(英|🇬🇧|uk|britain|united.*kingdom|london|manchester)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇳🇿 新西兰节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/New_Zealand.png
-    use:
-      - 机场订阅
-    filter: "(?i)(新西兰|🇳🇿|nz|new.*zealand|auckland|wellington)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇨🇦 加拿大节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Canada.png
-    use:
-      - 机场订阅
-    filter: "(?i)(加拿大|🇨🇦|ca|canada|toronto|vancouver)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇩🇪 德国节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Germany.png
-    use:
-      - 机场订阅
-    filter: "(?i)(德|🇩🇪|de|germany|berlin|frankfurt)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🇪🇺 欧洲节点"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/European_Union.png
-    use:
-      - 机场订阅
-    filter: "(?i)(欧|eu|europe|netherlands|france|italy|spain|荷兰|法国|意大利|西班牙)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  - name: "🌍 其他地区"
-    type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/World_Map.png
-    use:
-      - 机场订阅
-    filter: "(?i)^(?!.*(🇺🇸|🇭🇰|🇯🇵|🇰🇷|🇸🇬|🇦🇺|🇬🇧|🇨🇦|🇩🇪|美|港|日|韩|新加坡|澳|英|加拿大|德)).*"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
-
-  # === 工具与资源专用分组 ===
-
-  # 图书资源
+  # 数字图书馆
   - name: "📚 Z-Library"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Library.png
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/eBook.png
     proxies:
       - "🇺🇸 美国节点"
       - "🇬🇧 英国节点"
       - "🇩🇪 德国节点"
       - "♻️ 自动选择"
 
-# 远程规则集 - 完整版
-rule-providers:
-  # === AI服务规则 ===
+  # === 高级功能分组 ===
 
-  # OpenAI全家桶
-  openai:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml"
-    path: ./ruleset/openai.yaml
-    interval: 86400
+  # 🌍 流媒体解锁（全球）
+  - name: "🌍 流媒体解锁"
+    type: select
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ForeignMedia.png
+    proxies:
+      - "🇺🇸 美国节点"
+      - "🇭🇰 香港节点"
+      - "🇯🇵 日本节点"
+      - "🇰🇷 韩国节点"
+      - "🇬🇧 英国节点"
+      - "♻️ 自动选择"
 
-  # Claude & Anthropic
-  claude:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Claude/Claude.yaml"
-    path: ./ruleset/claude.yaml
-    interval: 86400
+  # 🎮 游戏服务（全球游戏加速）
+  - name: "🎮 游戏服务"
+    type: select
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Game.png
+    proxies:
+      - "🇭🇰 香港节点"
+      - "🇯🇵 日本节点"
+      - "🇰🇷 韩国节点"
+      - "🇸🇬 新加坡节点"
+      - "🇺🇸 美国节点"
+      - "♻️ 自动选择"
 
-  # Discord (Midjourney)
-  discord:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Discord/Discord.yaml"
-    path: ./ruleset/discord.yaml
-    interval: 86400
+  # === 国内服务分组 ===
 
-  # === 社交媒体规则 ===
+  # 🔧 工具应用（国内工具专用）
+  - name: "🔧 工具应用"
+    type: select
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Domestic.png
+    proxies:
+      - "DIRECT"
+      - "🇭🇰 香港节点"
+      - "🇯🇵 日本节点"
+      - "♻️ 自动选择"
 
-  # TikTok
-  tiktok:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/TikTok/TikTok.yaml"
-    path: ./ruleset/tiktok.yaml
-    interval: 86400
+  # 🏠 国内网站（全部直连）
+  - name: "🏠 国内网站"
+    type: select
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China.png
+    proxies:
+      - "DIRECT"
 
-  # Instagram
-  instagram:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Instagram/Instagram.yaml"
-    path: ./ruleset/instagram.yaml
-    interval: 86400
+  # === 地区节点分组 ===
 
-  # Reddit
-  reddit:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Reddit/Reddit.yaml"
-    path: ./ruleset/reddit.yaml
-    interval: 86400
+  # 🇺🇸 美国节点
+  - name: "🇺🇸 美国节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # === 开发者工具规则 ===
+  # 🇭🇰 香港节点
+  - name: "🇭🇰 香港节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png
+    use:
+      - 机场订阅
+    filter: "(?i)(港|香港|HK|Hong Kong)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # GitHub
-  github:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml"
-    path: ./ruleset/github.yaml
-    interval: 86400
+  # 🇯🇵 日本节点
+  - name: "🇯🇵 日本节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png
+    use:
+      - 机场订阅
+    filter: "(?i)(日|日本|JP|Japan)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # === 游戏平台规则 ===
+  # 🇰🇷 韩国节点
+  - name: "🇰🇷 韩国节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Korea.png
+    use:
+      - 机场订阅
+    filter: "(?i)(韩|韩国|KR|Korea)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # Steam
-  steam:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Steam/Steam.yaml"
-    path: ./ruleset/steam.yaml
-    interval: 86400
+  # 🇸🇬 新加坡节点
+  - name: "🇸🇬 新加坡节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png
+    use:
+      - 机场订阅
+    filter: "(?i)(新|新加坡|SG|Singapore)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # === 流媒体规则 ===
+  # 🇦🇺 澳洲节点
+  - name: "🇦🇺 澳洲节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Australia.png
+    use:
+      - 机场订阅
+    filter: "(?i)(澳|澳大利亚|澳洲|AU|Australia)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # Netflix
-  netflix:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Netflix/Netflix.yaml"
-    path: ./ruleset/netflix.yaml
-    interval: 86400
+  # 🇬🇧 英国节点
+  - name: "🇬🇧 英国节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_Kingdom.png
+    use:
+      - 机场订阅
+    filter: "(?i)(英|英国|UK|United Kingdom|Britain)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # Disney+
-  disney:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Disney/Disney.yaml"
-    path: ./ruleset/disney.yaml
-    interval: 86400
+  # 🇨🇦 加拿大节点
+  - name: "🇨🇦 加拿大节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Canada.png
+    use:
+      - 机场订阅
+    filter: "(?i)(加|加拿大|CA|Canada)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # YouTube
-  youtube:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml"
-    path: ./ruleset/youtube.yaml
-    interval: 86400
+  # 🇩🇪 德国节点
+  - name: "🇩🇪 德国节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Germany.png
+    use:
+      - 机场订阅
+    filter: "(?i)(德|德国|DE|Germany)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # Spotify
-  spotify:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Spotify/Spotify.yaml"
-    path: ./ruleset/spotify.yaml
-    interval: 86400
+  # 🇪🇺 欧洲节点
+  - name: "🇪🇺 欧洲节点"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/European_Union.png
+    use:
+      - 机场订阅
+    filter: "(?i)(欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
 
-  # Pandora（美国流媒体）
-  pandora:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Pandora/Pandora.yaml"
-    path: ./ruleset/pandora.yaml
-    interval: 86400
+  # 🌍 其他地区
+  - name: "🌍 其他地区"
+    type: select
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Global.png
+    use:
+      - 机场订阅
+    filter: "^((?!美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|韩|韩国|KR|Korea|新|新加坡|SG|Singapore|澳|澳大利亚|澳洲|AU|Australia|英|英国|UK|United Kingdom|Britain|加|加拿大|CA|Canada|德|德国|DE|Germany|欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary).)*$"
 
-  # === 常用服务规则 ===
+  # 🐟 兜底规则
+  - name: "🐟 Final"
+    type: select
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Final.png
+    proxies:
+      - "♻️ 自动选择"
+      - "🚀 节点选择"
+      - "DIRECT"
 
-  # Google服务
-  google:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml"
-    path: ./ruleset/google.yaml
-    interval: 86400
-
-  # Apple服务
-  apple:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple.yaml"
-    path: ./ruleset/apple.yaml
-    interval: 86400
-
-  # Microsoft服务
-  microsoft:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml"
-    path: ./ruleset/microsoft.yaml
-    interval: 86400
-
-  # 社交媒体
-  twitter:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml"
-    path: ./ruleset/twitter.yaml
-    interval: 86400
-
-  facebook:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Facebook/Facebook.yaml"
-    path: ./ruleset/facebook.yaml
-    interval: 86400
-
-  # Telegram
-  telegram:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml"
-    path: ./ruleset/telegram.yaml
-    interval: 86400
-
-  # === 广告拦截规则 ===
-
-  # 基础广告拦截
-  adblock:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Advertising/Advertising.yaml"
-    path: ./ruleset/adblock.yaml
-    interval: 86400
-
-  # 流媒体广告
-  streaming-ads:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AdvertisingLite/AdvertisingLite.yaml"
-    path: ./ruleset/streaming-ads.yaml
-    interval: 86400
-
-  # YouTube广告拦截专用
-  youtube-ads:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Advertising/Advertising.yaml"
-    path: ./ruleset/youtube-ads.yaml
-    interval: 86400
-
-  # === 国内服务规则 ===
-
-  # 国内网站
-  china:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/China/China.yaml"
-    path: ./ruleset/china.yaml
-    interval: 86400
-
-  # 国内直连
-  direct:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml"
-    path: ./ruleset/direct.yaml
-    interval: 86400
-
-# 分流规则 - 完整版
+# ===== 🌐 规则配置 =====
 rules:
-  # === 局域网和本地服务直连 ===
-  - DOMAIN-SUFFIX,local,DIRECT
-  - IP-CIDR,127.0.0.0/8,DIRECT
-  - IP-CIDR,172.16.0.0/12,DIRECT
-  - IP-CIDR,192.168.0.0/16,DIRECT
-  - IP-CIDR,10.0.0.0/8,DIRECT
-  - IP-CIDR,17.0.0.0/8,DIRECT
-  - IP-CIDR,100.64.0.0/10,DIRECT
+  # === AI工具平台规则 ===
 
-  # === 国内热门应用和服务 (简化分组) ===
-
-  # 王者荣耀和腾讯游戏
-  - DOMAIN-SUFFIX,smoba.qq.com,🏠 国内网站
-  - DOMAIN-SUFFIX,pvp.qq.com,🏠 国内网站
-  - DOMAIN-SUFFIX,timi.qq.com,🏠 国内网站
-  - DOMAIN-SUFFIX,timigroup.com,🏠 国内网站
-  - DOMAIN-SUFFIX,tencentgames.com,🏠 国内网站
-  - DOMAIN-SUFFIX,wegame.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qq.com,🏠 国内网站
-  - DOMAIN-SUFFIX,tencent.com,🏠 国内网站
-
-  # 交通出行
-  - DOMAIN-SUFFIX,12306.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,12306.com,🏠 国内网站
-  - DOMAIN-SUFFIX,didichuxing.com,🏠 国内网站
-  - DOMAIN-SUFFIX,didiglobal.com,🏠 国内网站
-  - DOMAIN-SUFFIX,xiaojukeji.com,🏠 国内网站
-  - DOMAIN-SUFFIX,udache.com,🏠 国内网站
-
-  # 三大运营商
-  - DOMAIN-SUFFIX,10086.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,chinamobile.com,🏠 国内网站
-  - DOMAIN-SUFFIX,cmcc.com,🏠 国内网站
-  - DOMAIN-SUFFIX,10010.com,🏠 国内网站
-  - DOMAIN-SUFFIX,chinaunicom.com,🏠 国内网站
-  - DOMAIN-SUFFIX,10000.com,🏠 国内网站
-  - DOMAIN-SUFFIX,189.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,chinatelecom.com.cn,🏠 国内网站
-
-  # 政务服务
-  - DOMAIN-SUFFIX,zjzwfw.gov.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,zhejiang.gov.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,gjfzapp.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,12123.gov.cn,🏠 国内网站
-
-  # 生活服务
-  - DOMAIN-SUFFIX,zhuanzhuan.com,🏠 国内网站
-  - DOMAIN-SUFFIX,anjuke.com,🏠 国内网站
-  - DOMAIN-SUFFIX,angejia.com,🏠 国内网站
-
-  # 热门短视频和社交
-  - DOMAIN-SUFFIX,douyin.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyinpic.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyincdn.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyinstatic.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bytedance.com,🏠 国内网站
-  - DOMAIN-SUFFIX,toutiao.com,🏠 国内网站
-  - DOMAIN-SUFFIX,xiaohongshu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,xhscdn.com,🏠 国内网站
-
-  # 国内AI服务 (修正版 - 真正的国内AI平台)
-  # 阿里通义系列
-  - DOMAIN-SUFFIX,tongyi.aliyun.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qianwen.aliyun.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qianwen.alibaba.com,🏠 国内网站
-
-  # 字节豆包
-  - DOMAIN-SUFFIX,doubao.com,🏠 国内网站
-  - DOMAIN-SUFFIX,volcengine.com,🏠 国内网站
-
-  # 月之暗面 Kimi
-  - DOMAIN-SUFFIX,kimi.moonshot.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,moonshot.cn,🏠 国内网站
-
-  # MiniMax海螺AI
-  - DOMAIN-SUFFIX,minimax.chat,🏠 国内网站
-  - DOMAIN-SUFFIX,hailuoai.com,🏠 国内网站
-
-  # DeepSeek深度求索
-  - DOMAIN-SUFFIX,deepseek.com,🏠 国内网站
-  - DOMAIN-SUFFIX,deepseek.ai,🏠 国内网站
-
-  # 智谱AI
-  - DOMAIN-SUFFIX,zhipu.ai,🏠 国内网站
-  - DOMAIN-SUFFIX,chatglm.cn,🏠 国内网站
-
-  # 百度文心
-  - DOMAIN-SUFFIX,wenxin.baidu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,yiyan.baidu.com,🏠 国内网站
-
-  # 腾讯混元
-  - DOMAIN-SUFFIX,hunyuan.tencent.com,🏠 国内网站
-
-  # 商汤商量
-  - DOMAIN-SUFFIX,sensetime.com,🏠 国内网站
-  - DOMAIN-SUFFIX,sensenova.cn,🏠 国内网站
-
-  # 科大讯飞星火
-  - DOMAIN-SUFFIX,xfyun.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,spark.xfyun.cn,🏠 国内网站
-
-  # 其他国内AI
-  - DOMAIN-SUFFIX,tiangong.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,360.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,so.com,🏠 国内网站
-
-  # === AI工具专用规则 ===
-
-  # OpenAI全家桶 (ChatGPT, GPT-4, DALL-E, Whisper等)
-  - RULE-SET,openai,🧠 ChatGPT
+  # ChatGPT & OpenAI 全家桶
   - DOMAIN-SUFFIX,openai.com,🧠 ChatGPT
+  - DOMAIN-SUFFIX,openaiapi.com,🧠 ChatGPT
   - DOMAIN-SUFFIX,chatgpt.com,🧠 ChatGPT
   - DOMAIN-SUFFIX,oaistatic.com,🧠 ChatGPT
   - DOMAIN-SUFFIX,oaiusercontent.com,🧠 ChatGPT
+  - DOMAIN-SUFFIX,auth0.com,🧠 ChatGPT
 
-  # Google统一服务 (AI、搜索、云服务等) - 智能路由
-  # === Google AI服务 (需要美国节点) ===
+  # Google统一服务 (AI优先级：bard/gemini -> 搜索/邮箱 -> 云服务)
   - DOMAIN-SUFFIX,bard.google.com,🌟 Google服务
   - DOMAIN-SUFFIX,gemini.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,ai.google.dev,🌟 Google服务
-  - DOMAIN-SUFFIX,ai.google,🌟 Google服务
-  - DOMAIN-SUFFIX,makersuite.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,🌟 Google服务
-  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,🌟 Google服务
-  # DeepMind相关 (Veo等模型)
-  - DOMAIN-SUFFIX,deepmind.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,deepmind.com,🌟 Google服务
-  # Google AI Studio和其他AI工具
-  - DOMAIN-SUFFIX,aistudio.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,vertex-ai.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,console.cloud.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,colab.research.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,research.google.com,🌟 Google服务
-  # === Google Labs和Flow工具 (您要求的新服务) ===
-  - DOMAIN-SUFFIX,labs.google,🌟 Google服务
-  - DOMAIN-SUFFIX,labs.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,experiments.withgoogle.com,🌟 Google服务
-  # Flow和FX工具完整支持 https://labs.google/flow/about
-  - DOMAIN,labs.google,🌟 Google服务
-  - DOMAIN-KEYWORD,flow.google,🌟 Google服务
-  - DOMAIN-KEYWORD,fx.google,🌟 Google服务
-  - DOMAIN-SUFFIX,googlefx.com,🌟 Google服务
-  - DOMAIN-SUFFIX,flow.google.com,🌟 Google服务
-  # === Google账户和付费服务 ===
-  - DOMAIN-SUFFIX,one.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,pay.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,payments.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,workspace.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,accounts.google.com,🌟 Google服务
-  - DOMAIN-KEYWORD,labs-sign-up,🌟 Google服务
-  - DOMAIN-KEYWORD,workspace-labs,🌟 Google服务
+  - DOMAIN-KEYWORD,gemini,🌟 Google服务
+  - DOMAIN-KEYWORD,bard,🌟 Google服务
+  - DOMAIN-SUFFIX,google.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googleapis.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googleusercontent.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googlevideo.com,🌟 Google服务
+  - DOMAIN-SUFFIX,youtube.com,🌟 Google服务
+  - DOMAIN-SUFFIX,ytimg.com,🌟 Google服务
+  - DOMAIN-SUFFIX,gstatic.com,🌟 Google服务
+  - DOMAIN-SUFFIX,gmail.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googlemail.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googledrive.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googlecloud.com,🌟 Google服务
+  - DOMAIN-SUFFIX,gcp.com,🌟 Google服务
+  - DOMAIN-SUFFIX,gcr.io,🌟 Google服务
+  - DOMAIN-SUFFIX,googletagmanager.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googleanalytics.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googlesyndication.com,🌟 Google服务
+  - DOMAIN-SUFFIX,doubleclick.net,🌟 Google服务
+  - DOMAIN-SUFFIX,adsystem.google.com,🌟 Google服务
 
   # Claude & Anthropic
-  - RULE-SET,claude,💭 Claude
   - DOMAIN-SUFFIX,anthropic.com,💭 Claude
   - DOMAIN-SUFFIX,claude.ai,💭 Claude
 
@@ -941,399 +442,212 @@ rules:
   - DOMAIN-SUFFIX,x.ai,🐦 Grok
   - DOMAIN-SUFFIX,grok.x.ai,🐦 Grok
 
-  # Discord & Midjourney统一
-  - RULE-SET,discord,💬 Discord
-  - DOMAIN-SUFFIX,discord.com,💬 Discord
-  - DOMAIN-SUFFIX,discordapp.com,💬 Discord
-  - DOMAIN-SUFFIX,discord.gg,💬 Discord
-  - DOMAIN-SUFFIX,midjourney.com,💬 Discord
-
-  # 其他AI平台 (包含Perplexity和Hugging Face)
+  # AI综合平台
   - DOMAIN-SUFFIX,perplexity.ai,🔬 AI平台
-  - DOMAIN-SUFFIX,poe.com,🔬 AI平台
-  - DOMAIN-SUFFIX,character.ai,🔬 AI平台
   - DOMAIN-SUFFIX,huggingface.co,🔬 AI平台
   - DOMAIN-SUFFIX,replicate.com,🔬 AI平台
-  - DOMAIN-SUFFIX,stability.ai,🔬 AI平台
-  - DOMAIN-SUFFIX,runwayml.com,🔬 AI平台
+  - DOMAIN-SUFFIX,poe.com,🔬 AI平台
+  - DOMAIN-SUFFIX,character.ai,🔬 AI平台
+  - DOMAIN-SUFFIX,janitorai.com,🔬 AI平台
+  - DOMAIN-SUFFIX,civitai.com,🔬 AI平台
+  - DOMAIN-SUFFIX,leonardo.ai,🔬 AI平台
+  - DOMAIN-SUFFIX,midjourney.com,🔬 AI平台
 
-  # === 开发AI工具规则 ===
+  # 开发AI工具
   - DOMAIN-SUFFIX,cursor.sh,🧰 开发AI
   - DOMAIN-SUFFIX,cursor.com,🧰 开发AI
-  - DOMAIN-SUFFIX,trae.co,🧰 开发AI
-  - DOMAIN-SUFFIX,trae.ai,🧰 开发AI
-  - DOMAIN-SUFFIX,copilot.github.com,🧰 开发AI
-  - DOMAIN-SUFFIX,codeium.com,🧰 开发AI
-  - DOMAIN-SUFFIX,tabnine.com,🧰 开发AI
+  - DOMAIN-SUFFIX,github.com,🐙 GitHub
+  - DOMAIN-SUFFIX,githubusercontent.com,🐙 GitHub
+  - DOMAIN-SUFFIX,githubassets.com,🐙 GitHub
+  - DOMAIN-SUFFIX,github.io,🐙 GitHub
 
-  # === 图书资源规则 ===
+  # === 主要功能规则 ===
+
+  # Z-Library数字图书馆
   - DOMAIN-SUFFIX,z-lib.org,📚 Z-Library
   - DOMAIN-SUFFIX,1lib.org,📚 Z-Library
   - DOMAIN-SUFFIX,zlibrary.to,📚 Z-Library
   - DOMAIN-SUFFIX,singlelogin.org,📚 Z-Library
   - DOMAIN-SUFFIX,b-ok.org,📚 Z-Library
 
-  # === 流媒体专用规则 ===
+  # === 流媒体规则 ===
+
+  # YouTube Premium
+  - DOMAIN-SUFFIX,youtube.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,youtubei.googleapis.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,googlevideo.com,🌍 流媒体解锁
 
   # Netflix
-  - RULE-SET,netflix,🎥 Netflix
+  - DOMAIN-SUFFIX,netflix.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,nflximg.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,nflxext.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,nflxso.net,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,nflxvideo.net,🌍 流媒体解锁
 
   # Disney+
-  - RULE-SET,disney,🏰 Disney+
-  - DOMAIN-SUFFIX,disneyplus.com,🏰 Disney+
-  - DOMAIN-SUFFIX,disney-plus.net,🏰 Disney+
-  - DOMAIN-SUFFIX,disneystreaming.com,🏰 Disney+
-  - DOMAIN-SUFFIX,dssott.com,🏰 Disney+
-
-  # YouTube (包含YouTube Music)
-  - RULE-SET,youtube,📺 YouTube
-  - DOMAIN-SUFFIX,youtu.be,📺 YouTube
-  - DOMAIN-SUFFIX,youtubei.googleapis.com,📺 YouTube
-  - DOMAIN-SUFFIX,ytimg.com,📺 YouTube
+  - DOMAIN-SUFFIX,disneyplus.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,disney-plus.net,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,disneystreaming.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,dssott.com,🌍 流媒体解锁
 
   # Spotify
-  - RULE-SET,spotify,🎵 Spotify
-  - DOMAIN-SUFFIX,scdn.co,🎵 Spotify
-  - DOMAIN-SUFFIX,spoti.fi,🎵 Spotify
+  - DOMAIN-SUFFIX,spotify.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,scdn.co,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,spoti.fi,🌍 流媒体解锁
 
-  # 其他流媒体
-  - DOMAIN-SUFFIX,hulu.com,🎬 流媒体
-  - DOMAIN-SUFFIX,hbo.com,🎬 流媒体
-  - DOMAIN-SUFFIX,hbomax.com,🎬 流媒体
-  - DOMAIN-SUFFIX,primevideo.com,🎬 流媒体
-  - DOMAIN-SUFFIX,amazon.com,🎬 流媒体
-  - DOMAIN-SUFFIX,twitch.tv,🎬 流媒体
+  # Amazon Prime Video
+  - DOMAIN-SUFFIX,primevideo.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,amazonvideo.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,media-amazon.com,🌍 流媒体解锁
 
-  # === 广告拦截规则 ===
+  # HBO Max
+  - DOMAIN-SUFFIX,hbomax.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,hbogo.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,hbonow.com,🌍 流媒体解锁
 
-  # 基础广告拦截
-  - RULE-SET,adblock,🛡️ 广告拦截
+  # Apple TV+
+  - DOMAIN-SUFFIX,tv.apple.com,🌍 流媒体解锁
 
-  # 流媒体广告特殊处理 - 统一到广告拦截组
-  - RULE-SET,streaming-ads,🛡️ 广告拦截
-  - RULE-SET,youtube-ads,🛡️ 广告拦截
-
-  # 常见广告域名
-  - DOMAIN-SUFFIX,googlesyndication.com,🛡️ 广告拦截
-  - DOMAIN-SUFFIX,googleadservices.com,🛡️ 广告拦截
-  - DOMAIN-SUFFIX,doubleclick.net,🛡️ 广告拦截
-  - DOMAIN-KEYWORD,adnxs,🛡️ 广告拦截
-  - DOMAIN-KEYWORD,adsystem,🛡️ 广告拦截
-
-  # YouTube广告专门拦截
-  - DOMAIN-SUFFIX,googleads.g.doubleclick.net,🛡️ 广告拦截
-  - DOMAIN-SUFFIX,pagead2.googlesyndication.com,🛡️ 广告拦截
-  - DOMAIN-SUFFIX,tpc.googlesyndication.com,🛡️ 广告拦截
-  - DOMAIN-KEYWORD,googleads,🛡️ 广告拦截
-  - DOMAIN-KEYWORD,youtube-ads,🛡️ 广告拦截
-  - DOMAIN-KEYWORD,ytads,🛡️ 广告拦截
-
-
-  # 注意：以下功能需要配合重写规则和脚本才能生效
-
-  # 知乎去广告 (需要重写脚本)
-  - DOMAIN-SUFFIX,zhihu.com,🏠 国内网站
-
-  # 微博去广告 (需要重写脚本)
-  - DOMAIN-SUFFIX,weibo.com,🏠 国内网站
-  - DOMAIN-SUFFIX,weibo.cn,🏠 国内网站
-
-  # 小红书去广告 (需要重写脚本)
-  - DOMAIN-SUFFIX,xiaohongshu.com,🏠 国内网站
-
-  # === 常用服务规则 ===
-
-  # Google服务 (统一路由到Google服务组)
-  - RULE-SET,google,🌟 Google服务
-
-  # === 社交媒体专用规则 ===
-
-  # TikTok (国际版，需要机场节点)
-  - RULE-SET,tiktok,🎵 TikTok
-  - DOMAIN-SUFFIX,tiktok.com,🎵 TikTok
-  - DOMAIN-SUFFIX,tiktokcdn.com,🎵 TikTok
-  - DOMAIN-SUFFIX,tiktokv.com,🎵 TikTok
-  - DOMAIN-SUFFIX,tiktok-row.net,🎵 TikTok
-  - DOMAIN-SUFFIX,byteoversea.com,🎵 TikTok
-  - DOMAIN-SUFFIX,musical.ly,🎵 TikTok
-  - DOMAIN-SUFFIX,bytedns.net,🎵 TikTok
-  - DOMAIN-SUFFIX,byteimg.com,🎵 TikTok
-  - DOMAIN-SUFFIX,ibytedtos.com,🎵 TikTok
-  - DOMAIN-KEYWORD,tiktok,🎵 TikTok
-
-  # X (Twitter)
-  - RULE-SET,twitter,🐦 X (Twitter)
-  - DOMAIN-SUFFIX,twitter.com,🐦 X (Twitter)
-  - DOMAIN-SUFFIX,x.com,🐦 X (Twitter)
-  - DOMAIN-SUFFIX,twimg.com,🐦 X (Twitter)
-  - DOMAIN-SUFFIX,t.co,🐦 X (Twitter)
-
-  # Facebook & Meta
-  - RULE-SET,facebook,📘 Facebook
-  - DOMAIN-SUFFIX,facebook.com,📘 Facebook
-  - DOMAIN-SUFFIX,fb.com,📘 Facebook
-  - DOMAIN-SUFFIX,fbcdn.net,📘 Facebook
-  - DOMAIN-SUFFIX,meta.com,📘 Facebook
-
-  # Instagram
-  - RULE-SET,instagram,📷 Instagram
-  - DOMAIN-SUFFIX,instagram.com,📷 Instagram
-  - DOMAIN-SUFFIX,cdninstagram.com,📷 Instagram
-  - DOMAIN-SUFFIX,threads.net,📷 Instagram
-
-  # Reddit
-  - RULE-SET,reddit,🟠 Reddit
-  - DOMAIN-SUFFIX,reddit.com,🟠 Reddit
-  - DOMAIN-SUFFIX,redd.it,🟠 Reddit
-  - DOMAIN-SUFFIX,redditstatic.com,🟠 Reddit
-
-  # Telegram
-  - RULE-SET,telegram,📲 Telegram
-
-  # === 开发者工具规则 ===
-
-  # GitHub
-  - RULE-SET,github,🐙 GitHub
-  - DOMAIN-SUFFIX,github.com,🐙 GitHub
-  - DOMAIN-SUFFIX,githubusercontent.com,🐙 GitHub
-  - DOMAIN-SUFFIX,githubassets.com,🐙 GitHub
-  - DOMAIN-SUFFIX,github.io,🐙 GitHub
+  # Pandora流媒体（美国等地区专用）
+  - DOMAIN-SUFFIX,pandora.com,🌍 流媒体解锁
 
   # === 游戏平台规则 ===
 
-  # 游戏服务统一 (Steam、加速、优选等)
-  - RULE-SET,steam,🎮 游戏服务
+  # Steam平台
   - DOMAIN-SUFFIX,steampowered.com,🎮 游戏服务
   - DOMAIN-SUFFIX,steamcommunity.com,🎮 游戏服务
   - DOMAIN-SUFFIX,steamstatic.com,🎮 游戏服务
   - DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,🎮 游戏服务
   - DOMAIN-SUFFIX,steamuserimages-a.akamaihd.net,🎮 游戏服务
 
-  # Apple服务 (国内可直连)
-  - RULE-SET,apple,🍎 Apple
+  # Epic Games
+  - DOMAIN-SUFFIX,epicgames.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,epicgames.dev,🎮 游戏服务
+  - DOMAIN-SUFFIX,unrealengine.com,🎮 游戏服务
 
-  # Microsoft服务 (国内可直连)
-  - RULE-SET,microsoft,Ⓜ️ Microsoft
+  # PlayStation
+  - DOMAIN-SUFFIX,playstation.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,sony.com,🎮 游戏服务
 
-  # === 应用增强功能规则 ===
+  # Xbox Live
+  - DOMAIN-SUFFIX,xbox.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,xboxlive.com,🎮 游戏服务
 
-  # B站去广告（需要通过代理进行脚本处理）
-  - DOMAIN,app.bilibili.com,🔧 工具应用
-  - DOMAIN,api.bilibili.com,🔧 工具应用
-  - DOMAIN,api.live.bilibili.com,🔧 工具应用
-  - DOMAIN,api.vc.bilibili.com,🔧 工具应用
-  - DOMAIN,manga.bilibili.com,🔧 工具应用
-  - DOMAIN,i.hdslb.com,🔧 工具应用
-  - DOMAIN-SUFFIX,biliapi.net,🔧 工具应用
-  - DOMAIN-SUFFIX,biliapi.com,🔧 工具应用
+  # 任天堂
+  - DOMAIN-SUFFIX,nintendo.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,nintendo.net,🎮 游戏服务
 
+  # === 国内工具应用规则 ===
 
+  # B站（哔哩哔哩）- 改为国内直连
+  - DOMAIN,app.bilibili.com,🏠 国内网站
+  - DOMAIN,api.bilibili.com,🏠 国内网站
+  - DOMAIN,api.live.bilibili.com,🏠 国内网站
+  - DOMAIN,api.vc.bilibili.com,🏠 国内网站
+  - DOMAIN,manga.bilibili.com,🏠 国内网站
+  - DOMAIN-SUFFIX,bilibili.com,🏠 国内网站
+  - DOMAIN-SUFFIX,hdslb.com,🏠 国内网站
+  - DOMAIN-SUFFIX,biliapi.net,🏠 国内网站
 
-  # Spotify增强（需要代理）
-  - RULE-SET,spotify,🎵 Spotify
-  - DOMAIN-SUFFIX,spclient.wg.spotify.com,🎵 Spotify
+  # 钉钉办公
+  - DOMAIN-SUFFIX,dingtalk.com,🔧 工具应用
+  - DOMAIN-SUFFIX,alicdn.com,🔧 工具应用
 
-  # Pandora流媒体（美国等地区专用） - 提高优先级
+  # 腾讯会议
+  - DOMAIN-SUFFIX,voovmeeting.com,🔧 工具应用
+  - DOMAIN-SUFFIX,tencent-cloud.net,🔧 工具应用
 
+  # 飞书
+  - DOMAIN-SUFFIX,feishu.cn,🔧 工具应用
+  - DOMAIN-SUFFIX,larksuite.com,🔧 工具应用
 
-  # === 新增APP功能增强规则 ===
+  # === 国内服务规则 ===
 
-  # Adobe系列应用（需要代理）
-  - DOMAIN-SUFFIX,photos.adobe.io,🎨 Adobe
-  - DOMAIN-SUFFIX,adobe.com,🎨 Adobe
-  - DOMAIN-SUFFIX,adobelogin.com,🎨 Adobe
-
-
-
-
-
-
-
-  # Pandora音乐（专用美国等地区节点）
-
-
-
-  # - DOMAIN-SUFFIX,gotokeep.com,🏠 国内网站
-
-  # === 国内网站直连规则 ===
-
-  # 国内服务直连
-  - RULE-SET,china,🏠 国内网站
-  - RULE-SET,direct,🏠 国内网站
-
-  # 国内网站直连
-  - DOMAIN-SUFFIX,baidu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qq.com,🏠 国内网站
-  - DOMAIN-SUFFIX,weixin.qq.com,🏠 国内网站
-
-  # 阿里系全家桶（淘宝等）
+  # 电商平台
   - DOMAIN-SUFFIX,taobao.com,🏠 国内网站
   - DOMAIN-SUFFIX,tmall.com,🏠 国内网站
-  - DOMAIN-SUFFIX,alibaba.com,🏠 国内网站
-  - DOMAIN-SUFFIX,alicdn.com,🏠 国内网站
-  - DOMAIN-SUFFIX,tbcdn.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,aliexpress.com,🏠 国内网站
-  - DOMAIN-SUFFIX,1688.com,🏠 国内网站
-
-  # Peak脑力训练（需要代理）
-  - DOMAIN-SUFFIX,billing.peakcloud.org,🔧 工具应用
-  - DOMAIN-SUFFIX,peak.net,🔧 工具应用
-
-  # 字节跳动国内业务（抖音等）
-  - DOMAIN-SUFFIX,douyin.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyinpic.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyincdn.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyinstatic.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bytedance.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bytecdn.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,toutiao.com,🏠 国内网站
-
-  # 京东系
   - DOMAIN-SUFFIX,jd.com,🏠 国内网站
-  - DOMAIN-SUFFIX,jdcloud.com,🏠 国内网站
+  - DOMAIN-SUFFIX,jd.hk,🏠 国内网站
   - DOMAIN-SUFFIX,360buyimg.com,🏠 国内网站
 
-  # 银行和金融服务（国内直连）
+  # 阿里巴巴生态
+  - DOMAIN-SUFFIX,alibaba.com,🏠 国内网站
+  - DOMAIN-SUFFIX,alibabacloud.com,🏠 国内网站
+  - DOMAIN-SUFFIX,aliyun.com,🏠 国内网站
+  - DOMAIN-SUFFIX,alipay.com,🏠 国内网站
+
+  # 腾讯生态
+  - DOMAIN-SUFFIX,qq.com,🏠 国内网站
+  - DOMAIN-SUFFIX,tencent.com,🏠 国内网站
+  - DOMAIN-SUFFIX,qcloud.com,🏠 国内网站
+  - DOMAIN-SUFFIX,gtimg.com,🏠 国内网站
+
+  # 百度生态
+  - DOMAIN-SUFFIX,baidu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,bdstatic.com,🏠 国内网站
+  - DOMAIN-SUFFIX,bcebos.com,🏠 国内网站
+
+  # 新浪微博 - 直连
+  - DOMAIN-SUFFIX,weibo.com,🏠 国内网站
+  - DOMAIN-SUFFIX,weibo.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,weibocdn.com,🏠 国内网站
+
+  # 知乎 - 直连
+  - DOMAIN-SUFFIX,zhihu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,zhimg.com,🏠 国内网站
+
+  # 小红书 - 直连
+  - DOMAIN-SUFFIX,xiaohongshu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,xhscdn.com,🏠 国内网站
+
+  # 搜索引擎
+  - DOMAIN-SUFFIX,so.com,🏠 国内网站
+  - DOMAIN-SUFFIX,sogou.com,🏠 国内网站
+  - DOMAIN-SUFFIX,soso.com,🏠 国内网站
+
+  # 视频平台
+  - DOMAIN-SUFFIX,iqiyi.com,🏠 国内网站
+  - DOMAIN-SUFFIX,youku.com,🏠 国内网站
+  - DOMAIN-SUFFIX,tudou.com,🏠 国内网站
+  - DOMAIN-SUFFIX,mgtv.com,🏠 国内网站
+
+  # 音乐平台
+  - DOMAIN-SUFFIX,music.163.com,🏠 国内网站
+  - DOMAIN-SUFFIX,kugou.com,🏠 国内网站
+  - DOMAIN-SUFFIX,kuwo.cn,🏠 国内网站
+
+  # 地图导航
+  - DOMAIN-SUFFIX,amap.com,🏠 国内网站
+  - DOMAIN-SUFFIX,map.baidu.com,🏠 国内网站
+
+  # 新闻资讯
+  - DOMAIN-SUFFIX,toutiao.com,🏠 国内网站
+  - DOMAIN-SUFFIX,sina.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,sohu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,163.com,🏠 国内网站
+
+  # 金融服务
+  - DOMAIN-SUFFIX,bank.com.cn,🏠 国内网站
   - DOMAIN-SUFFIX,icbc.com.cn,🏠 国内网站
   - DOMAIN-SUFFIX,ccb.com,🏠 国内网站
   - DOMAIN-SUFFIX,abchina.com,🏠 国内网站
   - DOMAIN-SUFFIX,boc.cn,🏠 国内网站
   - DOMAIN-SUFFIX,bankcomm.com,🏠 国内网站
   - DOMAIN-SUFFIX,cmbchina.com,🏠 国内网站
-  - DOMAIN-SUFFIX,pingan.com,🏠 国内网站
-  - DOMAIN-SUFFIX,citic.com,🏠 国内网站
-
-  # 生活服务类（国内直连）
-  - DOMAIN-SUFFIX,xiaohongshu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,xhscdn.com,🏠 国内网站
-  - DOMAIN-SUFFIX,dianping.com,🏠 国内网站
-  - DOMAIN-SUFFIX,meituan.com,🏠 国内网站
-  - DOMAIN-SUFFIX,meituan.net,🏠 国内网站
-  - DOMAIN-SUFFIX,sankuai.com,🏠 国内网站
-  - DOMAIN-SUFFIX,fliggy.com,🏠 国内网站
-  - DOMAIN-SUFFIX,alitrip.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douban.com,🏠 国内网站
-  - DOMAIN-SUFFIX,doubanio.com,🏠 国内网站
-
-  # 出行和交通（国内直连）
-  - DOMAIN-SUFFIX,12123.gov.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,didi.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,didistatic.com,🏠 国内网站
-
-
-  - DOMAIN-SUFFIX,gotokeep.com,🏠 国内网站
-
-  # 二手交易（国内直连）
-  - DOMAIN-SUFFIX,xianyu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,taobao.com,🏠 国内网站
-
-  # 云盘和存储（国内直连）
-  - DOMAIN-SUFFIX,pan.baidu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,baidupcs.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bdstatic.com,🏠 国内网站
-
-  # 新闻媒体（国内直连）
-  - DOMAIN-SUFFIX,cctv.com,🏠 国内网站
-  - DOMAIN-SUFFIX,cnr.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,xinhuanet.com,🏠 国内网站
-  - DOMAIN-SUFFIX,people.com.cn,🏠 国内网站
-
-  # 其他国内大站
-  - DOMAIN-SUFFIX,zhihu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,xiaomi.com,🏠 国内网站
-  - DOMAIN-SUFFIX,huawei.com,🏠 国内网站
-  - DOMAIN-SUFFIX,alipay.com,🏠 国内网站
-  - DOMAIN-SUFFIX,aliyun.com,🏠 国内网站
-  - DOMAIN-SUFFIX,tencent.com,🏠 国内网站
-  - DOMAIN-SUFFIX,163.com,🏠 国内网站
-  - DOMAIN-SUFFIX,sina.com.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,sohu.com,🏠 国内网站
-
-  # === 热门App Store应用补充 ===
-
-  # 游戏类热门应用
-  - DOMAIN-SUFFIX,mihoyo.com,🏠 国内网站
-  - DOMAIN-SUFFIX,hoyoverse.com,🏠 国内网站
-  - DOMAIN-SUFFIX,yuanshen.com,🏠 国内网站
-  - DOMAIN-SUFFIX,perfectworld.com,🏠 国内网站
-  - DOMAIN-SUFFIX,netease.com,🏠 国内网站
-  - DOMAIN-SUFFIX,163.com,🏠 国内网站
-  - DOMAIN-SUFFIX,126.com,🏠 国内网站
-  - DOMAIN-SUFFIX,pubgmobile.com,🏠 国内网站
-  - DOMAIN-SUFFIX,blizzard.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,battlenet.com.cn,🏠 国内网站
-
-  # 短视频和直播
-  - DOMAIN-SUFFIX,kuaishou.com,🏠 国内网站
-  - DOMAIN-SUFFIX,yximgs.com,🏠 国内网站
-  - DOMAIN-SUFFIX,kscdn.com,🏠 国内网站
-  - DOMAIN-SUFFIX,huya.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,douyucdn.cn,🏠 国内网站
-
-  # 音乐娱乐
-  - DOMAIN-SUFFIX,music.163.com,🏠 国内网站
-  - DOMAIN-SUFFIX,kugou.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qqmusic.qq.com,🏠 国内网站
-  - DOMAIN-SUFFIX,xiami.com,🏠 国内网站
-
-  # 电商和生活服务
-  - DOMAIN-SUFFIX,pinduoduo.com,🏠 国内网站
-  - DOMAIN-SUFFIX,pddpic.com,🏠 国内网站
-  - DOMAIN-SUFFIX,yangkeduo.com,🏠 国内网站
-  - DOMAIN-SUFFIX,ele.me,🏠 国内网站
-  - DOMAIN-SUFFIX,eleme.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,beike.com,🏠 国内网站
-  - DOMAIN-SUFFIX,lianjia.com,🏠 国内网站
-  - DOMAIN-SUFFIX,fang.com,🏠 国内网站
-  - DOMAIN-SUFFIX,58.com,🏠 国内网站
-  - DOMAIN-SUFFIX,ganji.com,🏠 国内网站
-
-  # 教育学习
-  - DOMAIN-SUFFIX,xueersi.com,🏠 国内网站
-  - DOMAIN-SUFFIX,vipkid.com,🏠 国内网站
-  - DOMAIN-SUFFIX,yuanfudao.com,🏠 国内网站
-  - DOMAIN-SUFFIX,zybang.com,🏠 国内网站
-  - DOMAIN-SUFFIX,100tal.com,🏠 国内网站
-  - DOMAIN-SUFFIX,17zuoye.com,🏠 国内网站
-
-  # 新闻资讯
-  - DOMAIN-SUFFIX,toutiao.com,🏠 国内网站
-  - DOMAIN-SUFFIX,ixigua.com,🏠 国内网站
-  - DOMAIN-SUFFIX,jinritoutiao.com,🏠 国内网站
-  - DOMAIN-SUFFIX,thepaper.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,36kr.com,🏠 国内网站
-
-  # 地图导航
-  - DOMAIN-SUFFIX,amap.com,🏠 国内网站
-  - DOMAIN-SUFFIX,autonavi.com,🏠 国内网站
-  - DOMAIN-SUFFIX,map.baidu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,map.qq.com,🏠 国内网站
-
-  # 工具应用
-  - DOMAIN-SUFFIX,qiniu.com,🏠 国内网站
-  - DOMAIN-SUFFIX,qiniucdn.com,🏠 国内网站
-  - DOMAIN-SUFFIX,kdocs.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,shimo.im,🏠 国内网站
-  - DOMAIN-SUFFIX,yuque.com,🏠 国内网站
-
-  # 银行和金融扩展
-  - DOMAIN-SUFFIX,spdb.com.cn,🏠 国内网站
   - DOMAIN-SUFFIX,cmbc.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,cib.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,spdb.com.cn,🏠 国内网站
   - DOMAIN-SUFFIX,cebbank.com,🏠 国内网站
+  - DOMAIN-SUFFIX,pingan.com,🏠 国内网站
   - DOMAIN-SUFFIX,hxb.com.cn,🏠 国内网站
   - DOMAIN-SUFFIX,cgbchina.com.cn,🏠 国内网站
   - DOMAIN-SUFFIX,psbc.com,🏠 国内网站
 
   # 社交通讯
-  - DOMAIN-SUFFIX,weibo.com,🏠 国内网站
-  - DOMAIN-SUFFIX,weibo.cn,🏠 国内网站
-  - DOMAIN-SUFFIX,weibocdn.com,🏠 国内网站
   - DOMAIN-SUFFIX,tieba.baidu.com,🏠 国内网站
   - DOMAIN-SUFFIX,qzone.qq.com,🏠 国内网站
 
   # 国内CDN和云服务
-  - DOMAIN-SUFFIX,qcloud.com,🏠 国内网站
   - DOMAIN-SUFFIX,myqcloud.com,🏠 国内网站
   - DOMAIN-SUFFIX,qpic.cn,🏠 国内网站
 
@@ -1347,58 +661,8 @@ rules:
 
 # ===== 🚀 高级功能扩展配置 =====
 
-# 📝 脚本配置 (预留扩展)
-# 注意: 脚本功能需要Stash Pro版本支持
-
-# 🔧 高级功能开关
-experimental:
-  ignore-resolve-fail: true    # 忽略DNS解析失败
-  sniff-tls-sni: true         # TLS SNI嗅探
-  sniff-http-host: true       # HTTP Host嗅探
-
-# 🌐 TUN模式配置 (高级用户)
-tun:
-  enable: false              # 默认关闭，需要时开启
-  stack: system             # 协议栈模式
-  dns-hijack:               # DNS劫持优化
-    - 198.18.0.2:53
-  auto-route: true          # 自动路由
-  auto-detect-interface: true # 自动检测接口
-
-# 📊 性能监控
-profile:
-  store-selected: true      # 存储选择的代理
-  store-fake-ip: false     # 不存储fake-ip
-
-# ⚡ 系统优化
-interface-name: ""          # 绑定网络接口
-routing-mark: 6666         # 路由标记
-auto-redir: false          # 自动重定向
-ebpf:
-  redirect-to-tun:
-    - eth0
-    - wlan0
-
-# 🖼️ MITM配置 - 高级功能 (可选)
-# 注意: MITM功能需要安装证书，请谨慎开启
-# mitm:
-#   port: 7892
-#   ca-passphrase: "Stash"
-#   skip-server-cert-verify: false
-#   hosts:
-#     - "*.youtube.com"
-#     - "*.googlevideo.com"
-
-# 📝 Script规则配置 (高级脚本功能)
-# 注意: 以下配置仅在支持的Stash Pro版本中生效
-
 # === 脚本提供者配置 ===
 script-providers:
-  # B站去广告脚本
-  bilibili-ads:
-    url: "https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-proto.js"
-    interval: 86400
-
   # YouTube去广告脚本
   youtube-response:
     url: "https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js"
@@ -1408,8 +672,6 @@ script-providers:
   spotify-premium:
     url: "https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js"
     interval: 86400
-
-
 
   # Adobe Lightroom
   lightroom-unlock:
@@ -1421,6 +683,10 @@ script-providers:
     url: "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/js/peak.js"
     interval: 86400
 
+  # Pandora音乐解锁
+  pandora-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Pandora.js"
+    interval: 86400
 
 # === MITM 配置 ===
 mitm:
@@ -1433,19 +699,6 @@ mitm:
 # === HTTP 配置 ===
 http:
   mitm:
-    # B站相关域名
-    - "app.bilibili.com"
-    - "api.live.bilibili.com"
-    - "api.vc.bilibili.com"
-    - "api.bilibili.com"
-    - "manga.bilibili.com"
-    - "i.hdslb.com"
-    - "grpc.biliapi.net"
-    - "api.biliapi.net"
-    - "-broadcast.chat.bilibili.com"
-    - "-*cdn*.biliapi.net"
-    - "-*tracker*.biliapi.net"
-
     # YouTube相关域名
     - "-redirector*.googlevideo.com"
     - "*.googlevideo.com"
@@ -1462,15 +715,11 @@ http:
     # Peak相关域名
     - "billing.peakcloud.org"
 
+    # Pandora相关域名
+    - "www.pandora.com"
+    - "tuner.pandora.com"
 
   script:
-    # B站去广告脚本
-    - match: ^https:\/\/app\.bilibili\.com\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$
-      name: bilibili-ads
-      type: response
-      require-body: true
-      timeout: 10
-
     # YouTube去广告脚本
     - match: ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
       name: youtube-response
@@ -1501,23 +750,46 @@ http:
       require-body: true
       timeout: 10
 
-  rewrite:
-    # B站去广告重写
-    - ^https?:\/\/app\.bilibili\.com\/x\/resource\/ip - reject
-    - ^https?:\/\/app\.bilibili\.com\/bilibili\.app\.interface\.v1\.Search\/Default - reject
-    - ^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity - reject-dict
-    - ^https://app.bilibili.com/x/v2/splash/show - reject-dict
-    - ^https://app.bilibili.com/x/v2/search/defaultwords - reject-dict
-    - ^https?:\/\/api\.bilibili\.com\/x\/vip\/ads\/material\/report - reject-dict
-    - ^https://api.bilibili.com/pgc/season/player/cards - reject-dict
-    - ^https?:\/\/api\.vc\.bilibili\.com\/search_svr\/v\d\/Search\/recommend_words - reject
-    - ^https?:\/\/api\.vc\.bilibili\.com\/topic_svr\/v1\/topic_svr - reject-dict
-    - ^https?:\/\/api\.bilibili\.com\/pgc\/season\/app\/related\/recommend\? - reject-dict
-    - ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash) - reject-dict
+    # Pandora音乐解锁
+    - match: ^https:\/\/tuner\.pandora\.com\/tune
+      name: pandora-unlock
+      type: response
+      require-body: true
+      timeout: 10
 
+  rewrite:
     # YouTube去广告重写
     - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
     - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
     - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject-200
     - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
     - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
+
+# 📝 高级功能开关
+experimental:
+  ignore-resolve-fail: true    # 忽略DNS解析失败
+  sniff-tls-sni: true         # TLS SNI嗅探
+  sniff-http-host: true       # HTTP Host嗅探
+
+# 🌐 TUN模式配置 (高级用户)
+tun:
+  enable: false              # 默认关闭，需要时开启
+  stack: system             # 协议栈模式
+  dns-hijack:               # DNS劫持优化
+    - 198.18.0.2:53
+  auto-route: true          # 自动路由
+  auto-detect-interface: true # 自动检测接口
+
+# 📊 性能监控
+profile:
+  store-selected: true      # 存储选择的代理
+  store-fake-ip: false     # 不存储fake-ip
+
+# ⚡ 系统优化
+interface-name: ""          # 绑定网络接口
+routing-mark: 6666         # 路由标记
+auto-redir: false          # 自动重定向
+ebpf:
+  redirect-to-tun:
+    - eth0
+    - wlan0
