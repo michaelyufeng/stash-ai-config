@@ -1413,20 +1413,10 @@ http:
       timeout: 10
 
   rewrite:
-    # TikTok地区重写（修复地区限制）
-    - ^https:\/\/.+\.tiktok\.com\/aweme\/v\d\/.*\?.*region=CN.* reject-200
-    - ^https:\/\/.+\.musical\.ly\/aweme\/v\d\/.*\?.*region=CN.* reject-200
-    - ^https:\/\/.+\.(tiktokv|byteoversea)\.com\/.*\?.*mcc_mnc=460.* reject-200
-    
-    # Pandora地区重写（修复地区限制）
-    - ^https:\/\/.+\.pandora\.com\/.*\?.*country.* reject-200
-    
-    # YouTube去广告重写
-    - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) 302 $1$2$3
-    - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad reject-200
-    - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads reject-200
-    - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
-    - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext reject-200
+    # YouTube去广告重写（简化版）
+    - ^https://[\w-]+\.googlevideo\.com/.+&oad reject-200
+    - ^https://(www|s)\.youtube\.com/api/stats/ads reject-200
+    - ^https://(www|s)\.youtube\.com/(pagead|ptracking) reject-200
 
 # 📝 高级功能开关
 experimental:
