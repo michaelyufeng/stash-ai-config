@@ -92,32 +92,45 @@ proxy-providers:
 
 # 代理组配置 - AI工具专业版
 proxy-groups:
+  # === 🚀 核心控制器 ===
+  
   # 主选择器
   - name: "🚀 节点选择"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Rocket.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Rocket.png
     proxies:
       - "♻️ 自动选择"
-      # 🚀 高级功能分类
-      - "🌍 流媒体解锁"
-      - "🎮 游戏服务"
-      # 📱 热门应用专用代理组
-      - "📺 YouTube"
-      - "🎬 Netflix"
-      - "🏰 Disney+"
-      - "📱 TikTok"
-      - "✈️ Telegram"
-      # AI工具分类
+      # 🤖 AI工具分类
       - "🧠 ChatGPT"
       - "🌟 Google服务"
       - "💭 Claude"
       - "🐦 Grok"
       - "🔬 AI平台"
       - "🧰 开发AI"
-      # 主要功能分类
+      # 📱 热门流媒体应用
+      - "📺 YouTube"
+      - "🎬 Netflix"
+      - "🏰 Disney+"
+      - "📱 TikTok"
+      - "🎵 Spotify"
+      - "🎶 Pandora"
+      # 💬 社交通讯应用
+      - "✈️ Telegram"
+      - "🎨 Midjourney"
+      - "🐦 X平台"
+      - "📘 Facebook"
+      - "📷 Instagram"
+      - "🤖 Reddit"
+      # 🍎 主要平台服务
+      - "🍎 Apple"
+      - "🪟 Microsoft"
+      # 🔧 专业工具
       - "🐙 GitHub"
       - "📚 Z-Library"
-      # 地区节点
+      # 🚀 高级功能
+      - "🌍 流媒体解锁"
+      - "🎮 游戏服务"
+      # 🌍 地区节点
       - "🇺🇸 美国节点"
       - "🇭🇰 香港节点"
       - "🇯🇵 日本节点"
@@ -134,19 +147,19 @@ proxy-groups:
   # 自动选择 - 优化延迟算法
   - name: "♻️ 自动选择"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Auto.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Auto.png
     use:
       - 机场订阅
     url: 'http://www.gstatic.com/generate_204'
     interval: 200
     tolerance: 30
 
-  # === AI工具专用分组 ===
+  # === 🤖 AI工具专用分组 ===
 
   # ChatGPT & OpenAI 全家桶
   - name: "🧠 ChatGPT"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ChatGPT.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/OpenAI.png
     proxies:
       - "🇺🇸 美国节点"
       - "🇯🇵 日本节点"
@@ -157,7 +170,7 @@ proxy-groups:
   # Google统一服务 - AI、搜索、云服务等 (智能路由：AI优先美国)
   - name: "🌟 Google服务"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Google.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Google.png
     proxies:
       - "🇺🇸 美国节点"      # 首选：AI服务、Flow工具需要美国IP
       - "🇨🇦 加拿大节点"    # 备选：北美地区
@@ -166,86 +179,55 @@ proxy-groups:
       - "🇸🇬 新加坡节点"    # 备选：亚洲地区
       - "♻️ 自动选择"       # 自动测速选择
 
-  # Claude & Anthropic
-  - name: "💭 Claude"
-    type: select
-    icon: https://raw.githubusercontent.com/lobehub/lobe-icons/main/packages/static-png/dark/claude.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇬🇧 英国节点"
-      - "🇨🇦 加拿大节点"
-      - "♻️ 自动选择"
-
-  # Grok (xAI)
+  # Grok (xAI) - 保留兼容
   - name: "🐦 Grok"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Twitter.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Bot.png
     proxies:
+      - "🐦 X平台"
       - "🇺🇸 美国节点"
       - "🇬🇧 英国节点"
       - "🇯🇵 日本节点"
       - "♻️ 自动选择"
+
+  # Claude AI - 自动测速
+  - name: "💭 Claude"
+    type: url-test
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/ChatGPT.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|英|英国|UK|United Kingdom|加|加拿大|CA|Canada)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 200
+    tolerance: 30
 
   # AI综合平台 (包含Perplexity, Hugging Face等)
   - name: "🔬 AI平台"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Lab.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Bot.png
     proxies:
       - "🇺🇸 美国节点"
       - "🇬🇧 英国节点"
       - "🇯🇵 日本节点"
       - "♻️ 自动选择"
 
-  # 开发AI工具 (Cursor, Trae等)
+  # 开发AI工具 - 自动测速
   - name: "🧰 开发AI"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Code.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇬🇧 英国节点"
-      - "🇯🇵 日本节点"
-      - "♻️ 自动选择"
+    type: url-test
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Lab.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|英|英国|UK|United Kingdom|日|日本|JP|Japan)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 200
+    tolerance: 30
 
-  # === 生产力工具分组 ===
+  # === 📱 热门流媒体应用 ===
 
-  # GitHub开发平台
-  - name: "🐙 GitHub"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/GitHub.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇯🇵 日本节点"
-      - "🇸🇬 新加坡节点"
-      - "♻️ 自动选择"
-
-  # 数字图书馆
-  - name: "📚 Z-Library"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/eBook.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇬🇧 英国节点"
-      - "🇩🇪 德国节点"
-      - "♻️ 自动选择"
-
-  # === 高级功能分组 ===
-
-  # 🌍 流媒体解锁（全球）
-  - name: "🌍 流媒体解锁"
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ForeignMedia.png
-    proxies:
-      - "🇺🇸 美国节点"
-      - "🇭🇰 香港节点"
-      - "🇯🇵 日本节点"
-      - "🇰🇷 韩国节点"
-      - "🇬🇧 英国节点"
-      - "♻️ 自动选择"
-
-  # 📺 YouTube视频服务
+  # YouTube视频服务 - 自动测速
   - name: "📺 YouTube"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/YouTube.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/YouTube.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
@@ -253,10 +235,34 @@ proxy-groups:
     interval: 200
     tolerance: 20
 
-  # 📱 TikTok短视频
+  # Netflix影视 - 手动选择
+  - name: "🎬 Netflix"
+    type: select
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Netflix.png
+    proxies:
+      - "🇺🇸 美国节点"      # 内容最全
+      - "🇯🇵 日本节点"      # 亚洲内容
+      - "🇭🇰 香港节点"      # 亚洲延迟低
+      - "🇬🇧 英国节点"      # 欧洲内容
+      - "🇸🇬 新加坡节点"    # 东南亚
+      - "♻️ 自动选择"
+
+  # Disney+影视 - 手动选择
+  - name: "🏰 Disney+"
+    type: select
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/DisneyPlus.png
+    proxies:
+      - "🇺🇸 美国节点"      # 内容最全
+      - "🇯🇵 日本节点"      # 亚洲内容
+      - "🇭🇰 香港节点"      # 亚洲延迟低
+      - "🇬🇧 英国节点"      # 欧洲内容
+      - "🇸🇬 新加坡节点"    # 东南亚
+      - "♻️ 自动选择"
+
+  # TikTok短视频 - 自动测速
   - name: "📱 TikTok"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/TikTok.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
@@ -264,10 +270,32 @@ proxy-groups:
     interval: 200
     tolerance: 20
 
-  # ✈️ Telegram通讯
+  # Spotify音乐 - 自动测速
+  - name: "🎵 Spotify"
+    type: url-test
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Spotify.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 180
+    tolerance: 25
+
+  # Pandora音乐 - 美国专用
+  - name: "🎶 Pandora"
+    type: select
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Pandora.png
+    proxies:
+      - "🇺🇸 美国节点"      # Pandora仅限美国
+      - "🇨🇦 加拿大节点"    # 北美地区备用
+      - "♻️ 自动选择"
+
+  # === 💬 社交通讯应用 ===
+
+  # Telegram通讯 - 自动测速
   - name: "✈️ Telegram"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Telegram.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|德|德国|DE|Germany)"
@@ -275,34 +303,127 @@ proxy-groups:
     interval: 150
     tolerance: 15
 
-  # 🎬 Netflix影视
-  - name: "🎬 Netflix"
+  # 🎨 Midjourney & Discord
+  - name: "🎨 Midjourney"
+    type: url-test
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Lab.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 180
+    tolerance: 25
+
+  # X (Twitter) & Grok - 自动测速
+  - name: "🐦 X平台"
+    type: url-test
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Twitter.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|英|英国|UK|United Kingdom)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 180
+    tolerance: 25
+
+  # Facebook & Meta - 自动测速
+  - name: "📘 Facebook"
+    type: url-test
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Facebook.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 180
+    tolerance: 25
+
+  # Instagram - 自动测速
+  - name: "📷 Instagram"
+    type: url-test
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Instagram.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 180
+    tolerance: 25
+
+  # Reddit社区 - 自动测速
+  - name: "🤖 Reddit"
+    type: url-test
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Reddit.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 180
+    tolerance: 25
+
+  # === 🍎 主要平台服务 ===
+
+  # Apple服务 - 手动选择
+  - name: "🍎 Apple"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Netflix.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Apple.png
     proxies:
-      - "🇺🇸 美国节点"      # 内容最全
-      - "🇯🇵 日本节点"      # 亚洲内容
-      - "🇭🇰 香港节点"      # 亚洲延迟低
-      - "🇬🇧 英国节点"      # 欧洲内容
-      - "🇸🇬 新加坡节点"    # 东南亚
+      - "🇺🇸 美国节点"      # 美区App Store
+      - "🇭🇰 香港节点"      # 港区服务
+      - "🇯🇵 日本节点"      # 日区服务
+      - "🇸🇬 新加坡节点"    # 新区服务
+      - "DIRECT"            # 国行设备
       - "♻️ 自动选择"
 
-  # 🏰 Disney+影视
-  - name: "🏰 Disney+"
+  # Microsoft服务 - 手动选择
+  - name: "🪟 Microsoft"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Disney.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Microsoft.png
     proxies:
-      - "🇺🇸 美国节点"      # 内容最全
-      - "🇯🇵 日本节点"      # 亚洲内容
-      - "🇭🇰 香港节点"      # 亚洲延迟低
-      - "🇬🇧 英国节点"      # 欧洲内容
-      - "🇸🇬 新加坡节点"    # 东南亚
+      - "🇺🇸 美国节点"      # 主要服务
+      - "🇭🇰 香港节点"      # 亚洲服务
+      - "🇯🇵 日本节点"      # 亚洲服务
+      - "🇸🇬 新加坡节点"    # 亚洲服务
       - "♻️ 自动选择"
 
-  # 🎮 游戏服务（全球游戏加速）
+  # === 🔧 专业工具 ===
+
+  # GitHub开发平台
+  - name: "🐙 GitHub"
+    type: select
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/GitHub.png
+    proxies:
+      - "🇺🇸 美国节点"
+      - "🇯🇵 日本节点"
+      - "🇸🇬 新加坡节点"
+      - "♻️ 自动选择"
+
+  # Z-Library数字图书馆
+  - name: "📚 Z-Library"
+    type: select
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Lab.png
+    proxies:
+      - "🇺🇸 美国节点"      # 主要服务器
+      - "🇬🇧 英国节点"      # 欧洲服务器
+      - "🇩🇪 德国节点"      # 欧洲服务器
+      - "🇯🇵 日本节点"      # 亚洲服务器
+      - "♻️ 自动选择"
+
+  # === 🚀 高级功能分组 ===
+
+  # 流媒体解锁（全球）
+  - name: "🌍 流媒体解锁"
+    type: select
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Streaming.png
+    proxies:
+      - "🇺🇸 美国节点"
+      - "🇭🇰 香港节点"
+      - "🇯🇵 日本节点"
+      - "🇰🇷 韩国节点"
+      - "🇬🇧 英国节点"
+      - "♻️ 自动选择"
+
+  # 游戏服务（全球游戏加速）
   - name: "🎮 游戏服务"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Game.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Game.png
     proxies:
       - "🇭🇰 香港节点"
       - "🇯🇵 日本节点"
@@ -311,12 +432,12 @@ proxy-groups:
       - "🇺🇸 美国节点"
       - "♻️ 自动选择"
 
-  # === 国内服务分组 ===
+  # === 🏠 国内服务分组 ===
 
   # 🔧 工具应用（国内工具专用）
   - name: "🔧 工具应用"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Domestic.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Static.png
     proxies:
       - "DIRECT"
       - "🇭🇰 香港节点"
@@ -326,16 +447,16 @@ proxy-groups:
   # 🏠 国内网站（全部直连）
   - name: "🏠 国内网站"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/CN.png
     proxies:
       - "DIRECT"
 
-  # === 地区节点分组 ===
+  # === 🌍 地区节点分组 ===
 
   # 🇺🇸 美国节点
   - name: "🇺🇸 美国节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/US.png
     use:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States)"
@@ -346,7 +467,7 @@ proxy-groups:
   # 🇭🇰 香港节点
   - name: "🇭🇰 香港节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/HK.png
     use:
       - 机场订阅
     filter: "(?i)(港|香港|HK|Hong Kong)"
@@ -357,7 +478,7 @@ proxy-groups:
   # 🇯🇵 日本节点
   - name: "🇯🇵 日本节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/JP.png
     use:
       - 机场订阅
     filter: "(?i)(日|日本|JP|Japan)"
@@ -368,7 +489,7 @@ proxy-groups:
   # 🇰🇷 韩国节点
   - name: "🇰🇷 韩国节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Korea.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/KR.png
     use:
       - 机场订阅
     filter: "(?i)(韩|韩国|KR|Korea)"
@@ -379,7 +500,7 @@ proxy-groups:
   # 🇸🇬 新加坡节点
   - name: "🇸🇬 新加坡节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/SG.png
     use:
       - 机场订阅
     filter: "(?i)(新|新加坡|SG|Singapore)"
@@ -390,7 +511,7 @@ proxy-groups:
   # 🇦🇺 澳洲节点
   - name: "🇦🇺 澳洲节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Australia.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/AU.png
     use:
       - 机场订阅
     filter: "(?i)(澳|澳大利亚|澳洲|AU|Australia)"
@@ -401,7 +522,7 @@ proxy-groups:
   # 🇬🇧 英国节点
   - name: "🇬🇧 英国节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_Kingdom.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/UK.png
     use:
       - 机场订阅
     filter: "(?i)(英|英国|UK|United Kingdom|Britain)"
@@ -412,7 +533,7 @@ proxy-groups:
   # 🇨🇦 加拿大节点
   - name: "🇨🇦 加拿大节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Canada.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/CA.png
     use:
       - 机场订阅
     filter: "(?i)(加|加拿大|CA|Canada)"
@@ -423,7 +544,7 @@ proxy-groups:
   # 🇩🇪 德国节点
   - name: "🇩🇪 德国节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Germany.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/DE.png
     use:
       - 机场订阅
     filter: "(?i)(德|德国|DE|Germany)"
@@ -434,7 +555,7 @@ proxy-groups:
   # 🇪🇺 欧洲节点
   - name: "🇪🇺 欧洲节点"
     type: url-test
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/European_Union.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/EU.png
     use:
       - 机场订阅
     filter: "(?i)(欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary)"
@@ -445,27 +566,233 @@ proxy-groups:
   # 🌍 其他地区
   - name: "🌍 其他地区"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Global.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/UN.png
     use:
       - 机场订阅
     filter: "^((?!美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|韩|韩国|KR|Korea|新|新加坡|SG|Singapore|澳|澳大利亚|澳洲|AU|Australia|英|英国|UK|United Kingdom|Britain|加|加拿大|CA|Canada|德|德国|DE|Germany|欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary).)*$"
 
-  # 🐟 兜底规则
+  # === 🐟 兜底规则 ===
+
+  # Final兜底策略
   - name: "🐟 Final"
     type: select
-    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Final.png
+    icon: https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/Final.png
     proxies:
       - "♻️ 自动选择"
       - "🚀 节点选择"
       - "DIRECT"
-  - DOMAIN,app.bilibili.com,🏠 国内网站
-  - DOMAIN,api.bilibili.com,🏠 国内网站
-  - DOMAIN,api.live.bilibili.com,🏠 国内网站
-  - DOMAIN,api.vc.bilibili.com,🏠 国内网站
-  - DOMAIN,manga.bilibili.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bilibili.com,🏠 国内网站
-  - DOMAIN-SUFFIX,hdslb.com,🏠 国内网站
-  - DOMAIN-SUFFIX,biliapi.net,🏠 国内网站
+
+# ===== 🌐 规则配置 =====
+rules:
+  # === AI工具平台规则 ===
+
+  # ChatGPT & OpenAI 全家桶
+  - DOMAIN-SUFFIX,openai.com,🧠 ChatGPT
+  - DOMAIN-SUFFIX,openaiapi.com,🧠 ChatGPT
+  - DOMAIN-SUFFIX,chatgpt.com,🧠 ChatGPT
+  - DOMAIN-SUFFIX,oaistatic.com,🧠 ChatGPT
+  - DOMAIN-SUFFIX,oaiusercontent.com,🧠 ChatGPT
+  - DOMAIN-SUFFIX,auth0.com,🧠 ChatGPT
+
+  # Google统一服务 (AI优先级：bard/gemini -> 搜索/邮箱 -> 云服务)
+  - DOMAIN-SUFFIX,bard.google.com,🌟 Google服务
+  - DOMAIN-SUFFIX,gemini.google.com,🌟 Google服务
+  - DOMAIN-KEYWORD,gemini,🌟 Google服务
+  - DOMAIN-KEYWORD,bard,🌟 Google服务
+  - DOMAIN-SUFFIX,google.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googleapis.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googleusercontent.com,🌟 Google服务
+  - DOMAIN-SUFFIX,gstatic.com,🌟 Google服务
+  - DOMAIN-SUFFIX,gmail.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googlemail.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googledrive.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googlecloud.com,🌟 Google服务
+  - DOMAIN-SUFFIX,gcp.com,🌟 Google服务
+  - DOMAIN-SUFFIX,gcr.io,🌟 Google服务
+  - DOMAIN-SUFFIX,googletagmanager.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googleanalytics.com,🌟 Google服务
+  - DOMAIN-SUFFIX,googlesyndication.com,🌟 Google服务
+  - DOMAIN-SUFFIX,doubleclick.net,🌟 Google服务
+  - DOMAIN-SUFFIX,adsystem.google.com,🌟 Google服务
+
+  # Claude & Anthropic - 专用代理组
+  - DOMAIN-SUFFIX,anthropic.com,💭 Claude
+  - DOMAIN-SUFFIX,claude.ai,💭 Claude
+
+  # Grok (xAI) - 专用代理组
+  - DOMAIN-SUFFIX,x.ai,🐦 X平台
+  - DOMAIN-SUFFIX,grok.x.ai,🐦 X平台
+
+  # AI综合平台
+  - DOMAIN-SUFFIX,perplexity.ai,🔬 AI平台
+  - DOMAIN-SUFFIX,huggingface.co,🔬 AI平台
+  - DOMAIN-SUFFIX,replicate.com,🔬 AI平台
+  - DOMAIN-SUFFIX,poe.com,🔬 AI平台
+  - DOMAIN-SUFFIX,character.ai,🔬 AI平台
+  - DOMAIN-SUFFIX,janitorai.com,🔬 AI平台
+  - DOMAIN-SUFFIX,civitai.com,🔬 AI平台
+  - DOMAIN-SUFFIX,leonardo.ai,🔬 AI平台
+
+  # Midjourney & Discord - 专用代理组
+  - DOMAIN-SUFFIX,midjourney.com,🎨 Midjourney
+  - DOMAIN-SUFFIX,discord.com,🎨 Midjourney
+  - DOMAIN-SUFFIX,discordapp.com,🎨 Midjourney
+  - DOMAIN-SUFFIX,discord.gg,🎨 Midjourney
+
+  # 开发AI工具 - 专用代理组
+  - DOMAIN-SUFFIX,cursor.sh,🧰 开发AI
+  - DOMAIN-SUFFIX,cursor.com,🧰 开发AI
+  - DOMAIN-SUFFIX,github.com,🐙 GitHub
+  - DOMAIN-SUFFIX,githubusercontent.com,🐙 GitHub
+  - DOMAIN-SUFFIX,githubassets.com,🐙 GitHub
+  - DOMAIN-SUFFIX,github.io,🐙 GitHub
+
+  # === 主要功能规则 ===
+
+  # Z-Library数字图书馆 - 专用代理组
+  - DOMAIN-SUFFIX,z-lib.org,📚 Z-Library
+  - DOMAIN-SUFFIX,1lib.org,📚 Z-Library
+  - DOMAIN-SUFFIX,zlibrary.to,📚 Z-Library
+  - DOMAIN-SUFFIX,singlelogin.org,📚 Z-Library
+  - DOMAIN-SUFFIX,b-ok.org,📚 Z-Library
+
+  # === 流媒体和社交应用规则 ===
+
+  # YouTube Premium - 专用代理组，自动测速最快节点
+  - DOMAIN-SUFFIX,youtube.com,📺 YouTube
+  - DOMAIN-SUFFIX,youtubei.googleapis.com,📺 YouTube
+  - DOMAIN-SUFFIX,googlevideo.com,📺 YouTube
+  - DOMAIN-SUFFIX,ytimg.com,📺 YouTube
+  - DOMAIN-SUFFIX,ggpht.com,📺 YouTube
+
+  # Netflix - 专用代理组，支持多地区内容
+  - DOMAIN-SUFFIX,netflix.com,🎬 Netflix
+  - DOMAIN-SUFFIX,nflximg.com,🎬 Netflix
+  - DOMAIN-SUFFIX,nflxext.com,🎬 Netflix
+  - DOMAIN-SUFFIX,nflxso.net,🎬 Netflix
+  - DOMAIN-SUFFIX,nflxvideo.net,🎬 Netflix
+
+  # Disney+ - 专用代理组，支持多地区内容
+  - DOMAIN-SUFFIX,disneyplus.com,🏰 Disney+
+  - DOMAIN-SUFFIX,disney-plus.net,🏰 Disney+
+  - DOMAIN-SUFFIX,disneystreaming.com,🏰 Disney+
+  - DOMAIN-SUFFIX,dssott.com,🏰 Disney+
+
+  # TikTok - 专用代理组，自动测速最快节点
+  - DOMAIN-SUFFIX,tiktok.com,📱 TikTok
+  - DOMAIN-SUFFIX,tiktokcdn.com,📱 TikTok
+  - DOMAIN-SUFFIX,tiktokv.com,📱 TikTok
+  - DOMAIN-SUFFIX,musical.ly,📱 TikTok
+  - DOMAIN-SUFFIX,byteoversea.com,📱 TikTok
+  - DOMAIN-SUFFIX,tik-tokapi.com,📱 TikTok
+
+  # Spotify - 专用代理组，自动测速最快节点
+  - DOMAIN-SUFFIX,spotify.com,🎵 Spotify
+  - DOMAIN-SUFFIX,scdn.co,🎵 Spotify
+  - DOMAIN-SUFFIX,spoti.fi,🎵 Spotify
+
+  # X (Twitter) & Grok - 专用代理组
+  - DOMAIN-SUFFIX,twitter.com,🐦 X平台
+  - DOMAIN-SUFFIX,x.com,🐦 X平台
+  - DOMAIN-SUFFIX,twimg.com,🐦 X平台
+  - DOMAIN-SUFFIX,t.co,🐦 X平台
+
+  # Facebook & Meta - 专用代理组
+  - DOMAIN-SUFFIX,facebook.com,📘 Facebook
+  - DOMAIN-SUFFIX,fb.com,📘 Facebook
+  - DOMAIN-SUFFIX,fbcdn.net,📘 Facebook
+  - DOMAIN-SUFFIX,meta.com,📘 Facebook
+
+  # Instagram - 专用代理组
+  - DOMAIN-SUFFIX,instagram.com,📷 Instagram
+  - DOMAIN-SUFFIX,cdninstagram.com,📷 Instagram
+
+  # Reddit - 专用代理组
+  - DOMAIN-SUFFIX,reddit.com,🤖 Reddit
+  - DOMAIN-SUFFIX,redd.it,🤖 Reddit
+  - DOMAIN-SUFFIX,redditstatic.com,🤖 Reddit
+
+  # Telegram - 专用代理组，自动测速最快节点
+  - DOMAIN-SUFFIX,telegram.org,✈️ Telegram
+  - DOMAIN-SUFFIX,t.me,✈️ Telegram
+  - DOMAIN-SUFFIX,telegra.ph,✈️ Telegram
+  - DOMAIN-SUFFIX,telegram.me,✈️ Telegram
+
+  # === 主要平台服务规则 ===
+
+  # Apple服务 - 专用代理组
+  - DOMAIN-SUFFIX,apple.com,🍎 Apple
+  - DOMAIN-SUFFIX,icloud.com,🍎 Apple
+  - DOMAIN-SUFFIX,itunes.apple.com,🍎 Apple
+  - DOMAIN-SUFFIX,apps.apple.com,🍎 Apple
+  - DOMAIN-SUFFIX,tv.apple.com,🍎 Apple
+
+  # Microsoft服务 - 专用代理组
+  - DOMAIN-SUFFIX,microsoft.com,🪟 Microsoft
+  - DOMAIN-SUFFIX,microsoftonline.com,🪟 Microsoft
+  - DOMAIN-SUFFIX,office.com,🪟 Microsoft
+  - DOMAIN-SUFFIX,office365.com,🪟 Microsoft
+  - DOMAIN-SUFFIX,outlook.com,🪟 Microsoft
+  - DOMAIN-SUFFIX,live.com,🪟 Microsoft
+  - DOMAIN-SUFFIX,xbox.com,🪟 Microsoft
+  - DOMAIN-SUFFIX,xboxlive.com,🪟 Microsoft
+
+  # === 其他流媒体规则 ===
+
+  # Amazon Prime Video
+  - DOMAIN-SUFFIX,primevideo.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,amazonvideo.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,media-amazon.com,🌍 流媒体解锁
+
+  # HBO Max
+  - DOMAIN-SUFFIX,hbomax.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,hbogo.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,hbonow.com,🌍 流媒体解锁
+
+  # Pandora流媒体 - 专用代理组（美国等地区专用）
+  - DOMAIN-SUFFIX,pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,tuner.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,t.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,www.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,audio-dc.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,audio-sjl.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,www.p-cdn.com,🎶 Pandora
+  - DOMAIN-KEYWORD,pandora,🎶 Pandora
+
+  # === 游戏平台规则 ===
+
+  # Steam平台
+  - DOMAIN-SUFFIX,steampowered.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,steamcommunity.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,steamstatic.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,🎮 游戏服务
+  - DOMAIN-SUFFIX,steamuserimages-a.akamaihd.net,🎮 游戏服务
+
+  # Epic Games
+  - DOMAIN-SUFFIX,epicgames.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,epicgames.dev,🎮 游戏服务
+  - DOMAIN-SUFFIX,unrealengine.com,🎮 游戏服务
+
+  # PlayStation
+  - DOMAIN-SUFFIX,playstation.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,sony.com,🎮 游戏服务
+
+  # 任天堂
+  - DOMAIN-SUFFIX,nintendo.com,🎮 游戏服务
+  - DOMAIN-SUFFIX,nintendo.net,🎮 游戏服务
+
+  # 王者荣耀
+  - DOMAIN-SUFFIX,pvp.qq.com,🎮 游戏服务
+
+  # === 专业工具规则 ===
+
+  # NotebookLM
+  - DOMAIN-SUFFIX,notebooklm.google.com,🌟 Google服务
+
+  # Copilot
+  - DOMAIN-SUFFIX,copilot.microsoft.com,🧰 开发AI
+
+  # === 国内工具应用规则 ===
 
   # 钉钉办公
   - DOMAIN-SUFFIX,dingtalk.com,🔧 工具应用
@@ -481,6 +808,16 @@ proxy-groups:
 
   # VR虚拟现实
   - DOMAIN-SUFFIX,vrhouse.com,🔧 工具应用
+
+  # B站（哔哩哔哩）- 改为国内直连
+  - DOMAIN,app.bilibili.com,🏠 国内网站
+  - DOMAIN,api.bilibili.com,🏠 国内网站
+  - DOMAIN,api.live.bilibili.com,🏠 国内网站
+  - DOMAIN,api.vc.bilibili.com,🏠 国内网站
+  - DOMAIN,manga.bilibili.com,🏠 国内网站
+  - DOMAIN-SUFFIX,bilibili.com,🏠 国内网站
+  - DOMAIN-SUFFIX,hdslb.com,🏠 国内网站
+  - DOMAIN-SUFFIX,biliapi.net,🏠 国内网站
 
   # === 国内AI服务规则 ===
 
@@ -641,206 +978,6 @@ proxy-groups:
 
   # === 最终规则 ===
   - MATCH,🐟 Final
-
-# ===== 🌐 规则配置 =====
-rules:
-  # === AI工具平台规则 ===
-
-  # ChatGPT & OpenAI 全家桶
-  - DOMAIN-SUFFIX,openai.com,🧠 ChatGPT
-  - DOMAIN-SUFFIX,openaiapi.com,🧠 ChatGPT
-  - DOMAIN-SUFFIX,chatgpt.com,🧠 ChatGPT
-  - DOMAIN-SUFFIX,oaistatic.com,🧠 ChatGPT
-  - DOMAIN-SUFFIX,oaiusercontent.com,🧠 ChatGPT
-  - DOMAIN-SUFFIX,auth0.com,🧠 ChatGPT
-
-  # Google统一服务 (AI优先级：bard/gemini -> 搜索/邮箱 -> 云服务)
-  - DOMAIN-SUFFIX,bard.google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,gemini.google.com,🌟 Google服务
-  - DOMAIN-KEYWORD,gemini,🌟 Google服务
-  - DOMAIN-KEYWORD,bard,🌟 Google服务
-  - DOMAIN-SUFFIX,google.com,🌟 Google服务
-  - DOMAIN-SUFFIX,googleapis.com,🌟 Google服务
-  - DOMAIN-SUFFIX,googleusercontent.com,🌟 Google服务
-  - DOMAIN-SUFFIX,gstatic.com,🌟 Google服务
-  - DOMAIN-SUFFIX,gmail.com,🌟 Google服务
-  - DOMAIN-SUFFIX,googlemail.com,🌟 Google服务
-  - DOMAIN-SUFFIX,googledrive.com,🌟 Google服务
-  - DOMAIN-SUFFIX,googlecloud.com,🌟 Google服务
-  - DOMAIN-SUFFIX,gcp.com,🌟 Google服务
-  - DOMAIN-SUFFIX,gcr.io,🌟 Google服务
-  - DOMAIN-SUFFIX,googletagmanager.com,🌟 Google服务
-  - DOMAIN-SUFFIX,googleanalytics.com,🌟 Google服务
-  - DOMAIN-SUFFIX,googlesyndication.com,🌟 Google服务
-  - DOMAIN-SUFFIX,doubleclick.net,🌟 Google服务
-  - DOMAIN-SUFFIX,adsystem.google.com,🌟 Google服务
-
-  # Claude & Anthropic
-  - DOMAIN-SUFFIX,anthropic.com,💭 Claude
-  - DOMAIN-SUFFIX,claude.ai,💭 Claude
-
-  # Grok (xAI)
-  - DOMAIN-SUFFIX,x.ai,🐦 Grok
-  - DOMAIN-SUFFIX,grok.x.ai,🐦 Grok
-
-  # AI综合平台
-  - DOMAIN-SUFFIX,perplexity.ai,🔬 AI平台
-  - DOMAIN-SUFFIX,huggingface.co,🔬 AI平台
-  - DOMAIN-SUFFIX,replicate.com,🔬 AI平台
-  - DOMAIN-SUFFIX,poe.com,🔬 AI平台
-  - DOMAIN-SUFFIX,character.ai,🔬 AI平台
-  - DOMAIN-SUFFIX,janitorai.com,🔬 AI平台
-  - DOMAIN-SUFFIX,civitai.com,🔬 AI平台
-  - DOMAIN-SUFFIX,leonardo.ai,🔬 AI平台
-  - DOMAIN-SUFFIX,midjourney.com,🔬 AI平台
-
-  # 开发AI工具
-  - DOMAIN-SUFFIX,cursor.sh,🧰 开发AI
-  - DOMAIN-SUFFIX,cursor.com,🧰 开发AI
-  - DOMAIN-SUFFIX,github.com,🐙 GitHub
-  - DOMAIN-SUFFIX,githubusercontent.com,🐙 GitHub
-  - DOMAIN-SUFFIX,githubassets.com,🐙 GitHub
-  - DOMAIN-SUFFIX,github.io,🐙 GitHub
-
-  # === 主要功能规则 ===
-
-  # Z-Library数字图书馆
-  - DOMAIN-SUFFIX,z-lib.org,📚 Z-Library
-  - DOMAIN-SUFFIX,1lib.org,📚 Z-Library
-  - DOMAIN-SUFFIX,zlibrary.to,📚 Z-Library
-  - DOMAIN-SUFFIX,singlelogin.org,📚 Z-Library
-  - DOMAIN-SUFFIX,b-ok.org,📚 Z-Library
-
-  # === 流媒体规则 ===
-
-  # YouTube Premium
-  - DOMAIN-SUFFIX,youtube.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,youtubei.googleapis.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,googlevideo.com,🌍 流媒体解锁
-
-  # Netflix
-  - DOMAIN-SUFFIX,netflix.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,nflximg.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,nflxext.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,nflxso.net,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,nflxvideo.net,🌍 流媒体解锁
-
-  # Disney+
-  - DOMAIN-SUFFIX,disneyplus.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,disney-plus.net,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,disneystreaming.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,dssott.com,🌍 流媒体解锁
-
-  # Spotify
-  - DOMAIN-SUFFIX,spotify.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,scdn.co,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,spoti.fi,🌍 流媒体解锁
-
-  # Amazon Prime Video
-  - DOMAIN-SUFFIX,primevideo.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,amazonvideo.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,media-amazon.com,🌍 流媒体解锁
-
-  # HBO Max
-  - DOMAIN-SUFFIX,hbomax.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,hbogo.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,hbonow.com,🌍 流媒体解锁
-
-  # Apple TV+
-  - DOMAIN-SUFFIX,tv.apple.com,🌍 流媒体解锁
-
-  # Pandora流媒体（美国等地区专用）
-  - DOMAIN-SUFFIX,pandora.com,🌍 流媒体解锁
-
-  # TikTok (抖音国际版)
-  - DOMAIN-SUFFIX,tiktok.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,tiktokcdn.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,tiktokv.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,musical.ly,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,byteoversea.com,🌍 流媒体解锁
-
-  # === 社交媒体规则 ===
-
-  # Facebook & Meta
-  - DOMAIN-SUFFIX,facebook.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,fb.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,fbcdn.net,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,meta.com,🌍 流媒体解锁
-
-  # Instagram
-  - DOMAIN-SUFFIX,instagram.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,cdninstagram.com,🌍 流媒体解锁
-
-  # Discord
-  - DOMAIN-SUFFIX,discord.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,discordapp.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,discord.gg,🌍 流媒体解锁
-
-  # X (Twitter)
-  - DOMAIN-SUFFIX,twitter.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,x.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,twimg.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,t.co,🌍 流媒体解锁
-
-  # Telegram
-  - DOMAIN-SUFFIX,telegram.org,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,t.me,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,telegra.ph,🌍 流媒体解锁
-
-  # Reddit
-  - DOMAIN-SUFFIX,reddit.com,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,redd.it,🌍 流媒体解锁
-  - DOMAIN-SUFFIX,redditstatic.com,🌍 流媒体解锁
-
-  # === 游戏平台规则 ===
-
-  # Steam平台
-  - DOMAIN-SUFFIX,steampowered.com,🎮 游戏服务
-  - DOMAIN-SUFFIX,steamcommunity.com,🎮 游戏服务
-  - DOMAIN-SUFFIX,steamstatic.com,🎮 游戏服务
-  - DOMAIN-SUFFIX,steamcdn-a.akamaihd.net,🎮 游戏服务
-  - DOMAIN-SUFFIX,steamuserimages-a.akamaihd.net,🎮 游戏服务
-
-  # Epic Games
-  - DOMAIN-SUFFIX,epicgames.com,🎮 游戏服务
-  - DOMAIN-SUFFIX,epicgames.dev,🎮 游戏服务
-  - DOMAIN-SUFFIX,unrealengine.com,🎮 游戏服务
-
-  # PlayStation
-  - DOMAIN-SUFFIX,playstation.com,🎮 游戏服务
-  - DOMAIN-SUFFIX,sony.com,🎮 游戏服务
-
-  # Xbox Live
-  - DOMAIN-SUFFIX,xbox.com,🎮 游戏服务
-  - DOMAIN-SUFFIX,xboxlive.com,🎮 游戏服务
-
-  # 任天堂
-  - DOMAIN-SUFFIX,nintendo.com,🎮 游戏服务
-  - DOMAIN-SUFFIX,nintendo.net,🎮 游戏服务
-
-  # 王者荣耀
-  - DOMAIN-SUFFIX,pvp.qq.com,🎮 游戏服务
-
-  # === 国际办公工具规则 ===
-
-  # NotebookLM
-  - DOMAIN-SUFFIX,notebooklm.google.com,🌟 Google服务
-
-  # Copilot
-  - DOMAIN-SUFFIX,copilot.microsoft.com,🧰 开发AI
-  - DOMAIN-SUFFIX,github.com,🐙 GitHub
-
-  # === 国内工具应用规则 ===
-
-  # B站（哔哩哔哩）- 改为国内直连
-  - DOMAIN,app.bilibili.com,🏠 国内网站
-  - DOMAIN,api.bilibili.com,🏠 国内网站
-  - DOMAIN,api.live.bilibili.com,🏠 国内网站
-  - DOMAIN,api.vc.bilibili.com,🏠 国内网站
-  - DOMAIN,manga.bilibili.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bilibili.com,🏠 国内网站
-  - DOMAIN-SUFFIX,hdslb.com,🏠 国内网站
-  - DOMAIN-SUFFIX,biliapi.net,🏠 国内网站
 
   # 钉钉办公
   - DOMAIN-SUFFIX,dingtalk.com,🔧 工具应用

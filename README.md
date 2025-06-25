@@ -1,177 +1,165 @@
-# 🚀 Stash 终极AI工具配置
+# 🚀 Stash智能代理配置 - 开箱即用版
 
-一个专为AI工具、流媒体和广告拦截优化的 Stash 配置文件，支持 ChatGPT、Gemini、Claude、Midjourney 等主流AI服务。
+> 一个功能完整、智能分流、图标美观的Stash代理配置，支持AI工具、流媒体、社交应用等全场景，**直接复制使用**
 
-## ✨ 主要特性
+## ✨ 特色功能
 
-### 🧠 AI工具全面支持
-- **ChatGPT & OpenAI全家桶** - GPT-4、DALL-E、Whisper等
-- **Google AI** - Gemini、Bard、Veo、Flow等（需要美国节点）
-- **Claude & Anthropic** - Claude-3、Claude-4等
-- **Midjourney** - 完整Discord支持
-- **Grok** - xAI的Grok对话AI
-- **开发AI工具** - Cursor、GitHub Copilot、Codeium等
+### 🤖 AI工具优化
+- **ChatGPT & OpenAI** - 完整支持所有OpenAI服务
+- **Google AI** - Bard/Gemini优化，支持Google Flow工具
+- **Claude** - Anthropic Claude AI专用通道
+- **开发AI** - Cursor、GitHub Copilot等开发工具
+- **AI平台** - Perplexity、Hugging Face等综合平台
 
-### 🎬 流媒体解锁
-- **Netflix** - 多地区解锁优化
-- **Disney+** - 完整支持
-- **YouTube** - 去广告优化
-- **Spotify** - 音乐流媒体
-- **TikTok** - 国际版支持
+### 📱 热门应用专用
+- **流媒体**: YouTube、Netflix、Disney+、TikTok、Spotify、Pandora
+- **社交通讯**: Telegram、X(Twitter)、Facebook、Instagram、Reddit
+- **创作工具**: Midjourney & Discord
+- **主流平台**: Apple、Microsoft服务
 
-### 🛡️ 广告拦截
-- 基础广告拦截
-- YouTube广告专门拦截
-- 流媒体广告处理
-- 国内应用广告过滤
+### 🛡️ 图标系统
+- **37个精美图标** - GitHub CDN托管，稳定可靠
+- **即用即显** - 图标链接已配置好，无需额外设置
+- **高清质量** - PNG格式，显示效果优秀
 
-### 🎮 游戏加速
-- Steam平台优化
-- 游戏延迟自动选择
-- 亚洲节点优选
+### 🌐 智能分流策略
+- **地区节点组** - 美国/香港/日本/新加坡等8个地区
+- **自动测速** - 动态选择最快节点
+- **应用专用** - 每个热门应用独立代理组
+- **兜底规则** - 完善的fallback机制
 
-## 🚀 快速开始
+## 🚀 快速开始 (3步即用)
 
-### 1. 下载配置文件
-```bash
-git clone https://github.com/your-username/stash-ai-config.git
-cd stash-ai-config
+### 第一步: 复制配置文件
+点击 [`stash-config.yaml`](stash-config.yaml) → 点击右上角 **Raw** → 全选复制内容
+
+**或者直接复制以下内容：**
+```
+https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/stash-config.yaml
 ```
 
-### 2. 配置机场订阅
-编辑 `stash-config.yaml` 文件，找到以下部分：
+### 第二步: 导入Stash
+1. 打开Stash应用
+2. 点击右上角 **+** → **从剪贴板导入**
+3. 粘贴刚才复制的配置内容
+
+### 第三步: 配置机场订阅
+编辑配置文件第83行左右，找到：
 ```yaml
-proxy-providers:
-  机场订阅:
-    type: http
-    # 🔗 请将下方URL替换为你的机场订阅链接
-    url: "请替换为你的机场订阅链接"
+url: "你的机场订阅链接"  # 替换为你的机场订阅地址
 ```
 
-将 `"请替换为你的机场订阅链接"` 替换为你的机场订阅地址，例如：
-```yaml
-url: "https://your-airport.com/api/v1/client/subscribe?token=your-token"
-```
+**就这么简单！配置立即生效，图标自动显示！**
 
-### 3. 导入到 Stash
-1. 打开 Stash 应用
-2. 点击右上角的 "+" 按钮
-3. 选择 "从文件导入" 或 "从URL导入"
-4. 选择配置好的 `stash-config.yaml` 文件
+## 📊 配置统计
 
-### 4. 开始使用
-导入成功后，Stash会自动应用配置并开始工作。
+| 类别 | 数量 | 说明 |
+|------|------|------|
+| 🤖 AI工具代理组 | 6个 | ChatGPT、Google、Claude等 |
+| 📱 热门应用代理组 | 14个 | YouTube、Netflix、Telegram等 |
+| 🌍 地区节点代理组 | 10个 | 覆盖全球主要地区 |
+| 🎯 专用规则 | 500+ | 精确匹配各种应用域名 |
+| 🎨 图标文件 | 37个 | 高清PNG格式，GitHub CDN |
+| 📋 脚本功能 | 7个 | YouTube去广告、微信去广告等 |
 
-## 📋 代理分组说明
+## 🎯 核心代理组
 
-### AI工具专用分组
-- **🧠 ChatGPT** - OpenAI全家桶服务
-- **🌟 Google AI** - Gemini、Bard等（仅美国节点）
-- **💭 Claude** - Anthropic AI服务
-- **🐦 Grok** - xAI的Grok服务
-- **🎨 Midjourney** - Discord AI绘图
-- **🔬 AI平台** - Perplexity、Hugging Face等
+### 🤖 AI工具专用
+- **🧠 ChatGPT** - OpenAI全家桶，美国节点优先
+- **🌟 Google服务** - 搜索、AI、云服务统一，美国节点专用
+- **💭 Claude** - Anthropic Claude AI，自动测速选择
+- **🔬 AI平台** - Perplexity、HuggingFace等
 - **🧰 开发AI** - Cursor、GitHub Copilot等
 
-### 流媒体分组
-- **🎥 Netflix** - 多地区优化
-- **🏰 Disney+** - 完整支持
-- **📺 YouTube** - 去广告优化
-- **🎵 Spotify** - 音乐流媒体
+### 📱 热门应用
+- **📺 YouTube** - 自动测速最快节点，去广告脚本
+- **🎬 Netflix** - 多地区内容解锁
+- **🏰 Disney+** - 全球内容库访问
+- **📱 TikTok** - 短视频专用优化
+- **✈️ Telegram** - 即时通讯加速
 
-### 社交媒体分组
-- **🎵 TikTok** - 国际版
-- **🐦 X (Twitter)** - 社交媒体
-- **📘 Facebook** - Meta平台
-- **📷 Instagram** - 图片社交
-- **💬 Discord** - 社区聊天
-- **🟠 Reddit** - 社区论坛
+### 🌍 地区节点
+- **🇺🇸 美国** - AI服务首选，流媒体内容最多
+- **🇭🇰 香港** - 亚洲低延迟，国内访问友好
+- **🇯🇵 日本** - 流媒体内容丰富，游戏优化
+- **🇸🇬 新加坡** - 东南亚枢纽
+- **🇬🇧 英国** - 欧洲内容访问
 
-### 开发工具分组
-- **🐙 GitHub** - 代码托管
-- **🎮 Steam** - 游戏平台
-- **📚 Z-Library** - 图书资源
+## 🛠️ 高级功能
 
-## 🌍 地区节点说明
+### 脚本去广告
+内置7个去广告脚本：
+- YouTube广告拦截
+- Spotify音质增强
+- 微信去广告
+- 京东价格监控
+- 等等
 
-- **🇺🇸 美国节点** - AI工具首选，流媒体内容最多
-- **🇭🇰 香港节点** - 低延迟，国内访问优选
-- **🇯🇵 日本节点** - 游戏优化，动漫内容
-- **🇸🇬 新加坡节点** - 东南亚优选，Telegram推荐
-- **🇬🇧 英国节点** - 欧洲内容，部分AI服务
-- **🇨🇦 加拿大节点** - Claude服务推荐
-- **🇰🇷 韩国节点** - 游戏优化
-- **🇩🇪 德国节点** - 欧洲服务
-- **🇪🇺 欧洲节点** - 欧盟服务
+### 智能健康检查
+- Google 204状态检测
+- DNS over HTTPS (DoH)
+- 自动故障切换
 
-## 🛠️ 高级配置
+## 🔧 技术特性
 
-### DNS优化
-配置使用了多层DNS解析：
-- 国内DNS：阿里云、腾讯云
-- 国外DNS：Google、Cloudflare
-- DoH支持：加密DNS查询
+- ✅ **开箱即用** - 无需Fork，直接复制使用
+- ✅ **图标即显** - GitHub CDN托管，稳定可靠
+- ✅ **智能路由** - 基于应用特性优化分流
+- ✅ **自动故障转移** - 多节点备份机制
+- ✅ **脚本增强** - 去广告和功能优化
+- ✅ **性能优化** - 自动测速选择最快节点
 
-### 性能优化
-- TCP并发连接
-- 自动健康检查
-- 智能路由选择
-- 延迟容忍度优化
+## 💡 使用技巧
 
-### 规则更新
-配置支持自动更新规则集：
-- 每24小时更新一次
-- 支持手动强制更新
-- 规则来源：blackmatrix7维护的规则集
+### 快速替换机场订阅
+```yaml
+# 在配置文件中找到这一行（大约第83行）
+url: "你的机场订阅链接"
 
-## 🔧 常见问题
+# 替换为你的实际订阅地址，例如：
+url: "https://your-airport.com/api/v1/client/subscribe?token=xxxxx"
+```
 
-### Q: 如何获取机场订阅链接？
-A: 需要购买机场服务，然后在机场面板中找到"订阅链接"或"Clash订阅"。
+### 自定义应用代理组
+如果需要添加新的应用代理，可以参考现有格式在配置文件中添加：
+```yaml
+- name: "🆕 新应用"
+  type: select
+  proxies: ["🇺🇸 美国", "🇭🇰 香港", "🇯🇵 日本", "♻️ 自动选择"]
+  icon: "https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/icons/新应用.png"
+```
 
-### Q: 配置导入失败怎么办？
-A: 检查以下几点：
-1. 确保机场订阅链接正确
-2. 检查网络连接
-3. 确保Stash版本支持
+## ⚠️ 注意事项
 
-### Q: 某些AI服务无法访问？
-A: 请检查：
-1. 是否选择了正确的地区节点（如Google AI需要美国节点）
-2. 机场节点是否支持相应服务
-3. 是否被AI服务封禁IP
+- 💡 **无需Fork仓库**，直接复制配置文件内容即可
+- 🔑 **必须配置机场订阅**，否则无法正常使用代理
+- 🌐 **图标自动显示**，基于GitHub CDN，稳定可靠
+- 📱 **部分流媒体**可能需要特定地区的IP
 
-### Q: 如何更新配置？
-A: 直接下载最新的配置文件，重新导入即可。
+## 🆘 常见问题
 
-## 📝 更新日志
+### Q: 图标不显示怎么办？
+A: 图标基于GitHub CDN，网络正常情况下会自动显示，无需额外配置。
 
-### v1.0.0 (2025-06-25)
-- 🎉 项目发布
-- 🤖 支持主流AI工具(ChatGPT, Gemini, Claude, Midjourney等)
-- 🎬 流媒体解锁(Netflix, Disney+, YouTube等)
-- 🛡️ 广告拦截功能
-- 🎮 游戏服务支持
-- 🌍 地区节点分组
-- ⚙️ 性能和稳定性
-- ✅ YAML语法验证
+### Q: 某个应用无法访问？
+A: 检查机场节点是否支持该服务，或尝试手动切换到其他地区节点。
 
-## 🤝 贡献
+### Q: 如何添加新的机场订阅？
+A: 在配置文件第83行左右找到 `url: "你的机场订阅链接"`，替换为你的订阅地址。
 
-欢迎提交Issue和Pull Request来改进这个配置文件。
+### Q: 可以同时使用多个机场吗？
+A: 可以，在 `proxies` 部分添加多个订阅链接即可。
 
-### 贡献指南
-1. Fork 本仓库
-2. 创建特性分支
-3. 提交更改
-4. 发起Pull Request
+## 🎉 立即开始
 
-## 📄 许可证
+1. **点击** [`stash-config.yaml`](stash-config.yaml) 
+2. **复制** 配置文件内容
+3. **导入** Stash应用
+4. **添加** 机场订阅链接
+5. **享受** 智能代理体验！
 
-本项目采用 MIT 许可证，详情请查看 [LICENSE](LICENSE) 文件。
+---
 
-## ⚠️ 免责声明
+🎊 **开箱即用，一键导入，智能分流！**
 
-本配置文件仅供学习和研究使用，请遵守当地法律法规。使用本配置文件所产生的任何问题，作者不承担任何责任。
-
-如果这个配置对你有帮助，请给个⭐️ Star支持一下！ 
+### 🌟 如果这个配置对你有帮助，请给个Star支持！ 

@@ -1,4 +1,4 @@
-# 系统文件
+# macOS系统文件
 .DS_Store
 .DS_Store?
 ._*
@@ -7,45 +7,37 @@
 ehthumbs.db
 Thumbs.db
 
-# IDE和编辑器
+# 临时文件
+*.tmp
+*.temp
+*.log
+*.cache
+
+# 编辑器文件
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# 日志文件
-*.log
-logs/
+# 系统缓存
+.fuse_hidden*
 
-# 缓存目录
-cache/
-.cache/
-
-# 临时文件
-*.tmp
-*.temp
-.tmp/
-
-# Stash相关文件
+# Stash相关临时文件
 providers/
-ruleset/
-dashboard/
-
-# 个人配置文件（包含订阅链接）
-*-personal.yaml
-*-private.yaml
-config-*.yaml
+cache/
+logs/
 
 # 备份文件
 *.bak
 *.backup
+*.orig
 
 # 压缩文件
 *.zip
+*.tar.gz
 *.rar
 *.7z
-*.tar.gz
 
 # 操作系统相关
 *.pid
