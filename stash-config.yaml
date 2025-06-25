@@ -511,6 +511,46 @@ rules:
   # Pandora流媒体（美国等地区专用）
   - DOMAIN-SUFFIX,pandora.com,🌍 流媒体解锁
 
+  # TikTok (抖音国际版)
+  - DOMAIN-SUFFIX,tiktok.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,tiktokcdn.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,tiktokv.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,musical.ly,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,byteoversea.com,🌍 流媒体解锁
+
+  # === 社交媒体规则 ===
+
+  # Facebook & Meta
+  - DOMAIN-SUFFIX,facebook.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,fb.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,fbcdn.net,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,meta.com,🌍 流媒体解锁
+
+  # Instagram
+  - DOMAIN-SUFFIX,instagram.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,cdninstagram.com,🌍 流媒体解锁
+
+  # Discord
+  - DOMAIN-SUFFIX,discord.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,discordapp.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,discord.gg,🌍 流媒体解锁
+
+  # X (Twitter)
+  - DOMAIN-SUFFIX,twitter.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,x.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,twimg.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,t.co,🌍 流媒体解锁
+
+  # Telegram
+  - DOMAIN-SUFFIX,telegram.org,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,t.me,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,telegra.ph,🌍 流媒体解锁
+
+  # Reddit
+  - DOMAIN-SUFFIX,reddit.com,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,redd.it,🌍 流媒体解锁
+  - DOMAIN-SUFFIX,redditstatic.com,🌍 流媒体解锁
+
   # === 游戏平台规则 ===
 
   # Steam平台
@@ -537,6 +577,18 @@ rules:
   - DOMAIN-SUFFIX,nintendo.com,🎮 游戏服务
   - DOMAIN-SUFFIX,nintendo.net,🎮 游戏服务
 
+  # 王者荣耀
+  - DOMAIN-SUFFIX,pvp.qq.com,🎮 游戏服务
+
+  # === 国际办公工具规则 ===
+
+  # NotebookLM
+  - DOMAIN-SUFFIX,notebooklm.google.com,🌟 Google服务
+
+  # Copilot
+  - DOMAIN-SUFFIX,copilot.microsoft.com,🧰 开发AI
+  - DOMAIN-SUFFIX,github.com,🐙 GitHub
+
   # === 国内工具应用规则 ===
 
   # B站（哔哩哔哩）- 改为国内直连
@@ -561,6 +613,29 @@ rules:
   - DOMAIN-SUFFIX,feishu.cn,🔧 工具应用
   - DOMAIN-SUFFIX,larksuite.com,🔧 工具应用
 
+  # VR虚拟现实
+  - DOMAIN-SUFFIX,vrhouse.com,🔧 工具应用
+
+  # === 国内AI服务规则 ===
+
+  # DeepSeek深度求索
+  - DOMAIN-SUFFIX,deepseek.com,🏠 国内网站
+  - DOMAIN-SUFFIX,deepseek.ai,🏠 国内网站
+
+  # 通义千问
+  - DOMAIN-SUFFIX,tongyi.aliyun.com,🏠 国内网站
+  - DOMAIN-SUFFIX,qianwen.aliyun.com,🏠 国内网站
+
+  # 即梦AI
+  - DOMAIN-SUFFIX,jimeng.jianying.com,🏠 国内网站
+
+  # 海螺AI
+  - DOMAIN-SUFFIX,hailuoai.com,🏠 国内网站
+
+  # 百度网盘
+  - DOMAIN-SUFFIX,pan.baidu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,baidupcs.com,🏠 国内网站
+
   # === 国内服务规则 ===
 
   # 电商平台
@@ -569,18 +644,24 @@ rules:
   - DOMAIN-SUFFIX,jd.com,🏠 国内网站
   - DOMAIN-SUFFIX,jd.hk,🏠 国内网站
   - DOMAIN-SUFFIX,360buyimg.com,🏠 国内网站
+  - DOMAIN-SUFFIX,pinduoduo.com,🏠 国内网站
+  - DOMAIN-SUFFIX,yangkeduo.com,🏠 国内网站
+  - DOMAIN-SUFFIX,pddpic.com,🏠 国内网站
 
   # 阿里巴巴生态
   - DOMAIN-SUFFIX,alibaba.com,🏠 国内网站
   - DOMAIN-SUFFIX,alibabacloud.com,🏠 国内网站
   - DOMAIN-SUFFIX,aliyun.com,🏠 国内网站
   - DOMAIN-SUFFIX,alipay.com,🏠 国内网站
+  - DOMAIN-SUFFIX,alimama.com,🏠 国内网站
 
   # 腾讯生态
   - DOMAIN-SUFFIX,qq.com,🏠 国内网站
   - DOMAIN-SUFFIX,tencent.com,🏠 国内网站
   - DOMAIN-SUFFIX,qcloud.com,🏠 国内网站
   - DOMAIN-SUFFIX,gtimg.com,🏠 国内网站
+  - DOMAIN-SUFFIX,wechat.com,🏠 国内网站
+  - DOMAIN-SUFFIX,weixin.qq.com,🏠 国内网站
 
   # 百度生态
   - DOMAIN-SUFFIX,baidu.com,🏠 国内网站
@@ -600,6 +681,17 @@ rules:
   - DOMAIN-SUFFIX,xiaohongshu.com,🏠 国内网站
   - DOMAIN-SUFFIX,xhscdn.com,🏠 国内网站
 
+  # 抖音系列
+  - DOMAIN-SUFFIX,douyin.com,🏠 国内网站
+  - DOMAIN-SUFFIX,douyinpic.com,🏠 国内网站
+  - DOMAIN-SUFFIX,douyincdn.com,🏠 国内网站
+  - DOMAIN-SUFFIX,douyinstatic.com,🏠 国内网站
+  - DOMAIN-SUFFIX,bytedance.com,🏠 国内网站
+
+  # 头条系
+  - DOMAIN-SUFFIX,toutiao.com,🏠 国内网站
+  - DOMAIN-SUFFIX,ixigua.com,🏠 国内网站
+
   # 搜索引擎
   - DOMAIN-SUFFIX,so.com,🏠 国内网站
   - DOMAIN-SUFFIX,sogou.com,🏠 国内网站
@@ -615,13 +707,29 @@ rules:
   - DOMAIN-SUFFIX,music.163.com,🏠 国内网站
   - DOMAIN-SUFFIX,kugou.com,🏠 国内网站
   - DOMAIN-SUFFIX,kuwo.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,qqmusic.qq.com,🏠 国内网站
 
   # 地图导航
   - DOMAIN-SUFFIX,amap.com,🏠 国内网站
+  - DOMAIN-SUFFIX,autonavi.com,🏠 国内网站
   - DOMAIN-SUFFIX,map.baidu.com,🏠 国内网站
 
+  # 出行服务
+  - DOMAIN-SUFFIX,12306.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,12306.com,🏠 国内网站
+  - DOMAIN-SUFFIX,didichuxing.com,🏠 国内网站
+  - DOMAIN-SUFFIX,didiglobal.com,🏠 国内网站
+  - DOMAIN-SUFFIX,xiaojukeji.com,🏠 国内网站
+
+  # 生活服务
+  - DOMAIN-SUFFIX,meituan.com,🏠 国内网站
+  - DOMAIN-SUFFIX,meituan.net,🏠 国内网站
+  - DOMAIN-SUFFIX,sankuai.com,🏠 国内网站
+  - DOMAIN-SUFFIX,dianping.com,🏠 国内网站
+  - DOMAIN-SUFFIX,58.com,🏠 国内网站
+  - DOMAIN-SUFFIX,anjuke.com,🏠 国内网站
+
   # 新闻资讯
-  - DOMAIN-SUFFIX,toutiao.com,🏠 国内网站
   - DOMAIN-SUFFIX,sina.com.cn,🏠 国内网站
   - DOMAIN-SUFFIX,sohu.com,🏠 国内网站
   - DOMAIN-SUFFIX,163.com,🏠 国内网站
@@ -642,6 +750,15 @@ rules:
   - DOMAIN-SUFFIX,hxb.com.cn,🏠 国内网站
   - DOMAIN-SUFFIX,cgbchina.com.cn,🏠 国内网站
   - DOMAIN-SUFFIX,psbc.com,🏠 国内网站
+
+  # 通信运营商
+  - DOMAIN-SUFFIX,10086.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,chinamobile.com,🏠 国内网站
+  - DOMAIN-SUFFIX,10010.com,🏠 国内网站
+  - DOMAIN-SUFFIX,chinaunicom.com,🏠 国内网站
+  - DOMAIN-SUFFIX,10000.com,🏠 国内网站
+  - DOMAIN-SUFFIX,189.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,chinatelecom.com.cn,🏠 国内网站
 
   # 社交通讯
   - DOMAIN-SUFFIX,tieba.baidu.com,🏠 国内网站
@@ -688,6 +805,16 @@ script-providers:
     url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Pandora.js"
     interval: 86400
 
+  # TikTok解锁脚本
+  tiktok-unlock:
+    url: "https://raw.githubusercontent.com/Tartarus2014/Script/master/jd_price_detect.js"
+    interval: 86400
+
+  # 微信去广告
+  wechat-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js"
+    interval: 86400
+
 # === MITM 配置 ===
 mitm:
   ca-passphrase: "Stash"
@@ -718,6 +845,16 @@ http:
     # Pandora相关域名
     - "www.pandora.com"
     - "tuner.pandora.com"
+
+    # TikTok相关域名
+    - "*.tiktokv.com"
+    - "*.byteoversea.com"
+    - "*.tik-tokapi.com"
+
+    # 微信相关域名
+    - "mp.weixin.qq.com"
+    - "weixin110.qq.com"
+    - "security.wechat.com"
 
   script:
     # YouTube去广告脚本
@@ -753,6 +890,20 @@ http:
     # Pandora音乐解锁
     - match: ^https:\/\/tuner\.pandora\.com\/tune
       name: pandora-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # TikTok解锁
+    - match: ^https?:\/\/.+\.(tiktokv|byteoversea)\.(com|net)\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite)
+      name: tiktok-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 微信去广告
+    - match: ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgext
+      name: wechat-ads
       type: response
       require-body: true
       timeout: 10
