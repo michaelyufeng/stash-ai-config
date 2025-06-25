@@ -33,11 +33,6 @@
 ### 第一步: 复制配置文件
 点击 [`stash-config.yaml`](stash-config.yaml) → 点击右上角 **Raw** → 全选复制内容
 
-**或者直接复制以下内容：**
-```
-https://raw.githubusercontent.com/zhuyufeng0809/stash-ai-config/main/stash-config.yaml
-```
-
 ### 第二步: 导入Stash
 1. 打开Stash应用
 2. 点击右上角 **+** → **从剪贴板导入**
