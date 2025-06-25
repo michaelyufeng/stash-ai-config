@@ -52,37 +52,17 @@ dns:
   enable: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
-  # 针对TikTok和Pandora优化的DNS配置
-  fake-ip-filter:
-    - '+.lan'
-    - '+.local'
-    - '+.direct'
-    - '+.msftncsi.com'
-    - '+.msftconnecttest.com'
-    # TikTok相关域名使用真实IP（修复连接问题）
-    - '+.tiktok.com'
-    - '+.tiktokv.com'
-    - '+.bytedance.com'
-    - '+.musical.ly'
-    - '+.byteoversea.com'
-    # Pandora相关域名使用真实IP（修复连接问题）
-    - '+.pandora.com'
-    - '+.p-cdn.com'
   default-nameserver:
     - 223.5.5.5
     - 8.8.8.8
-    - 1.1.1.1
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
     - https://dns.google/dns-query
-    - https://cloudflare-dns.com/dns-query
   fallback:
     - https://1.1.1.1/dns-query
     - https://dns.google/dns-query
-    - https://cloudflare-dns.com/dns-query
     - tls://8.8.8.8:853
-    - tls://1.1.1.1:853
   fallback-filter:
     geoip: true
     geoip-code: CN
@@ -94,25 +74,10 @@ dns:
       - '+.discord.com'
       - '+.twitter.com'
       - '+.facebook.com'
-      - '+.tiktok.com'
-      - '+.pandora.com'
-      - '+.bytedance.com'
     ipcidr:
       - 240.0.0.0/4
       - 0.0.0.0/32
       - 127.0.0.1/32
-      # 专用域名服务器配置（提高解析成功率）
-    nameserver-policy:
-      # TikTok专用DNS
-      '*.tiktokv.com': '8.8.8.8'
-      '*.byteoversea.com': '8.8.8.8'
-          # Pandora专用DNS
-      '*.pandora.com': ['8.8.8.8', '1.1.1.1']
-    '*.p-cdn.com': '8.8.8.8'
-    # AI服务专用DNS
-    '*.openai.com': '1.1.1.1'
-    '*.anthropic.com': '1.1.1.1'
-    '*.google.com': '8.8.8.8'
 
 # 远程代理提供者配置
 # ⚠️ 重要提醒：请替换下方的订阅链接为你自己的机场订阅地址
@@ -303,17 +268,17 @@ proxy-groups:
       - "🇬🇧 英国节点"      # 备选：欧洲内容
       - "♻️ 自动选择"
 
-  # TikTok短视频 - Semporia解锁方案（重要提示：需先安装TikTok v21.1.0然后升级到最新版）
+  # TikTok短视频 - 美国节点优先（香港连接问题修复）
   - name: "📱 TikTok"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/TikTok.png
     proxies:
-      - "🇺🇸 美国节点"      # 首选：TikTok解锁最稳定
-      - "🇯🇵 日本节点"      # 备选：日本区内容丰富
-      - "🇰🇷 韩国节点"      # 备选：韩国区热门内容
+      - "🇺🇸 美国节点"      # 首选：TikTok服务器最佳，连接稳定
+      - "🇸🇬 新加坡节点"    # 备选：亚洲枢纽，速度快
+      - "🇯🇵 日本节点"      # 备选：亚洲地区，内容丰富
+      - "🇰🇷 韩国节点"      # 备选：亚洲地区，韩流内容
       - "🇬🇧 英国节点"      # 备选：欧洲地区
-      - "🇸🇬 新加坡节点"    # 备选：东南亚地区
-      - "♻️ 自动选择"       # 自动选择最佳节点
+      - "♻️ 自动选择"
 
   # Spotify音乐 - 简洁高速选择
   - name: "🎵 Spotify"
@@ -732,7 +697,7 @@ rules:
   - DOMAIN-SUFFIX,disneystreaming.com,🏰 Disney+
   - DOMAIN-SUFFIX,dssott.com,🏰 Disney+
 
-  # TikTok - 专用代理组，完整域名支持（深度修复无网络连接问题）
+  # TikTok - 专用代理组，完整域名支持（修复无网络连接问题）
   - DOMAIN-SUFFIX,tiktok.com,📱 TikTok
   - DOMAIN-SUFFIX,tiktokcdn.com,📱 TikTok
   - DOMAIN-SUFFIX,tiktokv.com,📱 TikTok
@@ -748,105 +713,32 @@ rules:
   - DOMAIN-SUFFIX,sgpstatp.com,📱 TikTok
   - DOMAIN-SUFFIX,snssdk.com,📱 TikTok
   - DOMAIN-SUFFIX,amemv.com,📱 TikTok
-  # 2024年最新TikTok核心域名（深度解锁）
-  - DOMAIN-SUFFIX,api-h2.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api-va.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api21-normal-c-useast1a.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api16-core-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api22-normal-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api26-normal-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api19-normal-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,mon.byteoversea.com,📱 TikTok
-  - DOMAIN-SUFFIX,dm-maliva16.byteoversea.com,📱 TikTok
-  - DOMAIN-SUFFIX,log-va.byteoversea.com,📱 TikTok
-  - DOMAIN-SUFFIX,frontier-aweme.snssdk.com,📱 TikTok
-  - DOMAIN-SUFFIX,gecko-va.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,security-va.byteoversea.com,📱 TikTok
-  - DOMAIN-SUFFIX,webcast.us.tiktok.com,📱 TikTok
-  - DOMAIN-SUFFIX,api2-21-h2.musical.ly,📱 TikTok
-  - DOMAIN-SUFFIX,api2-22-h2.musical.ly,📱 TikTok
-  - DOMAIN-SUFFIX,api2-19-h2.musical.ly,📱 TikTok
-  # 字节跳动海外服务域名
-  - DOMAIN-SUFFIX,byteacctimg.com,📱 TikTok
-  - DOMAIN-SUFFIX,bytedance.net,📱 TikTok
-  - DOMAIN-SUFFIX,bytecdn.cn,📱 TikTok
-  - DOMAIN-SUFFIX,bytegecko.com,📱 TikTok
-  - DOMAIN-SUFFIX,bytegoofy.com,📱 TikTok
-  - DOMAIN-SUFFIX,byteltos.com,📱 TikTok
-  - DOMAIN-SUFFIX,bytemastatic.com,📱 TikTok
-  - DOMAIN-SUFFIX,byteorge.com,📱 TikTok
-  - DOMAIN-SUFFIX,bytescm.com,📱 TikTok
-  - DOMAIN-SUFFIX,bytetcdn.com,📱 TikTok
-  - DOMAIN-SUFFIX,bytetos.com,📱 TikTok
-  - DOMAIN-SUFFIX,byteuseastcdn.com,📱 TikTok
-  - DOMAIN-SUFFIX,byteimg.com,📱 TikTok
-  # TikTok关联应用和服务
-  - DOMAIN-SUFFIX,capcut.com,📱 TikTok
-  - DOMAIN-SUFFIX,capcut.net,📱 TikTok
-  - DOMAIN-SUFFIX,larkcloud.com,📱 TikTok
-  - DOMAIN-SUFFIX,feishu.cn,📱 TikTok
-  - DOMAIN-SUFFIX,larksuite.com,📱 TikTok
-  - DOMAIN-SUFFIX,musical.ly,📱 TikTok
-  - DOMAIN-SUFFIX,tiktok-row.net,📱 TikTok
-  - DOMAIN-SUFFIX,tiktokcdn.com,📱 TikTok
-  - DOMAIN-SUFFIX,tiktokd.net,📱 TikTok
-  - DOMAIN-SUFFIX,tiktokd.org,📱 TikTok
-  - DOMAIN-SUFFIX,tiktokmusic.app,📱 TikTok
-  - DOMAIN-SUFFIX,tiktokv.us,📱 TikTok
-  - DOMAIN-SUFFIX,tlivecdn.com,📱 TikTok
-  - DOMAIN-SUFFIX,ttlivecdn.com,📱 TikTok
-  - DOMAIN-SUFFIX,tiktokcdn-us.com,📱 TikTok
-  # 字节跳动内容分发网络CDN
-  - DOMAIN-SUFFIX,volccdn.com,📱 TikTok
-  - DOMAIN-SUFFIX,volcengine.com,📱 TikTok
-  - DOMAIN-SUFFIX,volces.com,📱 TikTok
-  - DOMAIN-SUFFIX,volcsirius.com,📱 TikTok
   - DOMAIN-SUFFIX,bdxiguaimg.com,📱 TikTok
   - DOMAIN-SUFFIX,bdxiguastatic.com,📱 TikTok
+  - DOMAIN-SUFFIX,byteacctimg.com,📱 TikTok
+  - DOMAIN-SUFFIX,bytescm.com,📱 TikTok
+  - DOMAIN-SUFFIX,bytegoofy.com,📱 TikTok
+  - DOMAIN-SUFFIX,bytetos.com,📱 TikTok
   - DOMAIN-SUFFIX,feelgood.cn,📱 TikTok
   - DOMAIN-SUFFIX,feiliao.com,📱 TikTok
   - DOMAIN-SUFFIX,flipagram.com,📱 TikTok
   - DOMAIN-SUFFIX,hypstarcdn.com,📱 TikTok
+  - DOMAIN-SUFFIX,iesdouyin.com,📱 TikTok
+  - DOMAIN-SUFFIX,ixiguavideo.com,📱 TikTok
   - DOMAIN-SUFFIX,kamerahd.com,📱 TikTok
   - DOMAIN-SUFFIX,mmstat.com,📱 TikTok
   - DOMAIN-SUFFIX,musemuse.cn,📱 TikTok
+  - DOMAIN-SUFFIX,musical.ly,📱 TikTok
   - DOMAIN-SUFFIX,pstatp.com,📱 TikTok
+  - DOMAIN-SUFFIX,snssdk.com,📱 TikTok
+  - DOMAIN-SUFFIX,tiktokcdn-us.com,📱 TikTok
+  - DOMAIN-SUFFIX,ttlivecdn.com,📱 TikTok
   - DOMAIN-SUFFIX,vigo.ws,📱 TikTok
   - DOMAIN-SUFFIX,videozhishi.com,📱 TikTok
-  # 国内抖音相关域名（避免混淆路由）
-  - DOMAIN-SUFFIX,douyin.com,📱 TikTok
-  - DOMAIN-SUFFIX,douyincdn.com,📱 TikTok
-  - DOMAIN-SUFFIX,douyinpic.com,📱 TikTok
-  - DOMAIN-SUFFIX,douyinstatic.com,📱 TikTok
-  - DOMAIN-SUFFIX,douyinvod.com,📱 TikTok
-  - DOMAIN-SUFFIX,idouyinvod.com,📱 TikTok
-  - DOMAIN-SUFFIX,ixiguavideo.com,📱 TikTok
-  - DOMAIN-SUFFIX,iesdouyin.com,📱 TikTok
-  # 字节跳动API和统计域名
-  - DOMAIN-SUFFIX,zijieapi.com,📱 TikTok
-  - DOMAIN-SUFFIX,zijieimg.com,📱 TikTok
-  - DOMAIN-SUFFIX,zjbyte.com,📱 TikTok
-  - DOMAIN-SUFFIX,zjcdn.com,📱 TikTok
-  # TikTok关键字匹配（增强连接支持）
-  - DOMAIN-KEYWORD,tiktok,📱 TikTok
-  - DOMAIN-KEYWORD,bytedance,📱 TikTok
-  - DOMAIN-KEYWORD,musical-ly,📱 TikTok
-  - DOMAIN-KEYWORD,byteoversea,📱 TikTok
-  - DOMAIN-SUFFIX,api.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api16-core-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api16-normal-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api19-core-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api19-normal-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api21-core-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api21-normal-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api22-core-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,api22-normal-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,webcast16-normal-c-alisg.tiktokv.com,📱 TikTok
-  - DOMAIN-SUFFIX,webcast19-normal-c-alisg.tiktokv.com,📱 TikTok
+  - DOMAIN-SUFFIX,volccdn.com,📱 TikTok
   - DOMAIN-KEYWORD,tiktok,📱 TikTok
   - DOMAIN-KEYWORD,musical.ly,📱 TikTok
   - DOMAIN-KEYWORD,bytedance,📱 TikTok
-  - DOMAIN-KEYWORD,douyin,📱 TikTok
 
   # Spotify - 专用代理组，自动测速最快节点
   - DOMAIN-SUFFIX,spotify.com,🎵 Spotify
@@ -944,50 +836,6 @@ rules:
   - DOMAIN-SUFFIX,mediaserver-cont-dc6-1-v4v6.pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,mediaserver-cont-sjl-1-v4v6.pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,mediaserver-cont-sv5-1-v4v6.pandora.com,🎶 Pandora
-  # 新增Pandora关键域名（修复连接问题）
-  - DOMAIN-SUFFIX,adnxs.com,🎶 Pandora
-  - DOMAIN-SUFFIX,adsystem.google.com,🎶 Pandora
-  - DOMAIN-SUFFIX,amazon-adsystem.com,🎶 Pandora
-  - DOMAIN-SUFFIX,doubleclick.net,🎶 Pandora
-  - DOMAIN-SUFFIX,facebook.com,🎶 Pandora
-  - DOMAIN-SUFFIX,googlesyndication.com,🎶 Pandora
-  - DOMAIN-SUFFIX,googletagmanager.com,🎶 Pandora
-  - DOMAIN-SUFFIX,googletagservices.com,🎶 Pandora
-  - DOMAIN-SUFFIX,krxd.net,🎶 Pandora
-  - DOMAIN-SUFFIX,moatads.com,🎶 Pandora
-  - DOMAIN-SUFFIX,newrelic.com,🎶 Pandora
-  - DOMAIN-SUFFIX,Nielsen.com,🎶 Pandora
-  - DOMAIN-SUFFIX,pandora.112.2o7.net,🎶 Pandora
-  - DOMAIN-SUFFIX,pdst.fm,🎶 Pandora
-  - DOMAIN-SUFFIX,pubmatic.com,🎶 Pandora
-  - DOMAIN-SUFFIX,rubiconproject.com,🎶 Pandora
-  - DOMAIN-SUFFIX,scorecardresearch.com,🎶 Pandora
-  - DOMAIN-SUFFIX,spotify.com,🎶 Pandora
-  - DOMAIN-SUFFIX,tidaltv.com,🎶 Pandora
-  - DOMAIN-SUFFIX,tritondigital.com,🎶 Pandora
-  - DOMAIN-SUFFIX,w55c.net,🎶 Pandora
-  # Pandora流媒体核心域名
-  - DOMAIN-SUFFIX,audio-ak.spotify.com.edgesuite.net,🎶 Pandora
-  - DOMAIN-SUFFIX,audio-dc6-1.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,audio-sjl-1.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,audio-sv5-1.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,mediaserver-sv5-1-v4v6.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,mediaserver-dc6-1-v4v6.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,mediaserver-sjl-1-v4v6.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,bootstrap.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,clientapi.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,content.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,feeds.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,images.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,mobile.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,origin.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,internal.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,recs.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,static.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,subsonicradio.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,thumbs.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,users.pandora.com,🎶 Pandora
-  - DOMAIN-SUFFIX,xml.pandora.com,🎶 Pandora
   - DOMAIN-KEYWORD,pandora,🎶 Pandora
 
   # === 游戏平台规则 ===
@@ -1239,14 +1087,9 @@ script-providers:
     url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Pandora.js"
     interval: 86400
 
-  # TikTok解锁脚本（Semporia最新版本 - 支持39.7.0版本）
-  tiktok-unlock-us:
-    url: "https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Quantumult-X/TikTok-US.conf"
-    interval: 86400
-
-  # TikTok分流规则（必需配套规则）
-  tiktok-rules:
-    url: "https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Quantumult-X/TikTok.list"
+  # TikTok解锁脚本
+  tiktok-unlock:
+    url: "https://raw.githubusercontent.com/Tartarus2014/Script/master/jd_price_detect.js"
     interval: 86400
 
   # 微信去广告
@@ -1291,7 +1134,7 @@ http:
     - "audio-sjl.pandora.com"
     - "audio-sv5.pandora.com"
 
-    # TikTok相关域名（Semporia官方配置）
+    # TikTok相关域名
     - "*.tiktokv.com"
     - "*.byteoversea.com"
     - "*.tik-tokapi.com"
@@ -1346,9 +1189,9 @@ http:
       require-body: true
       timeout: 10
 
-    # TikTok解锁（Semporia官方规则）
-    - match: ^https:\/\/.+\.(byteoversea|tiktokv)\.(com|net)\/.*
-      name: tiktok-unlock-us
+    # TikTok解锁
+    - match: ^https?:\/\/.+\.(tiktokv|byteoversea)\.(com|net)\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite)
+      name: tiktok-unlock
       type: response
       require-body: true
       timeout: 10
@@ -1360,7 +1203,13 @@ http:
       require-body: true
       timeout: 10
 
-  rewrite: []
+  rewrite:
+    # YouTube去广告重写
+    - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
+    - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
+    - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject-200
+    - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
+    - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
 
 # 📝 高级功能开关
 experimental:
