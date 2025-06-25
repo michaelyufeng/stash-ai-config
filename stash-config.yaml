@@ -1413,28 +1413,20 @@ http:
       timeout: 10
 
   rewrite:
-    # TikTok地区重写（深度修复地区限制）
-    - ^https:\/\/.+\.tiktok\.com\/aweme\/v\d\/.*\?.*region.*$ - reject-200
-    - ^https:\/\/.+\.musical\.ly\/aweme\/v\d\/.*\?.*region.*$ - reject-200
-    - ^https:\/\/.+\.(tiktokv|byteoversea)\.com\/.*\?.*carrier_region.*$ - reject-200
-    - ^https:\/\/.+\.(tiktokv|byteoversea)\.com\/.*\?.*sim_region.*$ - reject-200
-    - ^https:\/\/.+\.(tiktokv|byteoversea)\.com\/.*\?.*timezone.*$ - reject-200
-    # TikTok地区参数伪装
-    - (?<=(\?|&))region=CN(&|$) - 302 region=US$2
-    - (?<=(\?|&))mcc_mnc=460\d{2}(&|$) - 302 mcc_mnc=310260$2
-    - (?<=(\?|&))timezone=Asia\/Shanghai(&|$) - 302 timezone=America/New_York$2
-    - (?<=(\?|&))carrier_region=CN(&|$) - 302 carrier_region=US$2
-    - (?<=(\?|&))sim_region=cn(&|$) - 302 sim_region=us$2
+    # TikTok地区重写（修复地区限制）
+    - ^https:\/\/.+\.tiktok\.com\/aweme\/v\d\/.*\?.*region=CN.* reject-200
+    - ^https:\/\/.+\.musical\.ly\/aweme\/v\d\/.*\?.*region=CN.* reject-200
+    - ^https:\/\/.+\.(tiktokv|byteoversea)\.com\/.*\?.*mcc_mnc=460.* reject-200
     
     # Pandora地区重写（修复地区限制）
-    - ^https:\/\/.+\.pandora\.com\/.*\?.*country.*$ - reject-200
+    - ^https:\/\/.+\.pandora\.com\/.*\?.*country.* reject-200
     
     # YouTube去广告重写
-    - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
-    - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
-    - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject-200
-    - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
-    - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
+    - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) 302 $1$2$3
+    - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad reject-200
+    - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads reject-200
+    - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) reject-200
+    - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext reject-200
 
 # 📝 高级功能开关
 experimental:
