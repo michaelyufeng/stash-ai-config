@@ -285,16 +285,16 @@ proxy-groups:
     interval: 180
     tolerance: 25
 
-  # Pandora音乐 - 优化版（支持多地区）
+  # Pandora音乐 - 手动选择版（支持自由切换节点）
   - name: "🎶 Pandora"
-    type: url-test
+    type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Pandora.png
-    use:
-      - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|加|加拿大|CA|Canada)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    tolerance: 80
+    proxies:
+      - "🇺🇸 美国节点"      # 首选：Pandora官方支持
+      - "🇨🇦 加拿大节点"    # 备选：北美地区
+      - "🇬🇧 英国节点"      # 备选：部分内容支持
+      - "🇦🇺 澳洲节点"      # 备选：英语地区
+      - "♻️ 自动选择"       # 自动选择最快节点
 
   # === 💬 社交通讯应用 ===
 
@@ -771,7 +771,7 @@ rules:
   - DOMAIN-SUFFIX,hbogo.com,🌍 流媒体解锁
   - DOMAIN-SUFFIX,hbonow.com,🌍 流媒体解锁
 
-  # Pandora流媒体 - 优化版（添加更多域名支持）
+  # Pandora流媒体 - 完整域名支持（提高连接成功率）
   - DOMAIN-SUFFIX,pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,tuner.pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,t.pandora.com,🎶 Pandora
@@ -784,6 +784,11 @@ rules:
   - DOMAIN-SUFFIX,p-cdn.com,🎶 Pandora
   - DOMAIN-SUFFIX,pandora-native.pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,stats.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,api.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,access.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,mediaserver-cont-dc6-1-v4v6.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,mediaserver-cont-sjl-1-v4v6.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,mediaserver-cont-sv5-1-v4v6.pandora.com,🎶 Pandora
   - DOMAIN-KEYWORD,pandora,🎶 Pandora
 
   # === 游戏平台规则 ===
@@ -1247,9 +1252,15 @@ http:
     # Peak相关域名
     - "billing.peakcloud.org"
 
-    # Pandora相关域名
+    # Pandora相关域名（增强MITM支持）
     - "www.pandora.com"
     - "tuner.pandora.com"
+    - "api.pandora.com"
+    - "access.pandora.com"
+    - "audio.pandora.com"
+    - "audio-dc.pandora.com"
+    - "audio-sjl.pandora.com"
+    - "audio-sv5.pandora.com"
 
     # TikTok相关域名
     - "*.tiktokv.com"
@@ -1292,8 +1303,15 @@ http:
       require-body: true
       timeout: 10
 
-    # Pandora音乐解锁
+    # Pandora音乐解锁（增强脚本支持）
     - match: ^https:\/\/tuner\.pandora\.com\/tune
+      name: pandora-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    
+    # Pandora API解锁
+    - match: ^https:\/\/api\.pandora\.com\/(v\d\/)?user\/getCanListen
       name: pandora-unlock
       type: response
       require-body: true
