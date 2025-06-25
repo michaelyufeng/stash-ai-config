@@ -43,6 +43,10 @@ geodata-mode: true
 geo-auto-update: true
 geo-update-interval: 24
 
+# 性能优化设置
+unified-delay: false
+connection-test-url: http://www.gstatic.com/generate_204
+
 # DNS配置
 dns:
   enable: true
@@ -281,27 +285,30 @@ proxy-groups:
     interval: 180
     tolerance: 25
 
-  # Pandora音乐 - 美国专用
+  # Pandora音乐 - 优化版（支持多地区）
   - name: "🎶 Pandora"
-    type: select
+    type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Pandora.png
-    proxies:
-      - "🇺🇸 美国节点"      # Pandora仅限美国
-      - "🇨🇦 加拿大节点"    # 北美地区备用
-      - "♻️ 自动选择"
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|加|加拿大|CA|Canada)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 80
 
   # === 💬 社交通讯应用 ===
 
-  # Telegram通讯 - 自动测速
+  # Telegram通讯 - 优化版（降低测速频率）
   - name: "✈️ Telegram"
-    type: url-test
+    type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Telegram.png
-    use:
-      - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|德|德国|DE|Germany)"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 150
-    tolerance: 15
+    proxies:
+      - "🇸🇬 新加坡节点"    # 首选：亚洲低延迟
+      - "🇭🇰 香港节点"      # 备选：亚洲低延迟
+      - "🇺🇸 美国节点"      # 备选：稳定性好
+      - "🇯🇵 日本节点"      # 备选：亚洲地区
+      - "🇩🇪 德国节点"      # 备选：欧洲地区
+      - "♻️ 自动选择"
 
   # 🎨 Midjourney & Discord
   - name: "🎨 Midjourney"
@@ -712,11 +719,26 @@ rules:
   - DOMAIN-SUFFIX,redd.it,🤖 Reddit
   - DOMAIN-SUFFIX,redditstatic.com,🤖 Reddit
 
-  # Telegram - 专用代理组，自动测速最快节点
+  # Telegram - 专用代理组（域名+IP段优化）
   - DOMAIN-SUFFIX,telegram.org,✈️ Telegram
   - DOMAIN-SUFFIX,t.me,✈️ Telegram
   - DOMAIN-SUFFIX,telegra.ph,✈️ Telegram
   - DOMAIN-SUFFIX,telegram.me,✈️ Telegram
+  - DOMAIN-SUFFIX,telesco.pe,✈️ Telegram
+  - DOMAIN-SUFFIX,tdesktop.com,✈️ Telegram
+  
+  # Telegram IP段（解决连接卡顿问题）
+  - IP-CIDR,91.108.4.0/22,✈️ Telegram
+  - IP-CIDR,91.108.8.0/22,✈️ Telegram
+  - IP-CIDR,91.108.12.0/22,✈️ Telegram
+  - IP-CIDR,91.108.16.0/22,✈️ Telegram
+  - IP-CIDR,91.108.20.0/22,✈️ Telegram
+  - IP-CIDR,91.108.56.0/22,✈️ Telegram
+  - IP-CIDR,149.154.160.0/20,✈️ Telegram
+  - IP-CIDR,185.76.151.0/24,✈️ Telegram
+  - IP-CIDR6,2001:b28:f23d::/48,✈️ Telegram
+  - IP-CIDR6,2001:b28:f23f::/48,✈️ Telegram
+  - IP-CIDR6,2001:67c:4e8::/48,✈️ Telegram
 
   # === 主要平台服务规则 ===
 
@@ -749,14 +771,19 @@ rules:
   - DOMAIN-SUFFIX,hbogo.com,🌍 流媒体解锁
   - DOMAIN-SUFFIX,hbonow.com,🌍 流媒体解锁
 
-  # Pandora流媒体 - 专用代理组（美国等地区专用）
+  # Pandora流媒体 - 优化版（添加更多域名支持）
   - DOMAIN-SUFFIX,pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,tuner.pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,t.pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,www.pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,audio-dc.pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,audio-sjl.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,audio-sv5.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,audio.pandora.com,🎶 Pandora
   - DOMAIN-SUFFIX,www.p-cdn.com,🎶 Pandora
+  - DOMAIN-SUFFIX,p-cdn.com,🎶 Pandora
+  - DOMAIN-SUFFIX,pandora-native.pandora.com,🎶 Pandora
+  - DOMAIN-SUFFIX,stats.pandora.com,🎶 Pandora
   - DOMAIN-KEYWORD,pandora,🎶 Pandora
 
   # === 游戏平台规则 ===
