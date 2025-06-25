@@ -103,12 +103,9 @@ dns:
       - 127.0.0.1/32
       # 专用域名服务器配置（提高解析成功率）
     nameserver-policy:
-      # TikTok专用DNS（解决连接问题）
-      '*.tiktok.com': ['8.8.8.8', '1.1.1.1']
-      '*.tiktokv.com': ['8.8.8.8', '1.1.1.1']
-      '*.byteoversea.com': ['8.8.8.8', '1.1.1.1']
-      '*.musical.ly': ['8.8.8.8', '1.1.1.1']
-      '*.bytedance.com': ['8.8.8.8', '1.1.1.1']
+      # TikTok专用DNS
+      '*.tiktokv.com': '8.8.8.8'
+      '*.byteoversea.com': '8.8.8.8'
           # Pandora专用DNS
       '*.pandora.com': ['8.8.8.8', '1.1.1.1']
     '*.p-cdn.com': '8.8.8.8'
@@ -306,17 +303,16 @@ proxy-groups:
       - "🇬🇧 英国节点"      # 备选：欧洲内容
       - "♻️ 自动选择"
 
-  # TikTok短视频 - 强化连接优化（修复播放问题）
+  # TikTok短视频 - Semporia解锁方案（重要提示：需先安装TikTok v21.1.0然后升级到最新版）
   - name: "📱 TikTok"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/TikTok.png
     proxies:
       - "🇺🇸 美国节点"      # 首选：TikTok解锁最稳定
       - "🇯🇵 日本节点"      # 备选：日本区内容丰富
-      - "🇸🇬 新加坡节点"    # 备选：东南亚地区
       - "🇰🇷 韩国节点"      # 备选：韩国区热门内容
-      - "🇭🇰 香港节点"      # 备选：亚洲低延迟
       - "🇬🇧 英国节点"      # 备选：欧洲地区
+      - "🇸🇬 新加坡节点"    # 备选：东南亚地区
       - "♻️ 自动选择"       # 自动选择最佳节点
 
   # Spotify音乐 - 简洁高速选择
@@ -1243,19 +1239,14 @@ script-providers:
     url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Pandora.js"
     interval: 86400
 
-  # TikTok解锁脚本（2024年最新有效脚本）
-  tiktok-unlock:
-    url: "https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Stash/TikTok-US.stoverride"
+  # TikTok解锁脚本（Semporia最新版本 - 支持39.7.0版本）
+  tiktok-unlock-us:
+    url: "https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Quantumult-X/TikTok-US.conf"
     interval: 86400
 
-  # TikTok地区解锁脚本（备用方案）
-  tiktok-region:
-    url: "https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Rewrite/TikTokUnlock.conf"
-    interval: 86400
-
-  # TikTok重写脚本（增强解锁）
-  tiktok-rewrite:
-    url: "https://raw.githubusercontent.com/Marol62926/MarScrpt/main/tiktok.js"
+  # TikTok分流规则（必需配套规则）
+  tiktok-rules:
+    url: "https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Quantumult-X/TikTok.list"
     interval: 86400
 
   # 微信去广告
@@ -1300,18 +1291,10 @@ http:
     - "audio-sjl.pandora.com"
     - "audio-sv5.pandora.com"
 
-    # TikTok相关域名（增强MITM支持）
+    # TikTok相关域名（Semporia官方配置）
     - "*.tiktokv.com"
     - "*.byteoversea.com"
     - "*.tik-tokapi.com"
-    - "*.tiktok.com"
-    - "*.bytedance.com"
-    - "*.musical.ly"
-    - "*.snssdk.com"
-    - "*.amemv.com"
-    - "*.ibyteimg.com"
-    - "*.muscdn.com"
-    - "*.pstatp.com"
 
     # 微信相关域名
     - "mp.weixin.qq.com"
@@ -1363,47 +1346,12 @@ http:
       require-body: true
       timeout: 10
 
-    # TikTok解锁（2024年最新匹配规则）
-    - match: ^https:\/\/.+\.(tiktokv|byteoversea)\.(com|net)\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite)
-      name: tiktok-unlock
+    # TikTok解锁（Semporia官方规则）
+    - match: ^https:\/\/.+\.(byteoversea|tiktokv)\.(com|net)\/.*
+      name: tiktok-unlock-us
       type: response
       require-body: true
-      timeout: 15
-
-    # TikTok API核心接口
-    - match: ^https:\/\/api\d*-\w+\.tiktokv\.com\/aweme\/v\d\/(feed\/|aweme\/detail)
-      name: tiktok-unlock
-      type: response
-      require-body: true
-      timeout: 15
-
-    # TikTok地区检测和用户信息
-    - match: ^https:\/\/.+\.(tiktok|musical\.ly)\.com\/aweme\/v\d\/(user\/profile\/self|account\/check\/age)
-      name: tiktok-region
-      type: response
-      require-body: true
-      timeout: 15
-
-    # TikTok启动检测
-    - match: ^https:\/\/.+\.byteoversea\.com\/service\/2\/(app_log|device_register)
-      name: tiktok-unlock
-      type: response
-      require-body: true
-      timeout: 15
-
-    # TikTok播放和推荐接口
-    - match: ^https:\/\/.+\.tiktokv\.com\/aweme\/v\d\/(aweme\/detail|feed\/|hot\/|search\/)
-      name: tiktok-unlock
-      type: response
-      require-body: true
-      timeout: 15
-
-    # TikTok重写脚本匹配
-    - match: ^https:\/\/.+\.(tiktokv|musical)\.(com|ly)\/.*
-      name: tiktok-rewrite
-      type: response
-      require-body: true
-      timeout: 15
+      timeout: 10
 
     # 微信去广告
     - match: ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgext
