@@ -1412,11 +1412,7 @@ http:
       require-body: true
       timeout: 10
 
-  rewrite:
-    # YouTube去广告重写（简化版）
-    - ^https://[\w-]+\.googlevideo\.com/.+&oad reject-200
-    - ^https://(www|s)\.youtube\.com/api/stats/ads reject-200
-    - ^https://(www|s)\.youtube\.com/(pagead|ptracking) reject-200
+  rewrite: []
 
 # 📝 高级功能开关
 experimental:
