@@ -230,42 +230,38 @@ proxy-groups:
 
   # === 📱 热门流媒体应用 ===
 
-  # YouTube视频服务 - 优化自动测速（增加更多地区）
+  # YouTube视频服务 - 优化自动测速（网速优先）
   - name: "📺 YouTube"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/YouTube.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|韩|韩国|KR|Korea|台|台湾|TW|Taiwan)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|韩|韩国|KR|Korea|台|台湾|TW|Taiwan|英|英国|UK|United Kingdom)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 15  # 降低容错时间，更敏感切换
+    interval: 120  # 更频繁测速，视频需要稳定网速
+    tolerance: 10  # 更敏感切换
 
-  # Netflix影视 - 优化地区选择（内容库优先级）
+  # Netflix影视 - 改为自动测速（网速优先）
   - name: "🎬 Netflix"
-    type: select
+    type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Netflix.png
-    proxies:
-      - "🇺🇸 美国节点"      # 首选：内容最全，4K资源最多
-      - "🇯🇵 日本节点"      # 备选：亚洲内容丰富，动漫资源
-      - "🇰🇷 韩国节点"      # 备选：韩剧内容，亚洲热门
-      - "🇬🇧 英国节点"      # 备选：欧洲内容，BBC合作内容
-      - "🇭🇰 香港节点"      # 备选：亚洲延迟低，中文内容
-      - "🇸🇬 新加坡节点"    # 备选：东南亚地区
-      - "♻️ 自动选择"
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|韩|韩国|KR|Korea|港|香港|HK|Hong Kong|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom|澳|澳大利亚|澳洲|AU|Australia)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 150  # 频繁测速确保4K播放流畅
+    tolerance: 15
 
-  # Disney+影视 - 优化地区选择
+  # Disney+影视 - 改为自动测速（网速优先）
   - name: "🏰 Disney+"
-    type: select
+    type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/DisneyPlus.png
-    proxies:
-      - "🇺🇸 美国节点"      # 首选：内容最全，首发内容
-      - "🇯🇵 日本节点"      # 备选：亚洲内容，动画资源
-      - "🇬🇧 英国节点"      # 备选：欧洲内容库
-      - "🇭🇰 香港节点"      # 备选：亚洲延迟低
-      - "🇸🇬 新加坡节点"    # 备选：东南亚
-      - "🇦🇺 澳洲节点"      # 备选：英语地区
-      - "♻️ 自动选择"
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|港|香港|HK|Hong Kong|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom|澳|澳大利亚|澳洲|AU|Australia)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 150
+    tolerance: 15
 
   # TikTok短视频 - 优化自动测速（更多亚洲节点）
   - name: "📱 TikTok"
@@ -275,10 +271,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|新|新加坡|SG|Singapore|韩|韩国|KR|Korea|港|香港|HK|Hong Kong|台|台湾|TW|Taiwan)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 180
-    tolerance: 20
+    interval: 150  # 提高测速频率
+    tolerance: 15  # 降低容错，更快切换
 
-  # Spotify音乐 - 优化自动测速（版权地区优先）
+  # Spotify音乐 - 网速优先自动测速
   - name: "🎵 Spotify"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Spotify.png
@@ -286,8 +282,8 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom|澳|澳大利亚|澳洲|AU|Australia)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 180
-    tolerance: 25
+    interval: 140  # 音乐流媒体需要稳定连接
+    tolerance: 20  # 适度敏感度
 
   # Pandora音乐 - 优化选择（北美地区专用）
   - name: "🎶 Pandora"
@@ -420,18 +416,16 @@ proxy-groups:
 
   # === 🚀 高级功能分组 ===
 
-  # 流媒体解锁（全球）- 优化地区优先级
+  # 流媒体解锁（全球）- 网速优先自动测速
   - name: "🌍 流媒体解锁"
-    type: select
+    type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Streaming.png
-    proxies:
-      - "🇺🇸 美国节点"      # 首选：内容最丰富
-      - "🇯🇵 日本节点"      # 备选：亚洲内容
-      - "🇰🇷 韩国节点"      # 备选：韩流内容
-      - "🇬🇧 英国节点"      # 备选：欧洲内容
-      - "🇭🇰 香港节点"      # 备选：亚洲低延迟
-      - "🇸🇬 新加坡节点"    # 备选：东南亚
-      - "♻️ 自动选择"
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|韩|韩国|KR|Korea|港|香港|HK|Hong Kong|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom|澳|澳大利亚|澳洲|AU|Australia)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 150  # 流媒体需要稳定网速
+    tolerance: 15
 
   # 游戏服务（全球游戏加速）- 优化延迟优先级
   - name: "🎮 游戏服务"
@@ -691,13 +685,48 @@ rules:
   - DOMAIN-SUFFIX,disneystreaming.com,🏰 Disney+
   - DOMAIN-SUFFIX,dssott.com,🏰 Disney+
 
-  # TikTok - 专用代理组，自动测速最快节点
+  # TikTok - 专用代理组，完整域名支持（修复无网络连接问题）
   - DOMAIN-SUFFIX,tiktok.com,📱 TikTok
   - DOMAIN-SUFFIX,tiktokcdn.com,📱 TikTok
   - DOMAIN-SUFFIX,tiktokv.com,📱 TikTok
   - DOMAIN-SUFFIX,musical.ly,📱 TikTok
   - DOMAIN-SUFFIX,byteoversea.com,📱 TikTok
   - DOMAIN-SUFFIX,tik-tokapi.com,📱 TikTok
+  - DOMAIN-SUFFIX,bytedance.com,📱 TikTok
+  - DOMAIN-SUFFIX,byteimg.com,📱 TikTok
+  - DOMAIN-SUFFIX,ibytedtos.com,📱 TikTok
+  - DOMAIN-SUFFIX,ibyteimg.com,📱 TikTok
+  - DOMAIN-SUFFIX,ipstatp.com,📱 TikTok
+  - DOMAIN-SUFFIX,muscdn.com,📱 TikTok
+  - DOMAIN-SUFFIX,sgpstatp.com,📱 TikTok
+  - DOMAIN-SUFFIX,snssdk.com,📱 TikTok
+  - DOMAIN-SUFFIX,amemv.com,📱 TikTok
+  - DOMAIN-SUFFIX,bdxiguaimg.com,📱 TikTok
+  - DOMAIN-SUFFIX,bdxiguastatic.com,📱 TikTok
+  - DOMAIN-SUFFIX,byteacctimg.com,📱 TikTok
+  - DOMAIN-SUFFIX,bytescm.com,📱 TikTok
+  - DOMAIN-SUFFIX,bytegoofy.com,📱 TikTok
+  - DOMAIN-SUFFIX,bytetos.com,📱 TikTok
+  - DOMAIN-SUFFIX,feelgood.cn,📱 TikTok
+  - DOMAIN-SUFFIX,feiliao.com,📱 TikTok
+  - DOMAIN-SUFFIX,flipagram.com,📱 TikTok
+  - DOMAIN-SUFFIX,hypstarcdn.com,📱 TikTok
+  - DOMAIN-SUFFIX,iesdouyin.com,📱 TikTok
+  - DOMAIN-SUFFIX,ixiguavideo.com,📱 TikTok
+  - DOMAIN-SUFFIX,kamerahd.com,📱 TikTok
+  - DOMAIN-SUFFIX,mmstat.com,📱 TikTok
+  - DOMAIN-SUFFIX,musemuse.cn,📱 TikTok
+  - DOMAIN-SUFFIX,musical.ly,📱 TikTok
+  - DOMAIN-SUFFIX,pstatp.com,📱 TikTok
+  - DOMAIN-SUFFIX,snssdk.com,📱 TikTok
+  - DOMAIN-SUFFIX,tiktokcdn-us.com,📱 TikTok
+  - DOMAIN-SUFFIX,ttlivecdn.com,📱 TikTok
+  - DOMAIN-SUFFIX,vigo.ws,📱 TikTok
+  - DOMAIN-SUFFIX,videozhishi.com,📱 TikTok
+  - DOMAIN-SUFFIX,volccdn.com,📱 TikTok
+  - DOMAIN-KEYWORD,tiktok,📱 TikTok
+  - DOMAIN-KEYWORD,musical.ly,📱 TikTok
+  - DOMAIN-KEYWORD,bytedance,📱 TikTok
 
   # Spotify - 专用代理组，自动测速最快节点
   - DOMAIN-SUFFIX,spotify.com,🎵 Spotify
