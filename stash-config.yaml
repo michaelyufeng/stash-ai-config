@@ -101,6 +101,12 @@ proxy-groups:
       # 🚀 高级功能分类
       - "🌍 流媒体解锁"
       - "🎮 游戏服务"
+      # 📱 热门应用专用代理组
+      - "📺 YouTube"
+      - "🎬 Netflix"
+      - "🏰 Disney+"
+      - "📱 TikTok"
+      - "✈️ Telegram"
       # AI工具分类
       - "🧠 ChatGPT"
       - "🌟 Google服务"
@@ -234,6 +240,63 @@ proxy-groups:
       - "🇯🇵 日本节点"
       - "🇰🇷 韩国节点"
       - "🇬🇧 英国节点"
+      - "♻️ 自动选择"
+
+  # 📺 YouTube视频服务
+  - name: "📺 YouTube"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/YouTube.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 200
+    tolerance: 20
+
+  # 📱 TikTok短视频
+  - name: "📱 TikTok"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|新|新加坡|SG|Singapore)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 200
+    tolerance: 20
+
+  # ✈️ Telegram通讯
+  - name: "✈️ Telegram"
+    type: url-test
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram.png
+    use:
+      - 机场订阅
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|新|新加坡|SG|Singapore|德|德国|DE|Germany)"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 150
+    tolerance: 15
+
+  # 🎬 Netflix影视
+  - name: "🎬 Netflix"
+    type: select
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Netflix.png
+    proxies:
+      - "🇺🇸 美国节点"      # 内容最全
+      - "🇯🇵 日本节点"      # 亚洲内容
+      - "🇭🇰 香港节点"      # 亚洲延迟低
+      - "🇬🇧 英国节点"      # 欧洲内容
+      - "🇸🇬 新加坡节点"    # 东南亚
+      - "♻️ 自动选择"
+
+  # 🏰 Disney+影视
+  - name: "🏰 Disney+"
+    type: select
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Disney.png
+    proxies:
+      - "🇺🇸 美国节点"      # 内容最全
+      - "🇯🇵 日本节点"      # 亚洲内容
+      - "🇭🇰 香港节点"      # 亚洲延迟低
+      - "🇬🇧 英国节点"      # 欧洲内容
+      - "🇸🇬 新加坡节点"    # 东南亚
       - "♻️ 自动选择"
 
   # 🎮 游戏服务（全球游戏加速）
@@ -395,6 +458,189 @@ proxy-groups:
       - "♻️ 自动选择"
       - "🚀 节点选择"
       - "DIRECT"
+  - DOMAIN,app.bilibili.com,🏠 国内网站
+  - DOMAIN,api.bilibili.com,🏠 国内网站
+  - DOMAIN,api.live.bilibili.com,🏠 国内网站
+  - DOMAIN,api.vc.bilibili.com,🏠 国内网站
+  - DOMAIN,manga.bilibili.com,🏠 国内网站
+  - DOMAIN-SUFFIX,bilibili.com,🏠 国内网站
+  - DOMAIN-SUFFIX,hdslb.com,🏠 国内网站
+  - DOMAIN-SUFFIX,biliapi.net,🏠 国内网站
+
+  # 钉钉办公
+  - DOMAIN-SUFFIX,dingtalk.com,🔧 工具应用
+  - DOMAIN-SUFFIX,alicdn.com,🔧 工具应用
+
+  # 腾讯会议
+  - DOMAIN-SUFFIX,voovmeeting.com,🔧 工具应用
+  - DOMAIN-SUFFIX,tencent-cloud.net,🔧 工具应用
+
+  # 飞书
+  - DOMAIN-SUFFIX,feishu.cn,🔧 工具应用
+  - DOMAIN-SUFFIX,larksuite.com,🔧 工具应用
+
+  # VR虚拟现实
+  - DOMAIN-SUFFIX,vrhouse.com,🔧 工具应用
+
+  # === 国内AI服务规则 ===
+
+  # DeepSeek深度求索
+  - DOMAIN-SUFFIX,deepseek.com,🏠 国内网站
+  - DOMAIN-SUFFIX,deepseek.ai,🏠 国内网站
+
+  # 通义千问
+  - DOMAIN-SUFFIX,tongyi.aliyun.com,🏠 国内网站
+  - DOMAIN-SUFFIX,qianwen.aliyun.com,🏠 国内网站
+
+  # 即梦AI
+  - DOMAIN-SUFFIX,jimeng.jianying.com,🏠 国内网站
+
+  # 海螺AI
+  - DOMAIN-SUFFIX,hailuoai.com,🏠 国内网站
+
+  # 百度网盘
+  - DOMAIN-SUFFIX,pan.baidu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,baidupcs.com,🏠 国内网站
+
+  # === 国内服务规则 ===
+
+  # 电商平台
+  - DOMAIN-SUFFIX,taobao.com,🏠 国内网站
+  - DOMAIN-SUFFIX,tmall.com,🏠 国内网站
+  - DOMAIN-SUFFIX,jd.com,🏠 国内网站
+  - DOMAIN-SUFFIX,jd.hk,🏠 国内网站
+  - DOMAIN-SUFFIX,360buyimg.com,🏠 国内网站
+  - DOMAIN-SUFFIX,pinduoduo.com,🏠 国内网站
+  - DOMAIN-SUFFIX,yangkeduo.com,🏠 国内网站
+  - DOMAIN-SUFFIX,pddpic.com,🏠 国内网站
+
+  # 阿里巴巴生态
+  - DOMAIN-SUFFIX,alibaba.com,🏠 国内网站
+  - DOMAIN-SUFFIX,alibabacloud.com,🏠 国内网站
+  - DOMAIN-SUFFIX,aliyun.com,🏠 国内网站
+  - DOMAIN-SUFFIX,alipay.com,🏠 国内网站
+  - DOMAIN-SUFFIX,alimama.com,🏠 国内网站
+
+  # 腾讯生态
+  - DOMAIN-SUFFIX,qq.com,🏠 国内网站
+  - DOMAIN-SUFFIX,tencent.com,🏠 国内网站
+  - DOMAIN-SUFFIX,qcloud.com,🏠 国内网站
+  - DOMAIN-SUFFIX,gtimg.com,🏠 国内网站
+  - DOMAIN-SUFFIX,wechat.com,🏠 国内网站
+  - DOMAIN-SUFFIX,weixin.qq.com,🏠 国内网站
+
+  # 百度生态
+  - DOMAIN-SUFFIX,baidu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,bdstatic.com,🏠 国内网站
+  - DOMAIN-SUFFIX,bcebos.com,🏠 国内网站
+
+  # 新浪微博 - 直连
+  - DOMAIN-SUFFIX,weibo.com,🏠 国内网站
+  - DOMAIN-SUFFIX,weibo.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,weibocdn.com,🏠 国内网站
+
+  # 知乎 - 直连
+  - DOMAIN-SUFFIX,zhihu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,zhimg.com,🏠 国内网站
+
+  # 小红书 - 直连
+  - DOMAIN-SUFFIX,xiaohongshu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,xhscdn.com,🏠 国内网站
+
+  # 抖音系列
+  - DOMAIN-SUFFIX,douyin.com,🏠 国内网站
+  - DOMAIN-SUFFIX,douyinpic.com,🏠 国内网站
+  - DOMAIN-SUFFIX,douyincdn.com,🏠 国内网站
+  - DOMAIN-SUFFIX,douyinstatic.com,🏠 国内网站
+  - DOMAIN-SUFFIX,bytedance.com,🏠 国内网站
+
+  # 头条系
+  - DOMAIN-SUFFIX,toutiao.com,🏠 国内网站
+  - DOMAIN-SUFFIX,ixigua.com,🏠 国内网站
+
+  # 搜索引擎
+  - DOMAIN-SUFFIX,so.com,🏠 国内网站
+  - DOMAIN-SUFFIX,sogou.com,🏠 国内网站
+  - DOMAIN-SUFFIX,soso.com,🏠 国内网站
+
+  # 视频平台
+  - DOMAIN-SUFFIX,iqiyi.com,🏠 国内网站
+  - DOMAIN-SUFFIX,youku.com,🏠 国内网站
+  - DOMAIN-SUFFIX,tudou.com,🏠 国内网站
+  - DOMAIN-SUFFIX,mgtv.com,🏠 国内网站
+
+  # 音乐平台
+  - DOMAIN-SUFFIX,music.163.com,🏠 国内网站
+  - DOMAIN-SUFFIX,kugou.com,🏠 国内网站
+  - DOMAIN-SUFFIX,kuwo.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,qqmusic.qq.com,🏠 国内网站
+
+  # 地图导航
+  - DOMAIN-SUFFIX,amap.com,🏠 国内网站
+  - DOMAIN-SUFFIX,autonavi.com,🏠 国内网站
+  - DOMAIN-SUFFIX,map.baidu.com,🏠 国内网站
+
+  # 出行服务
+  - DOMAIN-SUFFIX,12306.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,12306.com,🏠 国内网站
+  - DOMAIN-SUFFIX,didichuxing.com,🏠 国内网站
+  - DOMAIN-SUFFIX,didiglobal.com,🏠 国内网站
+  - DOMAIN-SUFFIX,xiaojukeji.com,🏠 国内网站
+
+  # 生活服务
+  - DOMAIN-SUFFIX,meituan.com,🏠 国内网站
+  - DOMAIN-SUFFIX,meituan.net,🏠 国内网站
+  - DOMAIN-SUFFIX,sankuai.com,🏠 国内网站
+  - DOMAIN-SUFFIX,dianping.com,🏠 国内网站
+  - DOMAIN-SUFFIX,58.com,🏠 国内网站
+  - DOMAIN-SUFFIX,anjuke.com,🏠 国内网站
+
+  # 新闻资讯
+  - DOMAIN-SUFFIX,sina.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,sohu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,163.com,🏠 国内网站
+
+  # 金融服务
+  - DOMAIN-SUFFIX,bank.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,icbc.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,ccb.com,🏠 国内网站
+  - DOMAIN-SUFFIX,abchina.com,🏠 国内网站
+  - DOMAIN-SUFFIX,boc.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,bankcomm.com,🏠 国内网站
+  - DOMAIN-SUFFIX,cmbchina.com,🏠 国内网站
+  - DOMAIN-SUFFIX,cmbc.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,cib.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,spdb.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,cebbank.com,🏠 国内网站
+  - DOMAIN-SUFFIX,pingan.com,🏠 国内网站
+  - DOMAIN-SUFFIX,hxb.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,cgbchina.com.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,psbc.com,🏠 国内网站
+
+  # 通信运营商
+  - DOMAIN-SUFFIX,10086.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,chinamobile.com,🏠 国内网站
+  - DOMAIN-SUFFIX,10010.com,🏠 国内网站
+  - DOMAIN-SUFFIX,chinaunicom.com,🏠 国内网站
+  - DOMAIN-SUFFIX,10000.com,🏠 国内网站
+  - DOMAIN-SUFFIX,189.cn,🏠 国内网站
+  - DOMAIN-SUFFIX,chinatelecom.com.cn,🏠 国内网站
+
+  # 社交通讯
+  - DOMAIN-SUFFIX,tieba.baidu.com,🏠 国内网站
+  - DOMAIN-SUFFIX,qzone.qq.com,🏠 国内网站
+
+  # 国内CDN和云服务
+  - DOMAIN-SUFFIX,myqcloud.com,🏠 国内网站
+  - DOMAIN-SUFFIX,qpic.cn,🏠 国内网站
+
+  # === 地理位置规则 ===
+
+  # 中国大陆IP直连
+  - GEOIP,CN,🏠 国内网站
+
+  # === 最终规则 ===
+  - MATCH,🐟 Final
 
 # ===== 🌐 规则配置 =====
 rules:
@@ -416,9 +662,6 @@ rules:
   - DOMAIN-SUFFIX,google.com,🌟 Google服务
   - DOMAIN-SUFFIX,googleapis.com,🌟 Google服务
   - DOMAIN-SUFFIX,googleusercontent.com,🌟 Google服务
-  - DOMAIN-SUFFIX,googlevideo.com,🌟 Google服务
-  - DOMAIN-SUFFIX,youtube.com,🌟 Google服务
-  - DOMAIN-SUFFIX,ytimg.com,🌟 Google服务
   - DOMAIN-SUFFIX,gstatic.com,🌟 Google服务
   - DOMAIN-SUFFIX,gmail.com,🌟 Google服务
   - DOMAIN-SUFFIX,googlemail.com,🌟 Google服务
