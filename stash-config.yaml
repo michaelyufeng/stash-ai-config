@@ -134,6 +134,7 @@ proxy-groups:
       # 🔧 专业工具
       - "🐙 GitHub"
       - "📚 Z-Library"
+      - "💰 币安"
       # 🚀 高级功能
       - "🌍 流媒体解锁"
       - "🎮 游戏服务"
@@ -429,6 +430,18 @@ proxy-groups:
       - "🇯🇵 日本节点"      # 备选：亚洲服务器
       - "♻️ 自动选择"
 
+  # 币安交易所 - 香港节点优先（低延迟，交易速度快）
+  - name: "💰 币安"
+    type: select
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Lab.png
+    proxies:
+      - "🇭🇰 香港节点"      # 首选：延迟最低，交易速度快
+      - "🇸🇬 新加坡节点"    # 备选：亚洲枢纽，稳定性好
+      - "🇯🇵 日本节点"      # 备选：亚洲地区
+      - "🇰🇷 韩国节点"      # 备选：亚洲地区
+      - "🇺🇸 美国节点"      # 备选：全球服务器
+      - "♻️ 自动选择"
+
   # === 🚀 高级功能分组 ===
 
   # 流媒体解锁（全球）- 网速优先自动测速
@@ -677,6 +690,17 @@ rules:
   - DOMAIN-SUFFIX,zlibrary.to,📚 Z-Library
   - DOMAIN-SUFFIX,singlelogin.org,📚 Z-Library
   - DOMAIN-SUFFIX,b-ok.org,📚 Z-Library
+
+  # 币安交易所 - 香港节点优先
+  - DOMAIN-SUFFIX,binance.com,💰 币安
+  - DOMAIN-SUFFIX,binance.us,💰 币安
+  - DOMAIN-SUFFIX,binanceapi.com,💰 币安
+  - DOMAIN-SUFFIX,binance.org,💰 币安
+  - DOMAIN-SUFFIX,binance.info,💰 币安
+  - DOMAIN-SUFFIX,binance.cloud,💰 币安
+  - DOMAIN-SUFFIX,binancezh.com,💰 币安
+  - DOMAIN-SUFFIX,bnbstatic.com,💰 币安
+  - DOMAIN-KEYWORD,binance,💰 币安
 
   # === 流媒体和社交应用规则 ===
 
