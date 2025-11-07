@@ -2,7 +2,7 @@
 # Stash 终极AI工具配置 | Ultimate AI Configuration
 # 专为AI工具、流媒体、广告拦截优化
 # 包含ChatGPT、Gemini、Claude、Midjourney等AI服务完整支持
-# 项目完成日期：2025年6月25日
+# 最后更新：2025年1月（已修复失效脚本和配置项）
 # ===================================================
 
 # 📋 首次使用说明：
@@ -16,7 +16,8 @@
 # ✅ Spotify会员：部分解锁Premium功能，建议重新登录
 # ✅ Adobe Lightroom：专业修图软件，解锁Premium滤镜
 # ✅ Peak：脑力训练APP，解锁Pro会员功能
-# ✅ Pandora：美国流媒体音乐服务解锁
+# ✅ Pandora：通过代理节点直接访问（脚本已移除）
+# ✅ TikTok：通过代理节点直接访问（脚本已移除）
 #
 # ⚠️ 重要提醒：
 # - 脚本功能需要开启MITM并安装证书
@@ -25,6 +26,9 @@
 # - 海外APP需要使用海外节点（YouTube、Spotify、Adobe等）
 # - 国内APP可直连使用（B站等）
 # - 请勿在App内设置超高音质（Spotify）
+# - 已修复：移除了失效的Pandora和TikTok脚本
+# - 已修复：移除了Stash不支持的配置项（tcp-concurrent等）
+# - 已修复：移除了重复的域名规则
 
 # 🚀 基础配置 + 网络性能优化
 mixed-port: 7890
@@ -37,14 +41,13 @@ external-controller: 127.0.0.1:9090
 external-ui: dashboard
 
 # 网络性能优化配置
-tcp-concurrent: true
-find-process-mode: strict
-geodata-mode: true
-geo-auto-update: true
-geo-update-interval: 24
-
-# 性能优化设置
-unified-delay: false
+# 注意：以下配置项在Stash中可能不支持或已弃用，已注释
+# tcp-concurrent: true
+# find-process-mode: strict
+# geodata-mode: true
+# geo-auto-update: true
+# geo-update-interval: 24
+# unified-delay: false
 connection-test-url: http://www.gstatic.com/generate_204
 
 # DNS配置
@@ -131,6 +134,7 @@ proxy-groups:
       # 🔧 专业工具
       - "🐙 GitHub"
       - "📚 Z-Library"
+      - "💰 币安"
       # 🚀 高级功能
       - "🌍 流媒体解锁"
       - "🎮 游戏服务"
@@ -426,6 +430,18 @@ proxy-groups:
       - "🇯🇵 日本节点"      # 备选：亚洲服务器
       - "♻️ 自动选择"
 
+  # 币安交易所 - 香港节点优先（低延迟，交易速度快）
+  - name: "💰 币安"
+    type: select
+    icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Lab.png
+    proxies:
+      - "🇭🇰 香港节点"      # 首选：延迟最低，交易速度快
+      - "🇸🇬 新加坡节点"    # 备选：亚洲枢纽，稳定性好
+      - "🇯🇵 日本节点"      # 备选：亚洲地区
+      - "🇰🇷 韩国节点"      # 备选：亚洲地区
+      - "🇺🇸 美国节点"      # 备选：全球服务器
+      - "♻️ 自动选择"
+
   # === 🚀 高级功能分组 ===
 
   # 流媒体解锁（全球）- 网速优先自动测速
@@ -675,6 +691,17 @@ rules:
   - DOMAIN-SUFFIX,singlelogin.org,📚 Z-Library
   - DOMAIN-SUFFIX,b-ok.org,📚 Z-Library
 
+  # 币安交易所 - 香港节点优先
+  - DOMAIN-SUFFIX,binance.com,💰 币安
+  - DOMAIN-SUFFIX,binance.us,💰 币安
+  - DOMAIN-SUFFIX,binanceapi.com,💰 币安
+  - DOMAIN-SUFFIX,binance.org,💰 币安
+  - DOMAIN-SUFFIX,binance.info,💰 币安
+  - DOMAIN-SUFFIX,binance.cloud,💰 币安
+  - DOMAIN-SUFFIX,binancezh.com,💰 币安
+  - DOMAIN-SUFFIX,bnbstatic.com,💰 币安
+  - DOMAIN-KEYWORD,binance,💰 币安
+
   # === 流媒体和社交应用规则 ===
 
   # YouTube Premium - 专用代理组，自动测速最快节点
@@ -728,9 +755,7 @@ rules:
   - DOMAIN-SUFFIX,kamerahd.com,📱 TikTok
   - DOMAIN-SUFFIX,mmstat.com,📱 TikTok
   - DOMAIN-SUFFIX,musemuse.cn,📱 TikTok
-  - DOMAIN-SUFFIX,musical.ly,📱 TikTok
   - DOMAIN-SUFFIX,pstatp.com,📱 TikTok
-  - DOMAIN-SUFFIX,snssdk.com,📱 TikTok
   - DOMAIN-SUFFIX,tiktokcdn-us.com,📱 TikTok
   - DOMAIN-SUFFIX,ttlivecdn.com,📱 TikTok
   - DOMAIN-SUFFIX,vigo.ws,📱 TikTok
@@ -963,12 +988,12 @@ rules:
   - DOMAIN-SUFFIX,xiaohongshu.com,🏠 国内网站
   - DOMAIN-SUFFIX,xhscdn.com,🏠 国内网站
 
-  # 抖音系列
+  # 抖音系列（国内直连）
   - DOMAIN-SUFFIX,douyin.com,🏠 国内网站
   - DOMAIN-SUFFIX,douyinpic.com,🏠 国内网站
   - DOMAIN-SUFFIX,douyincdn.com,🏠 国内网站
   - DOMAIN-SUFFIX,douyinstatic.com,🏠 国内网站
-  - DOMAIN-SUFFIX,bytedance.com,🏠 国内网站
+  # 注意：bytedance.com已包含在TikTok规则中，需要代理访问，此处不再重复
 
   # 头条系
   - DOMAIN-SUFFIX,toutiao.com,🏠 国内网站
@@ -1082,15 +1107,11 @@ script-providers:
     url: "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/js/peak.js"
     interval: 86400
 
-  # Pandora音乐解锁
-  pandora-unlock:
-    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Pandora.js"
-    interval: 86400
+  # Pandora音乐解锁（脚本已失效，已移除）
+  # 注意：Pandora服务可通过代理节点直接访问，无需脚本解锁
 
-  # TikTok解锁脚本
-  tiktok-unlock:
-    url: "https://raw.githubusercontent.com/Tartarus2014/Script/master/jd_price_detect.js"
-    interval: 86400
+  # TikTok解锁（脚本已失效，已移除）
+  # 注意：TikTok可通过代理节点直接访问，无需脚本解锁
 
   # 微信去广告
   wechat-ads:
@@ -1124,7 +1145,7 @@ http:
     # Peak相关域名
     - "billing.peakcloud.org"
 
-    # Pandora相关域名（增强MITM支持）
+    # Pandora相关域名（已移除脚本支持，保留MITM用于其他用途）
     - "www.pandora.com"
     - "tuner.pandora.com"
     - "api.pandora.com"
@@ -1134,7 +1155,7 @@ http:
     - "audio-sjl.pandora.com"
     - "audio-sv5.pandora.com"
 
-    # TikTok相关域名
+    # TikTok相关域名（已移除脚本支持，保留MITM用于其他用途）
     - "*.tiktokv.com"
     - "*.byteoversea.com"
     - "*.tik-tokapi.com"
@@ -1175,26 +1196,11 @@ http:
       require-body: true
       timeout: 10
 
-    # Pandora音乐解锁（增强脚本支持）
-    - match: ^https:\/\/tuner\.pandora\.com\/tune
-      name: pandora-unlock
-      type: response
-      require-body: true
-      timeout: 10
+    # Pandora音乐解锁（脚本已移除，通过代理节点访问）
+    # 注意：Pandora服务可通过代理节点直接访问，无需脚本解锁
     
-    # Pandora API解锁
-    - match: ^https:\/\/api\.pandora\.com\/(v\d\/)?user\/getCanListen
-      name: pandora-unlock
-      type: response
-      require-body: true
-      timeout: 10
-
-    # TikTok解锁
-    - match: ^https?:\/\/.+\.(tiktokv|byteoversea)\.(com|net)\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite)
-      name: tiktok-unlock
-      type: response
-      require-body: true
-      timeout: 10
+    # TikTok解锁（脚本已移除，通过代理节点访问）
+    # 注意：TikTok可通过代理节点直接访问，无需脚本解锁
 
     # 微信去广告
     - match: ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgext
@@ -1232,10 +1238,11 @@ profile:
   store-fake-ip: false     # 不存储fake-ip
 
 # ⚡ 系统优化
-interface-name: ""          # 绑定网络接口
-routing-mark: 6666         # 路由标记
-auto-redir: false          # 自动重定向
-ebpf:
-  redirect-to-tun:
-    - eth0
-    - wlan0
+# 注意：以下配置项在Stash中可能不支持，已注释
+# interface-name: ""          # 绑定网络接口
+# routing-mark: 6666         # 路由标记
+# auto-redir: false          # 自动重定向
+# ebpf:
+#   redirect-to-tun:
+#     - eth0
+#     - wlan0
