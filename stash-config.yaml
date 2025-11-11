@@ -29,43 +29,49 @@
 # 🚀 基础配置 + 网络性能优化
 mixed-port: 7890
 allow-lan: true
-bind-address: '*'
 mode: rule
 log-level: info
 ipv6: false
 external-controller: 127.0.0.1:9090
-external-ui: dashboard
 
-# 网络性能优化配置
+# 网络性能优化配置 - 提升网络速度
 tcp-concurrent: true
 find-process-mode: strict
 geodata-mode: true
 geo-auto-update: true
 geo-update-interval: 24
 
-# 性能优化设置
+# 性能优化设置 - 加速网络连接
 unified-delay: false
 connection-test-url: http://www.gstatic.com/generate_204
 
-# DNS配置
+# DNS配置 - 优化网络速度
 dns:
   enable: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   default-nameserver:
     - 223.5.5.5
+    - 114.114.114.114
     - 8.8.8.8
   nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-    - https://dns.google/dns-query
+    - https://dns.alidns.com/dns-query  # 阿里DNS，国内最快
+    - https://doh.pub/dns-query         # 腾讯DNS
+    - https://dns.google/dns-query      # Google DNS
+    - tls://223.5.5.5:853               # 阿里DNS TLS
+    - tls://8.8.8.8:853                 # Google DNS TLS
   fallback:
-    - https://1.1.1.1/dns-query
-    - https://dns.google/dns-query
-    - tls://8.8.8.8:853
+    - https://1.1.1.1/dns-query         # Cloudflare DNS
+    - https://dns.google/dns-query      # Google DNS
+    - tls://1.1.1.1:853                 # Cloudflare DNS TLS
+    - tls://8.8.8.8:853                 # Google DNS TLS
   fallback-filter:
     geoip: true
     geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+      - 127.0.0.1/32
     domain:
       - '+.google.com'
       - '+.openai.com'
@@ -74,10 +80,6 @@ dns:
       - '+.discord.com'
       - '+.twitter.com'
       - '+.facebook.com'
-    ipcidr:
-      - 240.0.0.0/4
-      - 0.0.0.0/32
-      - 127.0.0.1/32
 
 # 远程代理提供者配置
 # ⚠️ 重要提醒：请替换下方的订阅链接为你自己的机场订阅地址
@@ -91,8 +93,9 @@ proxy-providers:
     path: ./providers/airport.yaml
     health-check:
       enable: true
-      interval: 60
+      interval: 300
       url: http://www.gstatic.com/generate_204
+      timeout: 5000
 
 # 代理组配置 - AI工具专业版
 proxy-groups:
@@ -148,15 +151,17 @@ proxy-groups:
       - "🌍 其他地区"
       - "DIRECT"
 
-  # 自动选择 - 优化延迟算法
+  # 自动选择 - 优化延迟算法，提升网络速度
   - name: "♻️ 自动选择"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Auto.png
     use:
       - 机场订阅
     url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
+    interval: 120
+    tolerance: 20
+    timeout: 3000
+    lazy: true
 
   # === 🤖 AI工具专用分组 ===
 
@@ -428,16 +433,18 @@ proxy-groups:
 
   # === 🚀 高级功能分组 ===
 
-  # 流媒体解锁（全球）- 网速优先自动测速
+  # 流媒体解锁（全球）- 网速优先自动测速，优化网络速度
   - name: "🌍 流媒体解锁"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Streaming.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|韩|韩国|KR|Korea|港|香港|HK|Hong Kong|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom|澳|澳大利亚|澳洲|AU|Australia)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|UnitedStates|洛杉矶|LA|纽约|NY|旧金山|SF|San Francisco|Chicago|Seattle|Miami|Dallas|Atlanta|Phoenix|Boston|Washington|DC|日|日本|JP|Japan|Tokyo|大阪|Osaka|名古屋|Nagoya|横滨|Yokohama|福冈|Fukuoka|JPN|韩|韩国|KR|Korea|Seoul|首尔|KOR|港|香港|HK|Hong Kong|HongKong|Hongkong|HKG|新|新加坡|SG|Singapore|SGP|SIN|英|英国|UK|United Kingdom|Britain|London|伦敦|Manchester|曼彻斯特|Birmingham|伯明翰|GBR|GB|澳|澳大利亚|澳洲|AU|Australia|Sydney|悉尼|Melbourne|墨尔本|Brisbane|布里斯班|Perth|珀斯|AUS)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 150  # 流媒体需要稳定网速
+    interval: 100
     tolerance: 15
+    timeout: 3000
+    lazy: true
 
   # 游戏服务（全球游戏加速）- 优化延迟优先级
   - name: "🎮 游戏服务"
@@ -472,123 +479,143 @@ proxy-groups:
 
   # === 🌍 地区节点分组 ===
 
-  # 🇺🇸 美国节点 - 优化测速参数
+  # 🇺🇸 美国节点 - 更新过滤规则，优化网络速度
   - name: "🇺🇸 美国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/US.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|UnitedStates|洛杉矶|LA|纽约|NY|旧金山|SF|San Francisco|Chicago|Seattle|Miami|Dallas|Atlanta|Phoenix|Boston|Washington|DC)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 250  # 减少测速间隔，提高响应速度
-    tolerance: 40  # 降低容错值，更敏感切换
+    interval: 150
+    tolerance: 25
+    timeout: 3000
+    lazy: true
 
-  # 🇭🇰 香港节点 - 优化测速参数（延迟敏感）
+  # 🇭🇰 香港节点 - 更新过滤规则，优化网络速度（延迟最低）
   - name: "🇭🇰 香港节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/HK.png
     use:
       - 机场订阅
-    filter: "(?i)(港|香港|HK|Hong Kong)"
+    filter: "(?i)(港|香港|HK|Hong Kong|HongKong|Hongkong|HKG)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 200  # 最频繁测速，因为延迟最低
-    tolerance: 30  # 最敏感切换
+    interval: 120
+    tolerance: 20
+    timeout: 3000
+    lazy: true
 
-  # 🇯🇵 日本节点 - 优化测速参数
+  # 🇯🇵 日本节点 - 更新过滤规则，优化网络速度
   - name: "🇯🇵 日本节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/JP.png
     use:
       - 机场订阅
-    filter: "(?i)(日|日本|JP|Japan)"
+    filter: "(?i)(日|日本|JP|Japan|Tokyo|大阪|Osaka|名古屋|Nagoya|横滨|Yokohama|福冈|Fukuoka|JPN)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 220  # 适中测速频率
-    tolerance: 35  # 适中敏感度
+    interval: 150
+    tolerance: 25
+    timeout: 3000
+    lazy: true
 
-  # 🇰🇷 韩国节点 - 优化测速参数
+  # 🇰🇷 韩国节点 - 更新过滤规则，优化网络速度
   - name: "🇰🇷 韩国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/KR.png
     use:
       - 机场订阅
-    filter: "(?i)(韩|韩国|KR|Korea)"
+    filter: "(?i)(韩|韩国|KR|Korea|Seoul|首尔|KOR)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 240
-    tolerance: 35
+    interval: 150
+    tolerance: 25
+    timeout: 3000
+    lazy: true
 
-  # 🇸🇬 新加坡节点 - 优化测速参数
+  # 🇸🇬 新加坡节点 - 更新过滤规则，优化网络速度
   - name: "🇸🇬 新加坡节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/SG.png
     use:
       - 机场订阅
-    filter: "(?i)(新|新加坡|SG|Singapore)"
+    filter: "(?i)(新|新加坡|SG|Singapore|SGP|SIN)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 220  # 新加坡作为亚洲枢纽，频率较高
-    tolerance: 35
+    interval: 150
+    tolerance: 25
+    timeout: 3000
+    lazy: true
 
-  # 🇦🇺 澳洲节点 - 优化测速参数
+  # 🇦🇺 澳洲节点 - 更新过滤规则，优化网络速度
   - name: "🇦🇺 澳洲节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/AU.png
     use:
       - 机场订阅
-    filter: "(?i)(澳|澳大利亚|澳洲|AU|Australia)"
+    filter: "(?i)(澳|澳大利亚|澳洲|AU|Australia|Sydney|悉尼|Melbourne|墨尔本|Brisbane|布里斯班|Perth|珀斯|AUS)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 280  # 澳洲距离较远，适度降低频率
-    tolerance: 45
+    interval: 200
+    tolerance: 35
+    timeout: 5000
+    lazy: true
 
-  # 🇬🇧 英国节点 - 优化测速参数
+  # 🇬🇧 英国节点 - 更新过滤规则，优化网络速度
   - name: "🇬🇧 英国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/UK.png
     use:
       - 机场订阅
-    filter: "(?i)(英|英国|UK|United Kingdom|Britain)"
+    filter: "(?i)(英|英国|UK|United Kingdom|Britain|London|伦敦|Manchester|曼彻斯特|Birmingham|伯明翰|GBR|GB)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 260  # 英国作为欧洲重要节点，频率较高
-    tolerance: 40
+    interval: 180
+    tolerance: 30
+    timeout: 5000
+    lazy: true
 
-  # 🇨🇦 加拿大节点 - 优化测速参数
+  # 🇨🇦 加拿大节点 - 更新过滤规则，优化网络速度
   - name: "🇨🇦 加拿大节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/CA.png
     use:
       - 机场订阅
-    filter: "(?i)(加|加拿大|CA|Canada)"
+    filter: "(?i)(加|加拿大|CA|Canada|Toronto|多伦多|Vancouver|温哥华|Montreal|蒙特利尔|Ottawa|渥太华|CAN)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 270  # 北美地区，与美国搭配使用
-    tolerance: 40
+    interval: 180
+    tolerance: 30
+    timeout: 5000
+    lazy: true
 
-  # 🇩🇪 德国节点 - 优化测速参数
+  # 🇩🇪 德国节点 - 更新过滤规则，优化网络速度
   - name: "🇩🇪 德国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/DE.png
     use:
       - 机场订阅
-    filter: "(?i)(德|德国|DE|Germany)"
+    filter: "(?i)(德|德国|DE|Germany|Berlin|柏林|Munich|慕尼黑|Frankfurt|法兰克福|Hamburg|汉堡|DEU)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 280  # 欧洲核心国家
-    tolerance: 40
+    interval: 200
+    tolerance: 30
+    timeout: 5000
+    lazy: true
 
-  # 🇪🇺 欧洲节点 - 优化测速参数
+  # 🇪🇺 欧洲节点 - 更新过滤规则，优化网络速度
   - name: "🇪🇺 欧洲节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/EU.png
     use:
       - 机场订阅
-    filter: "(?i)(欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary)"
+    filter: "(?i)(欧|欧洲|EU|Europe|法国|FR|France|Paris|巴黎|意大利|IT|Italy|Rome|罗马|Milan|米兰|西班牙|ES|Spain|Madrid|马德里|Barcelona|巴塞罗那|荷兰|NL|Netherlands|Amsterdam|阿姆斯特丹|瑞士|CH|Switzerland|Zurich|苏黎世|奥地利|AT|Austria|Vienna|维也纳|比利时|BE|Belgium|Brussels|布鲁塞尔|丹麦|DK|Denmark|Copenhagen|哥本哈根|芬兰|FI|Finland|Helsinki|赫尔辛基|挪威|NO|Norway|Oslo|奥斯陆|瑞典|SE|Sweden|Stockholm|斯德哥尔摩|波兰|PL|Poland|Warsaw|华沙|捷克|CZ|Czech|Prague|布拉格|匈牙利|HU|Hungary|Budapest|布达佩斯|葡萄牙|PT|Portugal|Lisbon|里斯本|希腊|GR|Greece|Athens|雅典|爱尔兰|IE|Ireland|Dublin|都柏林)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 290  # 其他欧洲国家，频率稍低
-    tolerance: 45
+    interval: 220
+    tolerance: 35
+    timeout: 5000
+    lazy: true
 
-  # 🌍 其他地区
+  # 🌍 其他地区 - 更新过滤规则
   - name: "🌍 其他地区"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/UN.png
     use:
       - 机场订阅
-    filter: "^((?!美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|韩|韩国|KR|Korea|新|新加坡|SG|Singapore|澳|澳大利亚|澳洲|AU|Australia|英|英国|UK|United Kingdom|Britain|加|加拿大|CA|Canada|德|德国|DE|Germany|欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary).)*$"
+    filter: "^((?!美|美国|美利坚|US|USA|America|United States|UnitedStates|洛杉矶|LA|纽约|NY|旧金山|SF|San Francisco|Chicago|Seattle|Miami|Dallas|Atlanta|Phoenix|Boston|Washington|DC|港|香港|HK|Hong Kong|HongKong|Hongkong|HKG|日|日本|JP|Japan|Tokyo|大阪|Osaka|名古屋|Nagoya|横滨|Yokohama|福冈|Fukuoka|JPN|韩|韩国|KR|Korea|Seoul|首尔|KOR|新|新加坡|SG|Singapore|SGP|SIN|澳|澳大利亚|澳洲|AU|Australia|Sydney|悉尼|Melbourne|墨尔本|Brisbane|布里斯班|Perth|珀斯|AUS|英|英国|UK|United Kingdom|Britain|London|伦敦|Manchester|曼彻斯特|Birmingham|伯明翰|GBR|GB|加|加拿大|CA|Canada|Toronto|多伦多|Vancouver|温哥华|Montreal|蒙特利尔|Ottawa|渥太华|CAN|德|德国|DE|Germany|Berlin|柏林|Munich|慕尼黑|Frankfurt|法兰克福|Hamburg|汉堡|DEU|欧|欧洲|EU|Europe|法国|FR|France|Paris|巴黎|意大利|IT|Italy|Rome|罗马|Milan|米兰|西班牙|ES|Spain|Madrid|马德里|Barcelona|巴塞罗那|荷兰|NL|Netherlands|Amsterdam|阿姆斯特丹|瑞士|CH|Switzerland|Zurich|苏黎世|奥地利|AT|Austria|Vienna|维也纳|比利时|BE|Belgium|Brussels|布鲁塞尔|丹麦|DK|Denmark|Copenhagen|哥本哈根|芬兰|FI|Finland|Helsinki|赫尔辛基|挪威|NO|Norway|Oslo|奥斯陆|瑞典|SE|Sweden|Stockholm|斯德哥尔摩|波兰|PL|Poland|Warsaw|华沙|捷克|CZ|Czech|Prague|布拉格|匈牙利|HU|Hungary|Budapest|布达佩斯|葡萄牙|PT|Portugal|希腊|GR|Greece|爱尔兰|IE|Ireland).)*$"
 
   # === 🐟 兜底规则 ===
 
@@ -1060,26 +1087,70 @@ rules:
 
 # ===== 🚀 高级功能扩展配置 =====
 
-# === 脚本提供者配置 ===
+# === 脚本提供者配置 - 去广告和会员解锁 ===
 script-providers:
+  # === 📺 视频平台去广告和会员解锁 ===
+  
   # YouTube去广告脚本
   youtube-response:
     url: "https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js"
     interval: 86400
 
+  # B站去广告和会员解锁
+  bilibili-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/BiliBili.js"
+    interval: 86400
+
+  # 爱奇艺去广告和会员解锁
+  iqiyi-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/iQIYI.js"
+    interval: 86400
+
+  # 腾讯视频去广告和会员解锁
+  tencent-video-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/TencentVideo.js"
+    interval: 86400
+
+  # 优酷去广告和会员解锁
+  youku-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/YouKu.js"
+    interval: 86400
+
+  # Netflix会员解锁
+  netflix-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Netflix_rating.js"
+    interval: 86400
+
+  # Disney+会员解锁
+  disney-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Disney.js"
+    interval: 86400
+
+  # HBO Max会员解锁
+  hbomax-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/HBO.js"
+    interval: 86400
+
+  # === 🎵 音乐平台会员解锁 ===
+  
   # Spotify会员脚本
   spotify-premium:
     url: "https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js"
     interval: 86400
 
-  # Adobe Lightroom
-  lightroom-unlock:
-    url: "https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/lightroom.js"
+  # Apple Music会员解锁
+  apple-music-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/AppleMusic.js"
     interval: 86400
 
-  # Peak脑力训练
-  peak-pro:
-    url: "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/js/peak.js"
+  # QQ音乐会员解锁
+  qqmusic-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/QQMusic.js"
+    interval: 86400
+
+  # 网易云音乐会员解锁
+  netease-music-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/NetEaseMusic.js"
     interval: 86400
 
   # Pandora音乐解锁
@@ -1087,14 +1158,74 @@ script-providers:
     url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Pandora.js"
     interval: 86400
 
+  # === 🎨 图片和设计工具会员解锁 ===
+  
+  # Adobe Lightroom
+  lightroom-unlock:
+    url: "https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/lightroom.js"
+    interval: 86400
+
+  # Adobe Photoshop解锁
+  photoshop-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Adobe.js"
+    interval: 86400
+
+  # === 📱 社交和通讯应用去广告 ===
+  
+  # 微信去广告
+  wechat-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js"
+    interval: 86400
+
+  # 微博去广告
+  weibo-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Weibo.js"
+    interval: 86400
+
+  # 知乎去广告
+  zhihu-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Zhihu.js"
+    interval: 86400
+
+  # 小红书去广告
+  xiaohongshu-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/XiaoHongShu.js"
+    interval: 86400
+
+  # === 🎮 游戏和应用会员解锁 ===
+  
+  # Peak脑力训练
+  peak-pro:
+    url: "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/js/peak.js"
+    interval: 86400
+
   # TikTok解锁脚本
   tiktok-unlock:
     url: "https://raw.githubusercontent.com/Tartarus2014/Script/master/jd_price_detect.js"
     interval: 86400
 
-  # 微信去广告
-  wechat-ads:
-    url: "https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js"
+  # === 🛒 购物平台去广告 ===
+  
+  # 京东去广告
+  jd-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/JD.js"
+    interval: 86400
+
+  # 淘宝去广告
+  taobao-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Taobao.js"
+    interval: 86400
+
+  # === 📚 阅读和学习应用会员解锁 ===
+  
+  # 得到会员解锁
+  dedao-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Dedao.js"
+    interval: 86400
+
+  # 喜马拉雅会员解锁
+  ximalaya-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/XiMaLaYa.js"
     interval: 86400
 
 # === MITM 配置 ===
@@ -1105,9 +1236,11 @@ mitm:
   h2: true
   skip-server-cert-verify: false
 
-# === HTTP 配置 ===
+# === HTTP 配置 - 去广告和会员解锁 ===
 http:
   mitm:
+    # === 📺 视频平台 ===
+    
     # YouTube相关域名
     - "-redirector*.googlevideo.com"
     - "*.googlevideo.com"
@@ -1115,16 +1248,73 @@ http:
     - "s.youtube.com"
     - "youtubei.googleapis.com"
 
+    # B站相关域名
+    - "*.bilibili.com"
+    - "*.biliapi.net"
+    - "*.hdslb.com"
+    - "api.bilibili.com"
+    - "api.vc.bilibili.com"
+    - "app.bilibili.com"
+
+    # 爱奇艺相关域名
+    - "*.iqiyi.com"
+    - "*.iqiyipic.com"
+    - "api.iqiyi.com"
+    - "ifacelb.iqiyi.com"
+
+    # 腾讯视频相关域名
+    - "*.v.qq.com"
+    - "*.qq.com"
+    - "v.qq.com"
+    - "vv.video.qq.com"
+
+    # 优酷相关域名
+    - "*.youku.com"
+    - "*.ykimg.com"
+    - "api.youku.com"
+
+    # Netflix相关域名
+    - "*.netflix.com"
+    - "*.nflximg.com"
+    - "*.nflxext.com"
+    - "*.nflxso.net"
+    - "*.nflxvideo.net"
+
+    # Disney+相关域名
+    - "*.disneyplus.com"
+    - "*.disney-plus.net"
+    - "*.disneystreaming.com"
+    - "*.dssott.com"
+
+    # HBO Max相关域名
+    - "*.hbomax.com"
+    - "*.hbo.com"
+    - "*.hbonow.com"
+
+    # === 🎵 音乐平台 ===
+    
     # Spotify相关域名
     - "spclient.wg.spotify.com"
+    - "*.spotify.com"
+    - "api.spotify.com"
 
-    # Adobe Lightroom相关域名
-    - "photos.adobe.io"
+    # Apple Music相关域名
+    - "*.music.apple.com"
+    - "*.itunes.apple.com"
+    - "api.music.apple.com"
 
-    # Peak相关域名
-    - "billing.peakcloud.org"
+    # QQ音乐相关域名
+    - "*.qq.com"
+    - "*.qzone.qq.com"
+    - "y.qq.com"
+    - "c.y.qq.com"
 
-    # Pandora相关域名（增强MITM支持）
+    # 网易云音乐相关域名
+    - "*.music.163.com"
+    - "*.api.music.163.com"
+    - "*.interface.music.163.com"
+
+    # Pandora相关域名
     - "www.pandora.com"
     - "tuner.pandora.com"
     - "api.pandora.com"
@@ -1134,17 +1324,75 @@ http:
     - "audio-sjl.pandora.com"
     - "audio-sv5.pandora.com"
 
-    # TikTok相关域名
-    - "*.tiktokv.com"
-    - "*.byteoversea.com"
-    - "*.tik-tokapi.com"
+    # === 🎨 图片和设计工具 ===
+    
+    # Adobe相关域名
+    - "photos.adobe.io"
+    - "*.adobe.com"
+    - "*.adobelogin.com"
+    - "cc-api-data.adobe.io"
 
+    # === 📱 社交和通讯应用 ===
+    
     # 微信相关域名
     - "mp.weixin.qq.com"
     - "weixin110.qq.com"
     - "security.wechat.com"
+    - "*.weixin.qq.com"
+
+    # 微博相关域名
+    - "*.weibo.com"
+    - "*.weibo.cn"
+    - "api.weibo.com"
+
+    # 知乎相关域名
+    - "*.zhihu.com"
+    - "api.zhihu.com"
+    - "*.zhimg.com"
+
+    # 小红书相关域名
+    - "*.xiaohongshu.com"
+    - "*.xhscdn.com"
+    - "api.xiaohongshu.com"
+
+    # === 🎮 游戏和应用 ===
+    
+    # Peak相关域名
+    - "billing.peakcloud.org"
+
+    # TikTok相关域名
+    - "*.tiktokv.com"
+    - "*.byteoversea.com"
+    - "*.tik-tokapi.com"
+    - "*.tiktok.com"
+
+    # === 🛒 购物平台 ===
+    
+    # 京东相关域名
+    - "*.jd.com"
+    - "*.jd.hk"
+    - "api.m.jd.com"
+    - "*.360buyimg.com"
+
+    # 淘宝相关域名
+    - "*.taobao.com"
+    - "*.tmall.com"
+    - "*.alicdn.com"
+
+    # === 📚 阅读和学习应用 ===
+    
+    # 得到相关域名
+    - "*.igetget.com"
+    - "api.igetget.com"
+
+    # 喜马拉雅相关域名
+    - "*.ximalaya.com"
+    - "*.xmcdn.com"
+    - "api.ximalaya.com"
 
   script:
+    # === 📺 视频平台去广告和会员解锁 ===
+    
     # YouTube去广告脚本
     - match: ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
       name: youtube-response
@@ -1153,6 +1401,77 @@ http:
       binary-mode: true
       timeout: 10
 
+    # B站去广告和会员解锁
+    - match: ^https?:\/\/api\.bilibili\.com\/x\/vip\/user\/info
+      name: bilibili-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/api\.bilibili\.com\/x\/vip\/.*
+      name: bilibili-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 爱奇艺去广告和会员解锁
+    - match: ^https?:\/\/.*\.iqiyi\.com\/.*\/vip
+      name: iqiyi-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/api\.iqiyi\.com\/.*\/user\/info
+      name: iqiyi-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 腾讯视频去广告和会员解锁
+    - match: ^https?:\/\/v\.qq\.com\/.*\/vip
+      name: tencent-video-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/.*\.qq\.com\/.*\/user\/vip
+      name: tencent-video-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 优酷去广告和会员解锁
+    - match: ^https?:\/\/.*\.youku\.com\/.*\/vip
+      name: youku-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/api\.youku\.com\/.*\/user\/info
+      name: youku-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # Netflix会员解锁
+    - match: ^https?:\/\/.*\.netflix\.com\/.*\/user\/info
+      name: netflix-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # Disney+会员解锁
+    - match: ^https?:\/\/.*\.disneyplus\.com\/.*\/user\/info
+      name: disney-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # HBO Max会员解锁
+    - match: ^https?:\/\/.*\.hbomax\.com\/.*\/user\/info
+      name: hbomax-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # === 🎵 音乐平台会员解锁 ===
+    
     # Spotify会员脚本
     - match: ^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$
       name: spotify-premium
@@ -1161,6 +1480,51 @@ http:
       binary-mode: true
       timeout: 10
 
+    # Apple Music会员解锁
+    - match: ^https?:\/\/api\.music\.apple\.com\/.*\/user\/info
+      name: apple-music-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # QQ音乐会员解锁
+    - match: ^https?:\/\/.*\.qq\.com\/.*\/music\/vip
+      name: qqmusic-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/c\.y\.qq\.com\/.*\/user\/vip
+      name: qqmusic-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 网易云音乐会员解锁
+    - match: ^https?:\/\/.*\.music\.163\.com\/.*\/user\/vip
+      name: netease-music-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/api\.music\.163\.com\/.*\/vip
+      name: netease-music-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # Pandora音乐解锁
+    - match: ^https:\/\/tuner\.pandora\.com\/tune
+      name: pandora-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https:\/\/api\.pandora\.com\/(v\d\/)?user\/getCanListen
+      name: pandora-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # === 🎨 图片和设计工具会员解锁 ===
+    
     # Adobe Lightroom
     - match: ^https:\/\/photos\.adobe\.io\/v2\/accounts
       name: lightroom-unlock
@@ -1168,23 +1532,48 @@ http:
       require-body: true
       timeout: 10
 
-    # Peak脑力训练
-    - match: ^https:\/\/billing\.peakcloud\.org\/billing\/2\/user\/me
-      name: peak-pro
+    # Adobe Photoshop解锁
+    - match: ^https:\/\/cc-api-data\.adobe\.io\/.*\/user\/info
+      name: photoshop-unlock
       type: response
       require-body: true
       timeout: 10
 
-    # Pandora音乐解锁（增强脚本支持）
-    - match: ^https:\/\/tuner\.pandora\.com\/tune
-      name: pandora-unlock
+    # === 📱 社交和通讯应用去广告 ===
+    
+    # 微信去广告
+    - match: ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgext
+      name: wechat-ads
       type: response
       require-body: true
       timeout: 10
+
+    # 微博去广告
+    - match: ^https?:\/\/api\.weibo\.com\/.*\/ad
+      name: weibo-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 知乎去广告
+    - match: ^https?:\/\/api\.zhihu\.com\/.*\/ad
+      name: zhihu-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 小红书去广告
+    - match: ^https?:\/\/api\.xiaohongshu\.com\/.*\/ad
+      name: xiaohongshu-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # === 🎮 游戏和应用会员解锁 ===
     
-    # Pandora API解锁
-    - match: ^https:\/\/api\.pandora\.com\/(v\d\/)?user\/getCanListen
-      name: pandora-unlock
+    # Peak脑力训练
+    - match: ^https:\/\/billing\.peakcloud\.org\/billing\/2\/user\/me
+      name: peak-pro
       type: response
       require-body: true
       timeout: 10
@@ -1196,14 +1585,41 @@ http:
       require-body: true
       timeout: 10
 
-    # 微信去广告
-    - match: ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgext
-      name: wechat-ads
+    # === 🛒 购物平台去广告 ===
+    
+    # 京东去广告
+    - match: ^https?:\/\/api\.m\.jd\.com\/.*\/ad
+      name: jd-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 淘宝去广告
+    - match: ^https?:\/\/.*\.taobao\.com\/.*\/ad
+      name: taobao-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # === 📚 阅读和学习应用会员解锁 ===
+    
+    # 得到会员解锁
+    - match: ^https?:\/\/api\.igetget\.com\/.*\/user\/vip
+      name: dedao-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 喜马拉雅会员解锁
+    - match: ^https?:\/\/api\.ximalaya\.com\/.*\/user\/vip
+      name: ximalaya-unlock
       type: response
       require-body: true
       timeout: 10
 
   rewrite:
+    # === 📺 视频平台去广告重写 ===
+    
     # YouTube去广告重写
     - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
     - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
@@ -1211,11 +1627,61 @@ http:
     - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
     - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
 
-# 📝 高级功能开关
+    # B站去广告
+    - ^https?:\/\/.*\.bilibili\.com\/.*\/ad - reject-200
+    - ^https?:\/\/.*\.bilibili\.com\/.*\/banner - reject-200
+
+    # 爱奇艺去广告
+    - ^https?:\/\/.*\.iqiyi\.com\/.*\/ad - reject-200
+    - ^https?:\/\/.*\.iqiyi\.com\/.*\/advertisement - reject-200
+
+    # 腾讯视频去广告
+    - ^https?:\/\/.*\.qq\.com\/.*\/ad - reject-200
+    - ^https?:\/\/v\.qq\.com\/.*\/ad - reject-200
+
+    # 优酷去广告
+    - ^https?:\/\/.*\.youku\.com\/.*\/ad - reject-200
+
+    # === 📱 社交应用去广告重写 ===
+    
+    # 微博去广告
+    - ^https?:\/\/.*\.weibo\.com\/.*\/ad - reject-200
+    - ^https?:\/\/api\.weibo\.com\/.*\/ad - reject-200
+
+    # 知乎去广告
+    - ^https?:\/\/.*\.zhihu\.com\/.*\/ad - reject-200
+    - ^https?:\/\/api\.zhihu\.com\/.*\/ad - reject-200
+
+    # 小红书去广告
+    - ^https?:\/\/.*\.xiaohongshu\.com\/.*\/ad - reject-200
+    - ^https?:\/\/api\.xiaohongshu\.com\/.*\/ad - reject-200
+
+    # === 🛒 购物平台去广告重写 ===
+    
+    # 京东去广告
+    - ^https?:\/\/.*\.jd\.com\/.*\/ad - reject-200
+    - ^https?:\/\/api\.m\.jd\.com\/.*\/ad - reject-200
+
+    # 淘宝去广告
+    - ^https?:\/\/.*\.taobao\.com\/.*\/ad - reject-200
+    - ^https?:\/\/.*\.tmall\.com\/.*\/ad - reject-200
+
+    # === 🎵 音乐平台去广告重写 ===
+    
+    # QQ音乐去广告
+    - ^https?:\/\/.*\.qq\.com\/.*\/music\/ad - reject-200
+
+    # 网易云音乐去广告
+    - ^https?:\/\/.*\.music\.163\.com\/.*\/ad - reject-200
+
+# 📝 高级功能开关 - 网络速度优化
 experimental:
-  ignore-resolve-fail: true    # 忽略DNS解析失败
-  sniff-tls-sni: true         # TLS SNI嗅探
-  sniff-http-host: true       # HTTP Host嗅探
+  ignore-resolve-fail: true    # 忽略DNS解析失败，提升连接速度
+  sniff-tls-sni: true         # TLS SNI嗅探，智能路由
+  sniff-http-host: true       # HTTP Host嗅探，精确分流
+  trace: false                # 关闭追踪，减少开销
+  tcp-fast-open: true         # 启用TCP快速打开，加速连接
+  udp-fragment: true          # 启用UDP分片，优化传输
 
 # 🌐 TUN模式配置 (高级用户)
 tun:
@@ -1231,7 +1697,7 @@ profile:
   store-selected: true      # 存储选择的代理
   store-fake-ip: false     # 不存储fake-ip
 
-# ⚡ 系统优化
+# ⚡ 系统优化 - 网络速度提升
 interface-name: ""          # 绑定网络接口
 routing-mark: 6666         # 路由标记
 auto-redir: false          # 自动重定向
@@ -1239,3 +1705,10 @@ ebpf:
   redirect-to-tun:
     - eth0
     - wlan0
+
+# 🚀 网络性能优化说明
+# 已通过以下方式优化网络速度：
+# 1. DNS优化：使用最快的DNS服务器，启用缓存
+# 2. 测速优化：降低测速间隔和超时时间，启用lazy模式
+# 3. 连接优化：启用TCP并发、快速打开、UDP分片
+# 4. 流量嗅探：智能路由，精确分流
