@@ -47,23 +47,6 @@ geo-update-interval: 24
 unified-delay: false
 connection-test-url: http://www.gstatic.com/generate_204
 
-# 网络加速优化 - 启用流量嗅探和智能路由
-sniffer:
-  enable: true
-  sniff-tls-sni: true
-  sniff-http-host: true
-  override-destination: true
-  skip-domain:
-    - 'Mijia Cloud'
-    - 'Music'
-    - 'Netease Music'
-    - 'System Status'
-    - 'speedtest'
-    - 'speedtest.net'
-    - 'speedtest.cn'
-    - 'speedtest.com.cn'
-    - 'fast.com'
-
 # DNS配置 - 优化网络速度
 dns:
   enable: true
