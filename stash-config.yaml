@@ -91,8 +91,9 @@ proxy-providers:
     path: ./providers/airport.yaml
     health-check:
       enable: true
-      interval: 60
+      interval: 300
       url: http://www.gstatic.com/generate_204
+      timeout: 5000
 
 # 代理组配置 - AI工具专业版
 proxy-groups:
@@ -155,8 +156,9 @@ proxy-groups:
     use:
       - 机场订阅
     url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 30
+    interval: 150
+    tolerance: 25
+    timeout: 5000
 
   # === 🤖 AI工具专用分组 ===
 
@@ -434,10 +436,11 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Streaming.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|日|日本|JP|Japan|韩|韩国|KR|Korea|港|香港|HK|Hong Kong|新|新加坡|SG|Singapore|英|英国|UK|United Kingdom|澳|澳大利亚|澳洲|AU|Australia)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|UnitedStates|洛杉矶|LA|纽约|NY|旧金山|SF|San Francisco|Chicago|Seattle|Miami|Dallas|Atlanta|Phoenix|Boston|Washington|DC|日|日本|JP|Japan|Tokyo|大阪|Osaka|名古屋|Nagoya|横滨|Yokohama|福冈|Fukuoka|JPN|韩|韩国|KR|Korea|Seoul|首尔|KOR|港|香港|HK|Hong Kong|HongKong|Hongkong|HKG|新|新加坡|SG|Singapore|SGP|SIN|英|英国|UK|United Kingdom|Britain|London|伦敦|Manchester|曼彻斯特|Birmingham|伯明翰|GBR|GB|澳|澳大利亚|澳洲|AU|Australia|Sydney|悉尼|Melbourne|墨尔本|Brisbane|布里斯班|Perth|珀斯|AUS)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 150  # 流媒体需要稳定网速
-    tolerance: 15
+    interval: 120
+    tolerance: 20
+    timeout: 5000
 
   # 游戏服务（全球游戏加速）- 优化延迟优先级
   - name: "🎮 游戏服务"
@@ -472,123 +475,133 @@ proxy-groups:
 
   # === 🌍 地区节点分组 ===
 
-  # 🇺🇸 美国节点 - 优化测速参数
+  # 🇺🇸 美国节点 - 更新过滤规则，支持更多命名格式
   - name: "🇺🇸 美国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/US.png
     use:
       - 机场订阅
-    filter: "(?i)(美|美国|美利坚|US|USA|America|United States)"
+    filter: "(?i)(美|美国|美利坚|US|USA|America|United States|UnitedStates|洛杉矶|LA|纽约|NY|旧金山|SF|San Francisco|Chicago|Seattle|Miami|Dallas|Atlanta|Phoenix|Boston|Washington|DC)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 250  # 减少测速间隔，提高响应速度
-    tolerance: 40  # 降低容错值，更敏感切换
+    interval: 180
+    tolerance: 30
+    timeout: 5000
 
-  # 🇭🇰 香港节点 - 优化测速参数（延迟敏感）
+  # 🇭🇰 香港节点 - 更新过滤规则，支持更多命名格式
   - name: "🇭🇰 香港节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/HK.png
     use:
       - 机场订阅
-    filter: "(?i)(港|香港|HK|Hong Kong)"
+    filter: "(?i)(港|香港|HK|Hong Kong|HongKong|Hongkong|HKG)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 200  # 最频繁测速，因为延迟最低
-    tolerance: 30  # 最敏感切换
+    interval: 150
+    tolerance: 25
+    timeout: 5000
 
-  # 🇯🇵 日本节点 - 优化测速参数
+  # 🇯🇵 日本节点 - 更新过滤规则，支持更多命名格式
   - name: "🇯🇵 日本节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/JP.png
     use:
       - 机场订阅
-    filter: "(?i)(日|日本|JP|Japan)"
+    filter: "(?i)(日|日本|JP|Japan|Tokyo|大阪|Osaka|名古屋|Nagoya|横滨|Yokohama|福冈|Fukuoka|JPN)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 220  # 适中测速频率
-    tolerance: 35  # 适中敏感度
+    interval: 180
+    tolerance: 30
+    timeout: 5000
 
-  # 🇰🇷 韩国节点 - 优化测速参数
+  # 🇰🇷 韩国节点 - 更新过滤规则，支持更多命名格式
   - name: "🇰🇷 韩国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/KR.png
     use:
       - 机场订阅
-    filter: "(?i)(韩|韩国|KR|Korea)"
+    filter: "(?i)(韩|韩国|KR|Korea|Seoul|首尔|KOR)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 240
-    tolerance: 35
+    interval: 180
+    tolerance: 30
+    timeout: 5000
 
-  # 🇸🇬 新加坡节点 - 优化测速参数
+  # 🇸🇬 新加坡节点 - 更新过滤规则，支持更多命名格式
   - name: "🇸🇬 新加坡节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/SG.png
     use:
       - 机场订阅
-    filter: "(?i)(新|新加坡|SG|Singapore)"
+    filter: "(?i)(新|新加坡|SG|Singapore|SGP|SIN)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 220  # 新加坡作为亚洲枢纽，频率较高
-    tolerance: 35
+    interval: 180
+    tolerance: 30
+    timeout: 5000
 
-  # 🇦🇺 澳洲节点 - 优化测速参数
+  # 🇦🇺 澳洲节点 - 更新过滤规则，支持更多命名格式
   - name: "🇦🇺 澳洲节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/AU.png
     use:
       - 机场订阅
-    filter: "(?i)(澳|澳大利亚|澳洲|AU|Australia)"
+    filter: "(?i)(澳|澳大利亚|澳洲|AU|Australia|Sydney|悉尼|Melbourne|墨尔本|Brisbane|布里斯班|Perth|珀斯|AUS)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 280  # 澳洲距离较远，适度降低频率
-    tolerance: 45
+    interval: 240
+    tolerance: 40
+    timeout: 6000
 
-  # 🇬🇧 英国节点 - 优化测速参数
+  # 🇬🇧 英国节点 - 更新过滤规则，支持更多命名格式
   - name: "🇬🇧 英国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/UK.png
     use:
       - 机场订阅
-    filter: "(?i)(英|英国|UK|United Kingdom|Britain)"
+    filter: "(?i)(英|英国|UK|United Kingdom|Britain|London|伦敦|Manchester|曼彻斯特|Birmingham|伯明翰|GBR|GB)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 260  # 英国作为欧洲重要节点，频率较高
-    tolerance: 40
+    interval: 200
+    tolerance: 35
+    timeout: 6000
 
-  # 🇨🇦 加拿大节点 - 优化测速参数
+  # 🇨🇦 加拿大节点 - 更新过滤规则，支持更多命名格式
   - name: "🇨🇦 加拿大节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/CA.png
     use:
       - 机场订阅
-    filter: "(?i)(加|加拿大|CA|Canada)"
+    filter: "(?i)(加|加拿大|CA|Canada|Toronto|多伦多|Vancouver|温哥华|Montreal|蒙特利尔|Ottawa|渥太华|CAN)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 270  # 北美地区，与美国搭配使用
-    tolerance: 40
+    interval: 200
+    tolerance: 35
+    timeout: 6000
 
-  # 🇩🇪 德国节点 - 优化测速参数
+  # 🇩🇪 德国节点 - 更新过滤规则，支持更多命名格式
   - name: "🇩🇪 德国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/DE.png
     use:
       - 机场订阅
-    filter: "(?i)(德|德国|DE|Germany)"
+    filter: "(?i)(德|德国|DE|Germany|Berlin|柏林|Munich|慕尼黑|Frankfurt|法兰克福|Hamburg|汉堡|DEU)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 280  # 欧洲核心国家
-    tolerance: 40
+    interval: 220
+    tolerance: 35
+    timeout: 6000
 
-  # 🇪🇺 欧洲节点 - 优化测速参数
+  # 🇪🇺 欧洲节点 - 更新过滤规则，支持更多命名格式
   - name: "🇪🇺 欧洲节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/EU.png
     use:
       - 机场订阅
-    filter: "(?i)(欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary)"
+    filter: "(?i)(欧|欧洲|EU|Europe|法国|FR|France|Paris|巴黎|意大利|IT|Italy|Rome|罗马|Milan|米兰|西班牙|ES|Spain|Madrid|马德里|Barcelona|巴塞罗那|荷兰|NL|Netherlands|Amsterdam|阿姆斯特丹|瑞士|CH|Switzerland|Zurich|苏黎世|奥地利|AT|Austria|Vienna|维也纳|比利时|BE|Belgium|Brussels|布鲁塞尔|丹麦|DK|Denmark|Copenhagen|哥本哈根|芬兰|FI|Finland|Helsinki|赫尔辛基|挪威|NO|Norway|Oslo|奥斯陆|瑞典|SE|Sweden|Stockholm|斯德哥尔摩|波兰|PL|Poland|Warsaw|华沙|捷克|CZ|Czech|Prague|布拉格|匈牙利|HU|Hungary|Budapest|布达佩斯|葡萄牙|PT|Portugal|Lisbon|里斯本|希腊|GR|Greece|Athens|雅典|爱尔兰|IE|Ireland|Dublin|都柏林)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 290  # 其他欧洲国家，频率稍低
-    tolerance: 45
+    interval: 240
+    tolerance: 40
+    timeout: 6000
 
-  # 🌍 其他地区
+  # 🌍 其他地区 - 更新过滤规则
   - name: "🌍 其他地区"
     type: select
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/UN.png
     use:
       - 机场订阅
-    filter: "^((?!美|美国|美利坚|US|USA|America|United States|港|香港|HK|Hong Kong|日|日本|JP|Japan|韩|韩国|KR|Korea|新|新加坡|SG|Singapore|澳|澳大利亚|澳洲|AU|Australia|英|英国|UK|United Kingdom|Britain|加|加拿大|CA|Canada|德|德国|DE|Germany|欧|欧洲|EU|Europe|法国|意大利|西班牙|荷兰|瑞士|奥地利|比利时|丹麦|芬兰|挪威|瑞典|波兰|捷克|匈牙利|FR|IT|ES|NL|CH|AT|BE|DK|FI|NO|SE|PL|CZ|HU|France|Italy|Spain|Netherlands|Switzerland|Austria|Belgium|Denmark|Finland|Norway|Sweden|Poland|Czech|Hungary).)*$"
+    filter: "^((?!美|美国|美利坚|US|USA|America|United States|UnitedStates|洛杉矶|LA|纽约|NY|旧金山|SF|San Francisco|Chicago|Seattle|Miami|Dallas|Atlanta|Phoenix|Boston|Washington|DC|港|香港|HK|Hong Kong|HongKong|Hongkong|HKG|日|日本|JP|Japan|Tokyo|大阪|Osaka|名古屋|Nagoya|横滨|Yokohama|福冈|Fukuoka|JPN|韩|韩国|KR|Korea|Seoul|首尔|KOR|新|新加坡|SG|Singapore|SGP|SIN|澳|澳大利亚|澳洲|AU|Australia|Sydney|悉尼|Melbourne|墨尔本|Brisbane|布里斯班|Perth|珀斯|AUS|英|英国|UK|United Kingdom|Britain|London|伦敦|Manchester|曼彻斯特|Birmingham|伯明翰|GBR|GB|加|加拿大|CA|Canada|Toronto|多伦多|Vancouver|温哥华|Montreal|蒙特利尔|Ottawa|渥太华|CAN|德|德国|DE|Germany|Berlin|柏林|Munich|慕尼黑|Frankfurt|法兰克福|Hamburg|汉堡|DEU|欧|欧洲|EU|Europe|法国|FR|France|Paris|巴黎|意大利|IT|Italy|Rome|罗马|Milan|米兰|西班牙|ES|Spain|Madrid|马德里|Barcelona|巴塞罗那|荷兰|NL|Netherlands|Amsterdam|阿姆斯特丹|瑞士|CH|Switzerland|Zurich|苏黎世|奥地利|AT|Austria|Vienna|维也纳|比利时|BE|Belgium|Brussels|布鲁塞尔|丹麦|DK|Denmark|Copenhagen|哥本哈根|芬兰|FI|Finland|Helsinki|赫尔辛基|挪威|NO|Norway|Oslo|奥斯陆|瑞典|SE|Sweden|Stockholm|斯德哥尔摩|波兰|PL|Poland|Warsaw|华沙|捷克|CZ|Czech|Prague|布拉格|匈牙利|HU|Hungary|Budapest|布达佩斯|葡萄牙|PT|Portugal|希腊|GR|Greece|爱尔兰|IE|Ireland).)*$"
 
   # === 🐟 兜底规则 ===
 
