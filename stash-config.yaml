@@ -36,36 +36,68 @@ ipv6: false
 external-controller: 127.0.0.1:9090
 external-ui: dashboard
 
-# 网络性能优化配置
+# 网络性能优化配置 - 提升网络速度
 tcp-concurrent: true
 find-process-mode: strict
 geodata-mode: true
 geo-auto-update: true
 geo-update-interval: 24
 
-# 性能优化设置
+# 性能优化设置 - 加速网络连接
 unified-delay: false
 connection-test-url: http://www.gstatic.com/generate_204
 
-# DNS配置
+# 网络加速优化 - 启用流量嗅探和智能路由
+sniffer:
+  enable: true
+  sniff-tls-sni: true
+  sniff-http-host: true
+  override-destination: true
+  skip-domain:
+    - 'Mijia Cloud'
+    - 'Music'
+    - 'Netease Music'
+    - 'System Status'
+    - 'speedtest'
+    - 'speedtest.net'
+    - 'speedtest.cn'
+    - 'speedtest.com.cn'
+    - 'fast.com'
+
+# DNS配置 - 优化网络速度
 dns:
   enable: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - 'localhost.ptlogin2.qq.com'
+  use-hosts: true
+  nameserver-policy:
+    'geosite:cn,private': ['223.5.5.5', '114.114.114.114']
   default-nameserver:
     - 223.5.5.5
+    - 114.114.114.114
     - 8.8.8.8
   nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-    - https://dns.google/dns-query
+    - https://dns.alidns.com/dns-query  # 阿里DNS，国内最快
+    - https://doh.pub/dns-query         # 腾讯DNS
+    - https://dns.google/dns-query      # Google DNS
+    - tls://223.5.5.5:853               # 阿里DNS TLS
+    - tls://8.8.8.8:853                 # Google DNS TLS
   fallback:
-    - https://1.1.1.1/dns-query
-    - https://dns.google/dns-query
-    - tls://8.8.8.8:853
+    - https://1.1.1.1/dns-query         # Cloudflare DNS
+    - https://dns.google/dns-query      # Google DNS
+    - tls://1.1.1.1:853                 # Cloudflare DNS TLS
+    - tls://8.8.8.8:853                 # Google DNS TLS
   fallback-filter:
     geoip: true
     geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+      - 127.0.0.1/32
     domain:
       - '+.google.com'
       - '+.openai.com'
@@ -74,10 +106,6 @@ dns:
       - '+.discord.com'
       - '+.twitter.com'
       - '+.facebook.com'
-    ipcidr:
-      - 240.0.0.0/4
-      - 0.0.0.0/32
-      - 127.0.0.1/32
 
 # 远程代理提供者配置
 # ⚠️ 重要提醒：请替换下方的订阅链接为你自己的机场订阅地址
@@ -149,16 +177,17 @@ proxy-groups:
       - "🌍 其他地区"
       - "DIRECT"
 
-  # 自动选择 - 优化延迟算法
+  # 自动选择 - 优化延迟算法，提升网络速度
   - name: "♻️ 自动选择"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Auto.png
     use:
       - 机场订阅
     url: 'http://www.gstatic.com/generate_204'
-    interval: 150
-    tolerance: 25
-    timeout: 5000
+    interval: 120
+    tolerance: 20
+    timeout: 3000
+    lazy: true
 
   # === 🤖 AI工具专用分组 ===
 
@@ -430,7 +459,7 @@ proxy-groups:
 
   # === 🚀 高级功能分组 ===
 
-  # 流媒体解锁（全球）- 网速优先自动测速
+  # 流媒体解锁（全球）- 网速优先自动测速，优化网络速度
   - name: "🌍 流媒体解锁"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/Streaming.png
@@ -438,9 +467,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|UnitedStates|洛杉矶|LA|纽约|NY|旧金山|SF|San Francisco|Chicago|Seattle|Miami|Dallas|Atlanta|Phoenix|Boston|Washington|DC|日|日本|JP|Japan|Tokyo|大阪|Osaka|名古屋|Nagoya|横滨|Yokohama|福冈|Fukuoka|JPN|韩|韩国|KR|Korea|Seoul|首尔|KOR|港|香港|HK|Hong Kong|HongKong|Hongkong|HKG|新|新加坡|SG|Singapore|SGP|SIN|英|英国|UK|United Kingdom|Britain|London|伦敦|Manchester|曼彻斯特|Birmingham|伯明翰|GBR|GB|澳|澳大利亚|澳洲|AU|Australia|Sydney|悉尼|Melbourne|墨尔本|Brisbane|布里斯班|Perth|珀斯|AUS)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 120
-    tolerance: 20
-    timeout: 5000
+    interval: 100
+    tolerance: 15
+    timeout: 3000
+    lazy: true
 
   # 游戏服务（全球游戏加速）- 优化延迟优先级
   - name: "🎮 游戏服务"
@@ -475,7 +505,7 @@ proxy-groups:
 
   # === 🌍 地区节点分组 ===
 
-  # 🇺🇸 美国节点 - 更新过滤规则，支持更多命名格式
+  # 🇺🇸 美国节点 - 更新过滤规则，优化网络速度
   - name: "🇺🇸 美国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/US.png
@@ -483,11 +513,12 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(美|美国|美利坚|US|USA|America|United States|UnitedStates|洛杉矶|LA|纽约|NY|旧金山|SF|San Francisco|Chicago|Seattle|Miami|Dallas|Atlanta|Phoenix|Boston|Washington|DC)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 180
-    tolerance: 30
-    timeout: 5000
+    interval: 150
+    tolerance: 25
+    timeout: 3000
+    lazy: true
 
-  # 🇭🇰 香港节点 - 更新过滤规则，支持更多命名格式
+  # 🇭🇰 香港节点 - 更新过滤规则，优化网络速度（延迟最低）
   - name: "🇭🇰 香港节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/HK.png
@@ -495,11 +526,12 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(港|香港|HK|Hong Kong|HongKong|Hongkong|HKG)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 150
-    tolerance: 25
-    timeout: 5000
+    interval: 120
+    tolerance: 20
+    timeout: 3000
+    lazy: true
 
-  # 🇯🇵 日本节点 - 更新过滤规则，支持更多命名格式
+  # 🇯🇵 日本节点 - 更新过滤规则，优化网络速度
   - name: "🇯🇵 日本节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/JP.png
@@ -507,11 +539,12 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(日|日本|JP|Japan|Tokyo|大阪|Osaka|名古屋|Nagoya|横滨|Yokohama|福冈|Fukuoka|JPN)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 180
-    tolerance: 30
-    timeout: 5000
+    interval: 150
+    tolerance: 25
+    timeout: 3000
+    lazy: true
 
-  # 🇰🇷 韩国节点 - 更新过滤规则，支持更多命名格式
+  # 🇰🇷 韩国节点 - 更新过滤规则，优化网络速度
   - name: "🇰🇷 韩国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/KR.png
@@ -519,11 +552,12 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(韩|韩国|KR|Korea|Seoul|首尔|KOR)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 180
-    tolerance: 30
-    timeout: 5000
+    interval: 150
+    tolerance: 25
+    timeout: 3000
+    lazy: true
 
-  # 🇸🇬 新加坡节点 - 更新过滤规则，支持更多命名格式
+  # 🇸🇬 新加坡节点 - 更新过滤规则，优化网络速度
   - name: "🇸🇬 新加坡节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/SG.png
@@ -531,11 +565,12 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(新|新加坡|SG|Singapore|SGP|SIN)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 180
-    tolerance: 30
-    timeout: 5000
+    interval: 150
+    tolerance: 25
+    timeout: 3000
+    lazy: true
 
-  # 🇦🇺 澳洲节点 - 更新过滤规则，支持更多命名格式
+  # 🇦🇺 澳洲节点 - 更新过滤规则，优化网络速度
   - name: "🇦🇺 澳洲节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/AU.png
@@ -543,11 +578,12 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(澳|澳大利亚|澳洲|AU|Australia|Sydney|悉尼|Melbourne|墨尔本|Brisbane|布里斯班|Perth|珀斯|AUS)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 240
-    tolerance: 40
-    timeout: 6000
+    interval: 200
+    tolerance: 35
+    timeout: 5000
+    lazy: true
 
-  # 🇬🇧 英国节点 - 更新过滤规则，支持更多命名格式
+  # 🇬🇧 英国节点 - 更新过滤规则，优化网络速度
   - name: "🇬🇧 英国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/UK.png
@@ -555,11 +591,12 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(英|英国|UK|United Kingdom|Britain|London|伦敦|Manchester|曼彻斯特|Birmingham|伯明翰|GBR|GB)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 35
-    timeout: 6000
+    interval: 180
+    tolerance: 30
+    timeout: 5000
+    lazy: true
 
-  # 🇨🇦 加拿大节点 - 更新过滤规则，支持更多命名格式
+  # 🇨🇦 加拿大节点 - 更新过滤规则，优化网络速度
   - name: "🇨🇦 加拿大节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/CA.png
@@ -567,11 +604,12 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(加|加拿大|CA|Canada|Toronto|多伦多|Vancouver|温哥华|Montreal|蒙特利尔|Ottawa|渥太华|CAN)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 200
-    tolerance: 35
-    timeout: 6000
+    interval: 180
+    tolerance: 30
+    timeout: 5000
+    lazy: true
 
-  # 🇩🇪 德国节点 - 更新过滤规则，支持更多命名格式
+  # 🇩🇪 德国节点 - 更新过滤规则，优化网络速度
   - name: "🇩🇪 德国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/DE.png
@@ -579,11 +617,12 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(德|德国|DE|Germany|Berlin|柏林|Munich|慕尼黑|Frankfurt|法兰克福|Hamburg|汉堡|DEU)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 220
-    tolerance: 35
-    timeout: 6000
+    interval: 200
+    tolerance: 30
+    timeout: 5000
+    lazy: true
 
-  # 🇪🇺 欧洲节点 - 更新过滤规则，支持更多命名格式
+  # 🇪🇺 欧洲节点 - 更新过滤规则，优化网络速度
   - name: "🇪🇺 欧洲节点"
     type: url-test
     icon: https://raw.githubusercontent.com/michaelyufeng/stash-ai-config/main/icons/EU.png
@@ -591,9 +630,10 @@ proxy-groups:
       - 机场订阅
     filter: "(?i)(欧|欧洲|EU|Europe|法国|FR|France|Paris|巴黎|意大利|IT|Italy|Rome|罗马|Milan|米兰|西班牙|ES|Spain|Madrid|马德里|Barcelona|巴塞罗那|荷兰|NL|Netherlands|Amsterdam|阿姆斯特丹|瑞士|CH|Switzerland|Zurich|苏黎世|奥地利|AT|Austria|Vienna|维也纳|比利时|BE|Belgium|Brussels|布鲁塞尔|丹麦|DK|Denmark|Copenhagen|哥本哈根|芬兰|FI|Finland|Helsinki|赫尔辛基|挪威|NO|Norway|Oslo|奥斯陆|瑞典|SE|Sweden|Stockholm|斯德哥尔摩|波兰|PL|Poland|Warsaw|华沙|捷克|CZ|Czech|Prague|布拉格|匈牙利|HU|Hungary|Budapest|布达佩斯|葡萄牙|PT|Portugal|Lisbon|里斯本|希腊|GR|Greece|Athens|雅典|爱尔兰|IE|Ireland|Dublin|都柏林)"
     url: 'http://www.gstatic.com/generate_204'
-    interval: 240
-    tolerance: 40
-    timeout: 6000
+    interval: 220
+    tolerance: 35
+    timeout: 5000
+    lazy: true
 
   # 🌍 其他地区 - 更新过滤规则
   - name: "🌍 其他地区"
@@ -1224,11 +1264,14 @@ http:
     - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
     - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
 
-# 📝 高级功能开关
+# 📝 高级功能开关 - 网络速度优化
 experimental:
-  ignore-resolve-fail: true    # 忽略DNS解析失败
-  sniff-tls-sni: true         # TLS SNI嗅探
-  sniff-http-host: true       # HTTP Host嗅探
+  ignore-resolve-fail: true    # 忽略DNS解析失败，提升连接速度
+  sniff-tls-sni: true         # TLS SNI嗅探，智能路由
+  sniff-http-host: true       # HTTP Host嗅探，精确分流
+  trace: false                # 关闭追踪，减少开销
+  tcp-fast-open: true         # 启用TCP快速打开，加速连接
+  udp-fragment: true          # 启用UDP分片，优化传输
 
 # 🌐 TUN模式配置 (高级用户)
 tun:
@@ -1244,7 +1287,7 @@ profile:
   store-selected: true      # 存储选择的代理
   store-fake-ip: false     # 不存储fake-ip
 
-# ⚡ 系统优化
+# ⚡ 系统优化 - 网络速度提升
 interface-name: ""          # 绑定网络接口
 routing-mark: 6666         # 路由标记
 auto-redir: false          # 自动重定向
@@ -1252,3 +1295,10 @@ ebpf:
   redirect-to-tun:
     - eth0
     - wlan0
+
+# 🚀 网络性能优化说明
+# 已通过以下方式优化网络速度：
+# 1. DNS优化：使用最快的DNS服务器，启用缓存
+# 2. 测速优化：降低测速间隔和超时时间，启用lazy模式
+# 3. 连接优化：启用TCP并发、快速打开、UDP分片
+# 4. 流量嗅探：智能路由，精确分流
