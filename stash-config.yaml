@@ -29,12 +29,10 @@
 # 🚀 基础配置 + 网络性能优化
 mixed-port: 7890
 allow-lan: true
-bind-address: '*'
 mode: rule
 log-level: info
 ipv6: false
 external-controller: 127.0.0.1:9090
-external-ui: dashboard
 
 # 网络性能优化配置 - 提升网络速度
 tcp-concurrent: true
