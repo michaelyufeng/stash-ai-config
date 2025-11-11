@@ -1113,26 +1113,70 @@ rules:
 
 # ===== 🚀 高级功能扩展配置 =====
 
-# === 脚本提供者配置 ===
+# === 脚本提供者配置 - 去广告和会员解锁 ===
 script-providers:
+  # === 📺 视频平台去广告和会员解锁 ===
+  
   # YouTube去广告脚本
   youtube-response:
     url: "https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js"
     interval: 86400
 
+  # B站去广告和会员解锁
+  bilibili-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/BiliBili.js"
+    interval: 86400
+
+  # 爱奇艺去广告和会员解锁
+  iqiyi-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/iQIYI.js"
+    interval: 86400
+
+  # 腾讯视频去广告和会员解锁
+  tencent-video-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/TencentVideo.js"
+    interval: 86400
+
+  # 优酷去广告和会员解锁
+  youku-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/YouKu.js"
+    interval: 86400
+
+  # Netflix会员解锁
+  netflix-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Netflix_rating.js"
+    interval: 86400
+
+  # Disney+会员解锁
+  disney-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Disney.js"
+    interval: 86400
+
+  # HBO Max会员解锁
+  hbomax-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/HBO.js"
+    interval: 86400
+
+  # === 🎵 音乐平台会员解锁 ===
+  
   # Spotify会员脚本
   spotify-premium:
     url: "https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js"
     interval: 86400
 
-  # Adobe Lightroom
-  lightroom-unlock:
-    url: "https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/lightroom.js"
+  # Apple Music会员解锁
+  apple-music-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/AppleMusic.js"
     interval: 86400
 
-  # Peak脑力训练
-  peak-pro:
-    url: "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/js/peak.js"
+  # QQ音乐会员解锁
+  qqmusic-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/QQMusic.js"
+    interval: 86400
+
+  # 网易云音乐会员解锁
+  netease-music-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/NetEaseMusic.js"
     interval: 86400
 
   # Pandora音乐解锁
@@ -1140,14 +1184,74 @@ script-providers:
     url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Pandora.js"
     interval: 86400
 
+  # === 🎨 图片和设计工具会员解锁 ===
+  
+  # Adobe Lightroom
+  lightroom-unlock:
+    url: "https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/lightroom.js"
+    interval: 86400
+
+  # Adobe Photoshop解锁
+  photoshop-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Adobe.js"
+    interval: 86400
+
+  # === 📱 社交和通讯应用去广告 ===
+  
+  # 微信去广告
+  wechat-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js"
+    interval: 86400
+
+  # 微博去广告
+  weibo-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Weibo.js"
+    interval: 86400
+
+  # 知乎去广告
+  zhihu-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Zhihu.js"
+    interval: 86400
+
+  # 小红书去广告
+  xiaohongshu-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/XiaoHongShu.js"
+    interval: 86400
+
+  # === 🎮 游戏和应用会员解锁 ===
+  
+  # Peak脑力训练
+  peak-pro:
+    url: "https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/js/peak.js"
+    interval: 86400
+
   # TikTok解锁脚本
   tiktok-unlock:
     url: "https://raw.githubusercontent.com/Tartarus2014/Script/master/jd_price_detect.js"
     interval: 86400
 
-  # 微信去广告
-  wechat-ads:
-    url: "https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js"
+  # === 🛒 购物平台去广告 ===
+  
+  # 京东去广告
+  jd-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/JD.js"
+    interval: 86400
+
+  # 淘宝去广告
+  taobao-ads:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Taobao.js"
+    interval: 86400
+
+  # === 📚 阅读和学习应用会员解锁 ===
+  
+  # 得到会员解锁
+  dedao-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Dedao.js"
+    interval: 86400
+
+  # 喜马拉雅会员解锁
+  ximalaya-unlock:
+    url: "https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/XiMaLaYa.js"
     interval: 86400
 
 # === MITM 配置 ===
@@ -1158,9 +1262,11 @@ mitm:
   h2: true
   skip-server-cert-verify: false
 
-# === HTTP 配置 ===
+# === HTTP 配置 - 去广告和会员解锁 ===
 http:
   mitm:
+    # === 📺 视频平台 ===
+    
     # YouTube相关域名
     - "-redirector*.googlevideo.com"
     - "*.googlevideo.com"
@@ -1168,16 +1274,73 @@ http:
     - "s.youtube.com"
     - "youtubei.googleapis.com"
 
+    # B站相关域名
+    - "*.bilibili.com"
+    - "*.biliapi.net"
+    - "*.hdslb.com"
+    - "api.bilibili.com"
+    - "api.vc.bilibili.com"
+    - "app.bilibili.com"
+
+    # 爱奇艺相关域名
+    - "*.iqiyi.com"
+    - "*.iqiyipic.com"
+    - "api.iqiyi.com"
+    - "ifacelb.iqiyi.com"
+
+    # 腾讯视频相关域名
+    - "*.v.qq.com"
+    - "*.qq.com"
+    - "v.qq.com"
+    - "vv.video.qq.com"
+
+    # 优酷相关域名
+    - "*.youku.com"
+    - "*.ykimg.com"
+    - "api.youku.com"
+
+    # Netflix相关域名
+    - "*.netflix.com"
+    - "*.nflximg.com"
+    - "*.nflxext.com"
+    - "*.nflxso.net"
+    - "*.nflxvideo.net"
+
+    # Disney+相关域名
+    - "*.disneyplus.com"
+    - "*.disney-plus.net"
+    - "*.disneystreaming.com"
+    - "*.dssott.com"
+
+    # HBO Max相关域名
+    - "*.hbomax.com"
+    - "*.hbo.com"
+    - "*.hbonow.com"
+
+    # === 🎵 音乐平台 ===
+    
     # Spotify相关域名
     - "spclient.wg.spotify.com"
+    - "*.spotify.com"
+    - "api.spotify.com"
 
-    # Adobe Lightroom相关域名
-    - "photos.adobe.io"
+    # Apple Music相关域名
+    - "*.music.apple.com"
+    - "*.itunes.apple.com"
+    - "api.music.apple.com"
 
-    # Peak相关域名
-    - "billing.peakcloud.org"
+    # QQ音乐相关域名
+    - "*.qq.com"
+    - "*.qzone.qq.com"
+    - "y.qq.com"
+    - "c.y.qq.com"
 
-    # Pandora相关域名（增强MITM支持）
+    # 网易云音乐相关域名
+    - "*.music.163.com"
+    - "*.api.music.163.com"
+    - "*.interface.music.163.com"
+
+    # Pandora相关域名
     - "www.pandora.com"
     - "tuner.pandora.com"
     - "api.pandora.com"
@@ -1187,17 +1350,75 @@ http:
     - "audio-sjl.pandora.com"
     - "audio-sv5.pandora.com"
 
-    # TikTok相关域名
-    - "*.tiktokv.com"
-    - "*.byteoversea.com"
-    - "*.tik-tokapi.com"
+    # === 🎨 图片和设计工具 ===
+    
+    # Adobe相关域名
+    - "photos.adobe.io"
+    - "*.adobe.com"
+    - "*.adobelogin.com"
+    - "cc-api-data.adobe.io"
 
+    # === 📱 社交和通讯应用 ===
+    
     # 微信相关域名
     - "mp.weixin.qq.com"
     - "weixin110.qq.com"
     - "security.wechat.com"
+    - "*.weixin.qq.com"
+
+    # 微博相关域名
+    - "*.weibo.com"
+    - "*.weibo.cn"
+    - "api.weibo.com"
+
+    # 知乎相关域名
+    - "*.zhihu.com"
+    - "api.zhihu.com"
+    - "*.zhimg.com"
+
+    # 小红书相关域名
+    - "*.xiaohongshu.com"
+    - "*.xhscdn.com"
+    - "api.xiaohongshu.com"
+
+    # === 🎮 游戏和应用 ===
+    
+    # Peak相关域名
+    - "billing.peakcloud.org"
+
+    # TikTok相关域名
+    - "*.tiktokv.com"
+    - "*.byteoversea.com"
+    - "*.tik-tokapi.com"
+    - "*.tiktok.com"
+
+    # === 🛒 购物平台 ===
+    
+    # 京东相关域名
+    - "*.jd.com"
+    - "*.jd.hk"
+    - "api.m.jd.com"
+    - "*.360buyimg.com"
+
+    # 淘宝相关域名
+    - "*.taobao.com"
+    - "*.tmall.com"
+    - "*.alicdn.com"
+
+    # === 📚 阅读和学习应用 ===
+    
+    # 得到相关域名
+    - "*.igetget.com"
+    - "api.igetget.com"
+
+    # 喜马拉雅相关域名
+    - "*.ximalaya.com"
+    - "*.xmcdn.com"
+    - "api.ximalaya.com"
 
   script:
+    # === 📺 视频平台去广告和会员解锁 ===
+    
     # YouTube去广告脚本
     - match: ^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch)
       name: youtube-response
@@ -1206,6 +1427,77 @@ http:
       binary-mode: true
       timeout: 10
 
+    # B站去广告和会员解锁
+    - match: ^https?:\/\/api\.bilibili\.com\/x\/vip\/user\/info
+      name: bilibili-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/api\.bilibili\.com\/x\/vip\/.*
+      name: bilibili-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 爱奇艺去广告和会员解锁
+    - match: ^https?:\/\/.*\.iqiyi\.com\/.*\/vip
+      name: iqiyi-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/api\.iqiyi\.com\/.*\/user\/info
+      name: iqiyi-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 腾讯视频去广告和会员解锁
+    - match: ^https?:\/\/v\.qq\.com\/.*\/vip
+      name: tencent-video-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/.*\.qq\.com\/.*\/user\/vip
+      name: tencent-video-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 优酷去广告和会员解锁
+    - match: ^https?:\/\/.*\.youku\.com\/.*\/vip
+      name: youku-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/api\.youku\.com\/.*\/user\/info
+      name: youku-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # Netflix会员解锁
+    - match: ^https?:\/\/.*\.netflix\.com\/.*\/user\/info
+      name: netflix-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # Disney+会员解锁
+    - match: ^https?:\/\/.*\.disneyplus\.com\/.*\/user\/info
+      name: disney-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # HBO Max会员解锁
+    - match: ^https?:\/\/.*\.hbomax\.com\/.*\/user\/info
+      name: hbomax-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # === 🎵 音乐平台会员解锁 ===
+    
     # Spotify会员脚本
     - match: ^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$
       name: spotify-premium
@@ -1214,6 +1506,51 @@ http:
       binary-mode: true
       timeout: 10
 
+    # Apple Music会员解锁
+    - match: ^https?:\/\/api\.music\.apple\.com\/.*\/user\/info
+      name: apple-music-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # QQ音乐会员解锁
+    - match: ^https?:\/\/.*\.qq\.com\/.*\/music\/vip
+      name: qqmusic-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/c\.y\.qq\.com\/.*\/user\/vip
+      name: qqmusic-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 网易云音乐会员解锁
+    - match: ^https?:\/\/.*\.music\.163\.com\/.*\/user\/vip
+      name: netease-music-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https?:\/\/api\.music\.163\.com\/.*\/vip
+      name: netease-music-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # Pandora音乐解锁
+    - match: ^https:\/\/tuner\.pandora\.com\/tune
+      name: pandora-unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: ^https:\/\/api\.pandora\.com\/(v\d\/)?user\/getCanListen
+      name: pandora-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # === 🎨 图片和设计工具会员解锁 ===
+    
     # Adobe Lightroom
     - match: ^https:\/\/photos\.adobe\.io\/v2\/accounts
       name: lightroom-unlock
@@ -1221,23 +1558,48 @@ http:
       require-body: true
       timeout: 10
 
-    # Peak脑力训练
-    - match: ^https:\/\/billing\.peakcloud\.org\/billing\/2\/user\/me
-      name: peak-pro
+    # Adobe Photoshop解锁
+    - match: ^https:\/\/cc-api-data\.adobe\.io\/.*\/user\/info
+      name: photoshop-unlock
       type: response
       require-body: true
       timeout: 10
 
-    # Pandora音乐解锁（增强脚本支持）
-    - match: ^https:\/\/tuner\.pandora\.com\/tune
-      name: pandora-unlock
+    # === 📱 社交和通讯应用去广告 ===
+    
+    # 微信去广告
+    - match: ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgext
+      name: wechat-ads
       type: response
       require-body: true
       timeout: 10
+
+    # 微博去广告
+    - match: ^https?:\/\/api\.weibo\.com\/.*\/ad
+      name: weibo-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 知乎去广告
+    - match: ^https?:\/\/api\.zhihu\.com\/.*\/ad
+      name: zhihu-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 小红书去广告
+    - match: ^https?:\/\/api\.xiaohongshu\.com\/.*\/ad
+      name: xiaohongshu-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # === 🎮 游戏和应用会员解锁 ===
     
-    # Pandora API解锁
-    - match: ^https:\/\/api\.pandora\.com\/(v\d\/)?user\/getCanListen
-      name: pandora-unlock
+    # Peak脑力训练
+    - match: ^https:\/\/billing\.peakcloud\.org\/billing\/2\/user\/me
+      name: peak-pro
       type: response
       require-body: true
       timeout: 10
@@ -1249,20 +1611,94 @@ http:
       require-body: true
       timeout: 10
 
-    # 微信去广告
-    - match: ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgext
-      name: wechat-ads
+    # === 🛒 购物平台去广告 ===
+    
+    # 京东去广告
+    - match: ^https?:\/\/api\.m\.jd\.com\/.*\/ad
+      name: jd-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 淘宝去广告
+    - match: ^https?:\/\/.*\.taobao\.com\/.*\/ad
+      name: taobao-ads
+      type: response
+      require-body: true
+      timeout: 10
+
+    # === 📚 阅读和学习应用会员解锁 ===
+    
+    # 得到会员解锁
+    - match: ^https?:\/\/api\.igetget\.com\/.*\/user\/vip
+      name: dedao-unlock
+      type: response
+      require-body: true
+      timeout: 10
+
+    # 喜马拉雅会员解锁
+    - match: ^https?:\/\/api\.ximalaya\.com\/.*\/user\/vip
+      name: ximalaya-unlock
       type: response
       require-body: true
       timeout: 10
 
   rewrite:
+    # === 📺 视频平台去广告重写 ===
+    
     # YouTube去广告重写
     - (^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 302
     - ^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject-200
     - ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject-200
     - ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) - reject-200
     - ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject-200
+
+    # B站去广告
+    - ^https?:\/\/.*\.bilibili\.com\/.*\/ad - reject-200
+    - ^https?:\/\/.*\.bilibili\.com\/.*\/banner - reject-200
+
+    # 爱奇艺去广告
+    - ^https?:\/\/.*\.iqiyi\.com\/.*\/ad - reject-200
+    - ^https?:\/\/.*\.iqiyi\.com\/.*\/advertisement - reject-200
+
+    # 腾讯视频去广告
+    - ^https?:\/\/.*\.qq\.com\/.*\/ad - reject-200
+    - ^https?:\/\/v\.qq\.com\/.*\/ad - reject-200
+
+    # 优酷去广告
+    - ^https?:\/\/.*\.youku\.com\/.*\/ad - reject-200
+
+    # === 📱 社交应用去广告重写 ===
+    
+    # 微博去广告
+    - ^https?:\/\/.*\.weibo\.com\/.*\/ad - reject-200
+    - ^https?:\/\/api\.weibo\.com\/.*\/ad - reject-200
+
+    # 知乎去广告
+    - ^https?:\/\/.*\.zhihu\.com\/.*\/ad - reject-200
+    - ^https?:\/\/api\.zhihu\.com\/.*\/ad - reject-200
+
+    # 小红书去广告
+    - ^https?:\/\/.*\.xiaohongshu\.com\/.*\/ad - reject-200
+    - ^https?:\/\/api\.xiaohongshu\.com\/.*\/ad - reject-200
+
+    # === 🛒 购物平台去广告重写 ===
+    
+    # 京东去广告
+    - ^https?:\/\/.*\.jd\.com\/.*\/ad - reject-200
+    - ^https?:\/\/api\.m\.jd\.com\/.*\/ad - reject-200
+
+    # 淘宝去广告
+    - ^https?:\/\/.*\.taobao\.com\/.*\/ad - reject-200
+    - ^https?:\/\/.*\.tmall\.com\/.*\/ad - reject-200
+
+    # === 🎵 音乐平台去广告重写 ===
+    
+    # QQ音乐去广告
+    - ^https?:\/\/.*\.qq\.com\/.*\/music\/ad - reject-200
+
+    # 网易云音乐去广告
+    - ^https?:\/\/.*\.music\.163\.com\/.*\/ad - reject-200
 
 # 📝 高级功能开关 - 网络速度优化
 experimental:
